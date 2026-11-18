@@ -1,86 +1,242 @@
-# 🌐 Customer Quote-to-Provision Assistant
+# Lumen Zero-Touch NaaS Broker
 
-This repository contains the hackathon prototype for the **Customer Quote-to-Provision Assistant**. It is an AI-driven orchestrator designed to ingest natural language customer requirements and automatically translate them into a technical design, a Bill of Materials (BOM), a formal quote, and zero-touch provisioning API payloads for Lumen's Network-as-a-Service (NaaS) platform.
+> Natural language in, billable and provisioned network out. No sales-engineering queue.
 
-## 🛠️ Tech Stack
+## Executive Summary
 
-- **Frontend:** Streamlit (Interactive Chat UI)
-- **Backend:** Python
-- **AI Orchestration:** Large Language Models (OpenAI / Gemini) for intent parsing
+The **Lumen Zero-Touch NaaS Broker** is an AI-native ordering agent for Lumen Network-as-a-Service (NaaS).
+An enterprise buyer describes the connectivity they need in plain English, for example
+*"10 Gbps from our Hyderabad office to the cloud, with DDoS protection."* The broker then:
+
+1. Extracts the intent: location, bandwidth, cloud, add-ons and egress volume.
+2. Checks idle on-net port inventory, which means **$0 CapEx** and no construction.
+3. Selects the cheapest cloud egress path if the buyer did not name a cloud.
+4. Prices a deterministic, hourly **Bill of Materials (BOM)**.
+5. Draws the proposed **network topology** as a Mermaid.js diagram.
+6. When the buyer approves, compiles a schema-valid `POST /Customer/v3/Ordering/orderRequest` payload, validates
+   and corrects it, then sends it to the provisioning layer.
+
+The goal is to remove the manual sales-engineering bottleneck. A conversation can become a provisioned, billable
+service in minutes instead of weeks.
+
+> **Mock environment.** This prototype never calls live Lumen APIs. Provisioning goes to
+> `mock_lumen_provisioning_api()` in [`mock_api.py`](mock_api.py). That function validates the payload, simulates
+> 2 seconds of network latency and returns a simulated `200 OK` with a transaction ID.
 
 ---
 
-## 📋 Prerequisites
+## The Problem Solved
 
-Before you begin, ensure you have the following installed on your local machine:
+Traditional enterprise connectivity ordering is a relay race of human hand-offs:
 
-- [Python 3.8 or higher](https://www.python.org/downloads/)
-- [Git](https://git-scm.com/downloads)
-- An API Key for your chosen LLM provider (e.g., OpenAI or Gemini API Key)
+| Stage | Traditional process | Impact |
+|-------|---------------------|--------|
+| Discovery | The customer emails an account manager, and calls get scheduled. | **Days** before qualification even starts. |
+| Solution design | A sales engineer checks inventory, chooses port speeds and looks up cloud on-ramps by hand. | Results depend on who does the work. The cheapest cloud path is often missed. |
+| Quoting | Pricing is built in spreadsheets and goes through deal-desk review. | Pricing errors, version drift and **1–3 week** quote cycles. |
+| Order entry | A person re-keys the approved quote into the ordering API or OSS/BSS portal. | **Human API-translation errors**, such as a wrong site code, speed or billing rate. These cause rejected orders and rework. |
+| Provisioning | Tickets are handed to operations. | More delay, and nobody has a single view of status. |
+
+The result is **high friction, slow time-to-revenue and avoidable order fallout**, even though Lumen's NaaS
+platform can already provision capacity on demand. People are the bottleneck, not the network.
+
+## Revenue Benefits to Lumen
+
+- **Faster time-to-revenue:** Quote-to-provision drops from weeks to minutes. Hourly billing starts when the
+  customer approves, not after a long order-entry cycle.
+- **Higher NaaS consumption:** A low-friction, self-service experience encourages more and smaller orders, plus
+  upgrades such as 1G to 10G or adding DDoS protection. Each order adds recurring hourly revenue.
+- **Better use of existing capacity:** The $0 CapEx check sells idle on-net ports first. This earns revenue from
+  assets Lumen has already paid for.
+- **Built-in upsell:** DDoS mitigation and multi-cloud on-ramps appear in context in every quote.
+- **Fewer rejected orders:** Pydantic schema validation and reconciliation against the quote stop wrong-rate or
+  wrong-site orders from reaching billing.
+- **Room to grow without more headcount:** Sales engineers can focus on complex, high-value deals. The broker
+  handles the standard requests.
+- **Customer trust:** Showing the cheapest-cloud comparison builds goodwill and can make Lumen the preferred
+  multi-cloud fabric.
 
 ---
 
-## 🚀 Local Setup Instructions
+## Architecture & Flow
 
-### 1. Clone the Repository
-
-Open your terminal and clone the project to your local machine:
-
-```bash
-git clone https://github.com/s-vivek-55/q2p.git
-cd q2p
+```mermaid
+flowchart LR
+    U[Enterprise user] -->|natural language| UI[Streamlit UI<br/>app.py]
+    UI -->|chat history| NLU[gpt-5-mini<br/>/v1/chat/completions]
+    NLU -->|intent JSON| T[tools.py<br/>inventory · pricing · cloud optimizer]
+    T -->|Quote + BOM| UI
+    T -->|Quote| M[Mermaid topology<br/>agent.py]
+    UI -->|QUOTE_APPROVED| CX[gpt-5.3-codex<br/>/v1/responses]
+    CX -->|raw JSON| V{Pydantic validation<br/>+ quote reconciliation}
+    V -->|errors fed back, max 2 retries| CX
+    V -->|valid payload| API[mock_lumen_provisioning_api<br/>mock_api.py]
+    API -->|SUCCESS + transaction_id| UI
 ```
 
-### 2. Create and Activate a Virtual Environment
+### 1. Conversational NLU: `gpt-5-mini` (Chat Completions)
 
-It is best practice to run this project in an isolated virtual environment.
+Every chat turn goes to the low-cost `gpt-5-mini` model through `/v1/chat/completions` in JSON mode.
+Settings: `reasoning_effort="low"`, a 12-message history window and a completion-token cap. The model **only
+extracts intent**: customer, source city, bandwidth in Mbps, cloud provider, DDoS protection, egress GB per month
+and a short reply. It never calculates prices, so prices cannot be hallucinated.
 
-**Windows (Git Bash / PowerShell):**
+### 2. Deterministic BOM, $0 CapEx check and multi-cloud optimizer: `tools.py`
 
-```bash
-python -m venv venv
-source venv/Scripts/activate
+- **Port selection:** chooses the smallest port that fits, or N × 10G for larger demand.
+- **$0 CapEx check:** confirms there are enough idle on-net ports at the site. If there are not, the broker
+  suggests other on-net sites in the same region that have capacity.
+- **Multi-cloud cost optimization:** if the user does not name a cloud, it compares AWS, GCP and Azure. For each
+  one it calculates on-ramp cost plus amortised regional egress (`egress $/GB × GB/mo ÷ 730 h`) and picks the
+  cheapest. The full comparison is shown in the UI. For example, Seattle picks AWS, London picks GCP and
+  Hyderabad 1G picks Azure.
+- **BOM:** port, cloud on-ramp, estimated egress, optional DDoS protection and a $0 on-net CapEx line, all priced
+  per hour.
+
+### 3. Visual topology: `generate_mermaid_diagram()`
+
+The diagram is built deterministically, so it costs no tokens. It shows
+**Customer Site → Lumen PoP → Lumen NaaS Fabric → Cloud on-ramp**, with a DDoS scrubbing node when that add-on is
+selected. Mermaid.js renders it in a sandboxed iframe with `securityLevel: "strict"`.
+
+### 4. Payload compilation: `gpt-5.3-codex` (Responses API)
+
+Codex runs **only** when the latest user message contains `QUOTE_APPROVED`, either from the **Approve Quote**
+button or typed in chat. It is called through `/v1/responses` with `store=False`. Its input is the endpoint's JSON
+Schema from `lumen_context.json`, the approved quote and an explicit field mapping.
+
+### 5. Self-healing validation and mock execution
+
+1. Pydantic (`mock_api.OrderRequest`) validates the Codex output. Strict ints and booleans are required, and
+   unknown keys are rejected.
+2. **Reconciliation** checks that every payload value matches the approved quote: site, speed, cloud, region,
+   DDoS setting and billing rate within ±$0.005.
+3. On failure, the exact errors and the rejected output go back to Codex for a correction. The broker tries at
+   most `1 + MAX_HEAL_ATTEMPTS` times.
+4. The validated payload goes to `mock_lumen_provisioning_api()`. This function logs the payload, sleeps 2 seconds
+   to imitate network latency, validates the payload again as the server would, and returns:
+
+```json
+{"status": "SUCCESS", "http_status": 200, "transaction_id": "LUMEN-NAAS-12345",
+ "message": "Network provisioned", "quote_id": "Q-1A2B3C4D", "provisioned_at": "..."}
 ```
 
-**macOS/Linux:**
+The mock API stands in for the physical network layer, so the full workflow can run end to end without touching
+production Lumen systems.
 
-```bash
-python3 -m venv venv
-source venv/bin/activate
+### Cost controls (USD 20 budget)
+
+- The low-cost `gpt-5-mini` model handles every conversational turn. `gpt-5.3-codex` runs **once per approved
+  quote**, plus at most 2 correction retries.
+- Pricing, inventory, cloud optimization and diagrams are plain Python, so they use no tokens.
+- Reasoning effort is `low`, output tokens are capped and the chat history is windowed.
+- The sidebar spend meter tracks estimated cost from real token usage. A per-session budget guard
+  (`SESSION_BUDGET_USD`, default $2.00) blocks further LLM calls once the limit is reached.
+
+---
+
+## Project Structure
+
+```
+.
+├── app.py               # Streamlit UI: chat, BOM, topology, approval workflow
+├── agent.py             # LLM orchestration: NLU, Mermaid, Codex + self-healing
+├── tools.py             # Context loading, $0 CapEx check, cloud optimizer, BOM pricing
+├── mock_api.py          # Pydantic orderRequest schema + mock provisioning API
+├── config.py            # Env vars, model routing, budget constants
+├── logging_setup.py     # Rotating file + console logging, key redaction, diagnostics
+├── lumen_context.json   # Mock on-net sites, pricing, DDoS, cloud egress, API JSON schema
+├── requirements.txt
+├── .env.example
+└── README.md
 ```
 
-### 3. Install Dependencies
+## Setup Instructions
 
-With your virtual environment activated, install the required Python packages:
+**Prerequisites:** Python 3.11+ and an LLM key. By default the app uses the **hackathon LiteLLM gateway** (team key
+plus base URL from the *2026 Hackathon Team LLM Access Guide*). Plain OpenAI also works.
 
-```bash
-pip install streamlit pydantic openai
-```
+```powershell
+# 1. Create and activate a virtual environment
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1          # macOS/Linux: source .venv/bin/activate
 
-### 4. Configure Environment Variables
+# 2. Install dependencies (use the SAME interpreter that will run the app)
+python -m pip install -r requirements.txt
 
-Set your API key as an environment variable in your terminal before running the app.
+# 3. Configure the gateway
+Copy-Item .env.example .env           # macOS/Linux: cp .env.example .env
+# then edit .env: set LITELLM_API_KEY (your team key) and LITELLM_BASE_URL (from the guide)
+# Or just for the current PowerShell session:
+#   $env:LITELLM_API_KEY  = "<team key>"
+#   $env:LITELLM_BASE_URL = "<gateway base URL>"
 
-**Windows / macOS / Linux (Git Bash):**
-
-```bash
-export OPENAI_API_KEY="your-api-key-here"
-```
-
-### 5. Run the Application
-
-Start the Streamlit development server:
-
-```bash
+# 4. Run the app (any of these)
 streamlit run app.py
+python app.py                         # re-launches itself under Streamlit
 ```
 
-This will automatically open a new tab in your default web browser pointing to http://localhost:8501.
+Then click **🔌 Test OpenAI connection** in the sidebar. It lists the models your key may use, with no tokens spent.
 
----
+In VS Code you can press **F5** and choose **Streamlit: Lumen NaaS Broker** from `.vscode/launch.json`.
 
-## 💡 Usage Guide
+> **Troubleshooting `ModuleNotFoundError` (for example `No module named 'dotenv'`):** `pip` installed the
+> packages into a different Python than the one running the app. Install with the exact interpreter you run, for
+> example `& "C:\...\Python314\python.exe" -m pip install -r requirements.txt`. Or pick the matching interpreter
+> with **Python: Select Interpreter** in VS Code.
 
-- **Intake:** Type a natural language request in the chatbox (e.g., "I need a 10G connection to Azure with basic DDoS protection").
-- **Review:** The AI parses your requirements and generates a Lumen-specific Bill of Materials and estimated MRC (Monthly Recurring Cost).
-- **Provision:** Click "Approve & Provision Network" to simulate translating the BOM into Lumen NaaS orchestration API payloads.
+Open <http://localhost:8501> and try:
+
+1. `We're Contoso. Need 10 Gbps from Seattle to the cloud with DDoS protection.` The optimizer picks the cloud.
+2. `Switch it to Azure and make it 1 Gbps.` The quote is updated in context.
+3. `5 Gbps from Denver to AWS.` The $0 CapEx check fails because Denver has no idle 10G ports, and the broker
+   suggests alternatives.
+4. Click **✅ Approve Quote**, or type `QUOTE_APPROVED`. Codex compiles the order, it is validated and the mock
+   API provisions it.
+
+### Configuration
+
+| Variable | Default | Purpose |
+|----------|---------|---------|
+| `LITELLM_API_KEY` | *(required)* | Hackathon team key (`OPENAI_API_KEY` is accepted as a fallback) |
+| `LITELLM_BASE_URL` | `https://api.openai.com/v1` | Gateway base URL from the access guide (`OPENAI_BASE_URL` also accepted). **Required for team keys**: the app refuses to send a team key to `api.openai.com` |
+| `MODEL_PROFILE` | `dev` | `dev` = `gpt-5-nano` for both roles (cheapest); `prod` = `gpt-5-mini` + `gpt-5.3-codex` |
+| `NLU_MODEL` | from profile | Overrides the intent extraction model |
+| `CODEX_MODEL` | from profile | Overrides the payload compiler model |
+| `SESSION_BUDGET_USD` | `2.00` | Per-session spend guard |
+| `OPENAI_TIMEOUT_SECONDS` / `OPENAI_MAX_RETRIES` | `60` / `2` | SDK resilience |
+
+Token prices for the spend meter are in `config.MODEL_PRICING_PER_MTOK`. Update them if OpenAI changes its pricing.
+
+### Logging & diagnostics
+
+- **Where:** `logs/broker.log` (rotating, 2 MB × 3, gitignored) holds the full DEBUG log. The console shows INFO
+  and above. The sidebar has a **🪵 Diagnostic log** viewer and a **🔌 Test OpenAI connection** button, which is a
+  free `models.list` probe that uses no tokens.
+- **Startup:** Python and package versions, model profile, endpoint and which env var supplied it, proxy and
+  certificate variables, and a non-reversible API-key fingerprint (length, prefix, SHA-256 prefix, key format).
+- **Per LLM call:** model, reasoning effort, message sizes, duration, token usage, estimated cost, finish reason
+  and the `request_id`. On failure it also logs the HTTP status, the gateway's error body, `x-litellm-*` headers
+  (such as the call id) and the full cause chain. Quote the call id when asking the hackathon team for help.
+- **Connection test:** also logs the exact list of models your key is allowed to call, and warns if
+  `NLU_MODEL` / `CODEX_MODEL` aren't in it.
+- **Secrets:** anything that looks like an API key (`sk-…`) or bearer token is masked in every log line.
+
+> **HTTP 401 from the gateway:** LiteLLM uses 401 for two different problems, and the app shows the gateway's own
+> message so you can tell which:
+> 1. *"Invalid proxy server token"*: the key is wrong or revoked, or `LITELLM_BASE_URL` points at a different
+>    gateway than the one that issued it.
+> 2. *"key not allowed to access model…"*: your team key can't use the configured model. Click **Test OpenAI
+>    connection** to see the allowed names and set `NLU_MODEL` / `CODEX_MODEL` in `.env`.
+>
+> A 401 `invalid_api_key` from `api.openai.com` means a gateway key was sent to OpenAI. Set `LITELLM_BASE_URL`.
+>
+> **`CERTIFICATE_VERIFY_FAILED` in the log:** a corporate proxy is re-signing HTTPS traffic. Point `SSL_CERT_FILE`
+> at your corporate CA bundle.
+
+### Notes
+
+- The Mermaid diagram loads `mermaid.js` from the jsDelivr CDN in the browser. All Lumen API interaction is
+  mocked locally.
+- Error handling: OpenAI failures (authentication, rate limit, timeout, connection, model not found, bad request)
+  and validation failures appear as friendly messages in the chat. The app never shows a stack trace.

@@ -1,0 +1,214 @@
+{
+  "currency": "USD",
+  "hours_per_month": 730,
+  "default_monthly_egress_gb": 2000,
+  "port_capacity_mbps": {
+    "1G": 1000,
+    "10G": 10000
+  },
+  "port_pricing_hourly_usd": {
+    "1G": 0.55,
+    "10G": 2.85
+  },
+  "ddos_addon_hourly_usd": {
+    "1G": 0.18,
+    "10G": 0.95
+  },
+  "cloud_providers": {
+    "AWS": {
+      "product": "AWS Direct Connect",
+      "onramp_hourly_usd": {"1G": 0.30, "10G": 2.25},
+      "egress_per_gb_usd": {"NA": 0.020, "EMEA": 0.025, "APAC": 0.040}
+    },
+    "GCP": {
+      "product": "Google Cloud Partner Interconnect",
+      "onramp_hourly_usd": {"1G": 0.31, "10G": 2.30},
+      "egress_per_gb_usd": {"NA": 0.020, "EMEA": 0.018, "APAC": 0.045}
+    },
+    "AZURE": {
+      "product": "Azure ExpressRoute",
+      "onramp_hourly_usd": {"1G": 0.32, "10G": 2.35},
+      "egress_per_gb_usd": {"NA": 0.025, "EMEA": 0.025, "APAC": 0.025}
+    }
+  },
+  "locations": [
+    {
+      "city": "Seattle",
+      "country_code": "US",
+      "site_code": "SEA1",
+      "pop_name": "Seattle Westin Building",
+      "geo": "NA",
+      "aliases": ["SEA", "Seattle WA"],
+      "available_ports": {"1G": 24, "10G": 8},
+      "cloud_regions": {"AWS": "us-west-2", "GCP": "us-west1", "AZURE": "westus2"}
+    },
+    {
+      "city": "Chicago",
+      "country_code": "US",
+      "site_code": "CHI1",
+      "pop_name": "Chicago Lakeside",
+      "geo": "NA",
+      "aliases": ["CHI", "Chicago IL"],
+      "available_ports": {"1G": 40, "10G": 12},
+      "cloud_regions": {"AWS": "us-east-2", "GCP": "us-central1", "AZURE": "northcentralus"}
+    },
+    {
+      "city": "New York",
+      "country_code": "US",
+      "site_code": "NYC1",
+      "pop_name": "New York 60 Hudson",
+      "geo": "NA",
+      "aliases": ["NYC", "Manhattan", "New York City"],
+      "available_ports": {"1G": 32, "10G": 10},
+      "cloud_regions": {"AWS": "us-east-1", "GCP": "us-east4", "AZURE": "eastus"}
+    },
+    {
+      "city": "Dallas",
+      "country_code": "US",
+      "site_code": "DAL1",
+      "pop_name": "Dallas Infomart",
+      "geo": "NA",
+      "aliases": ["DFW", "Dallas TX"],
+      "available_ports": {"1G": 20, "10G": 6},
+      "cloud_regions": {"AWS": "us-east-2", "GCP": "us-south1", "AZURE": "southcentralus"}
+    },
+    {
+      "city": "Denver",
+      "country_code": "US",
+      "site_code": "DEN1",
+      "pop_name": "Denver Gateway",
+      "geo": "NA",
+      "aliases": ["DEN", "Denver CO"],
+      "available_ports": {"1G": 12, "10G": 0},
+      "cloud_regions": {"AWS": "us-west-2", "GCP": "us-west3", "AZURE": "centralus"}
+    },
+    {
+      "city": "London",
+      "country_code": "GB",
+      "site_code": "LON1",
+      "pop_name": "London Docklands",
+      "geo": "EMEA",
+      "aliases": ["LON", "London UK"],
+      "available_ports": {"1G": 30, "10G": 10},
+      "cloud_regions": {"AWS": "eu-west-2", "GCP": "europe-west2", "AZURE": "uksouth"}
+    },
+    {
+      "city": "Amsterdam",
+      "country_code": "NL",
+      "site_code": "AMS1",
+      "pop_name": "Amsterdam Science Park",
+      "geo": "EMEA",
+      "aliases": ["AMS"],
+      "available_ports": {"1G": 18, "10G": 6},
+      "cloud_regions": {"AWS": "eu-central-1", "GCP": "europe-west4", "AZURE": "westeurope"}
+    },
+    {
+      "city": "Hyderabad",
+      "country_code": "IN",
+      "site_code": "HYD1",
+      "pop_name": "Hyderabad HITEC City",
+      "geo": "APAC",
+      "aliases": ["HYD", "Hyderabad India"],
+      "available_ports": {"1G": 16, "10G": 4},
+      "cloud_regions": {"AWS": "ap-south-2", "GCP": "asia-south1", "AZURE": "centralindia"}
+    },
+    {
+      "city": "Singapore",
+      "country_code": "SG",
+      "site_code": "SIN1",
+      "pop_name": "Singapore Jurong",
+      "geo": "APAC",
+      "aliases": ["SIN", "SG"],
+      "available_ports": {"1G": 22, "10G": 6},
+      "cloud_regions": {"AWS": "ap-southeast-1", "GCP": "asia-southeast1", "AZURE": "southeastasia"}
+    }
+  ],
+  "order_request_api": {
+    "method": "POST",
+    "path": "/Customer/v3/Ordering/orderRequest",
+    "request_schema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "LumenOrderRequest",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "quoteId",
+        "orderType",
+        "productFamily",
+        "customer",
+        "serviceLocation",
+        "port",
+        "cloudConnection",
+        "addOns",
+        "billing"
+      ],
+      "properties": {
+        "quoteId": {"type": "string", "pattern": "^Q-[0-9A-F]{8}$"},
+        "orderType": {"type": "string", "const": "NEW_INSTALL"},
+        "productFamily": {"type": "string", "const": "NAAS_CLOUD_CONNECT"},
+        "customer": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["name"],
+          "properties": {
+            "name": {"type": "string", "minLength": 1, "maxLength": 120}
+          }
+        },
+        "serviceLocation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["siteCode", "city", "countryCode"],
+          "properties": {
+            "siteCode": {"type": "string", "pattern": "^[A-Z]{3}[0-9]$"},
+            "city": {"type": "string", "minLength": 1},
+            "countryCode": {"type": "string", "pattern": "^[A-Z]{2}$"}
+          }
+        },
+        "port": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["speed", "quantity", "bandwidthMbps"],
+          "properties": {
+            "speed": {"type": "string", "enum": ["1G", "10G"]},
+            "quantity": {"type": "integer", "minimum": 1, "maximum": 16},
+            "bandwidthMbps": {"type": "integer", "minimum": 1}
+          }
+        },
+        "cloudConnection": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["provider", "region", "product"],
+          "properties": {
+            "provider": {"type": "string", "enum": ["AWS", "GCP", "AZURE"]},
+            "region": {"type": "string", "minLength": 1},
+            "product": {"type": "string", "minLength": 1}
+          }
+        },
+        "addOns": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["ddosProtection"],
+          "properties": {
+            "ddosProtection": {"type": "boolean"}
+          }
+        },
+        "billing": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "pricingModel",
+            "currency",
+            "hourlyRateUsd",
+            "estimatedMonthlyUsd"
+          ],
+          "properties": {
+            "pricingModel": {"type": "string", "const": "HOURLY"},
+            "currency": {"type": "string", "const": "USD"},
+            "hourlyRateUsd": {"type": "number", "minimum": 0},
+            "estimatedMonthlyUsd": {"type": "number", "minimum": 0}
+          }
+        }
+      }
+    }
+  }
+}
