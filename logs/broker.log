@@ -1,0 +1,1610 @@
+2026-11-18 14:15:04,278 INFO    diagnostics:122 | === Broker startup diagnostics ===
+2026-11-18 14:15:04,542 INFO    diagnostics:123 | python=3.12.9 (C:\Users\AD41989\AppData\Local\Programs\Python\Python312\python.exe) on Windows-11-10.0.26200-SP0
+2026-11-18 14:15:04,544 INFO    diagnostics:125 | openai=3.55.0 streamlit=1.58.0
+2026-11-18 14:15:04,546 INFO    diagnostics:127 | model_profile=dev nlu_model=gpt-5-nano(minimal) codex_model=gpt-5-nano(low)
+2026-11-18 14:15:04,547 INFO    diagnostics:131 | endpoint=<default https://api.openai.com/v1> (from <none>) timeout=60.0s max_retries=2
+2026-11-18 14:15:04,548 INFO    diagnostics:135 | api_key (from LITELLM_API_KEY): len=25 prefix=sk-PYV… sha256=6b255705 format=LiteLLM/gateway-style
+2026-11-18 14:15:04,556 INFO    diagnostics:137 | env (set?)={'HTTPS_PROXY': False, 'HTTP_PROXY': False, 'NO_PROXY': False, 'SSL_CERT_FILE': False, 'REQUESTS_CA_BUNDLE': False}
+2026-11-18 14:15:04,560 INFO    diagnostics:138 | log_file=C:\Users\AD41989\DOCS\q2p\logs\broker.log
+2026-11-18 14:16:48,249 INFO    diagnostics:122 | === Broker startup diagnostics ===
+2026-11-18 14:16:48,483 INFO    diagnostics:123 | python=3.12.9 (C:\Users\AD41989\AppData\Local\Programs\Python\Python312\python.exe) on Windows-11-10.0.26200-SP0
+2026-11-18 14:16:48,483 INFO    diagnostics:125 | openai=3.55.0 streamlit=1.58.0
+2026-11-18 14:16:48,490 INFO    diagnostics:127 | model_profile=dev nlu_model=gpt-5-nano(minimal) codex_model=gpt-5-nano(low)
+2026-11-18 14:16:48,490 INFO    diagnostics:131 | endpoint=<default https://api.openai.com/v1> (from <none>) timeout=60.0s max_retries=2
+2026-11-18 14:16:48,490 INFO    diagnostics:135 | api_key (from LITELLM_API_KEY): len=25 prefix=sk-PYV… sha256=6b255705 format=LiteLLM/gateway-style
+2026-11-18 14:16:48,490 INFO    diagnostics:137 | env (set?)={'HTTPS_PROXY': False, 'HTTP_PROXY': False, 'NO_PROXY': False, 'SSL_CERT_FILE': False, 'REQUESTS_CA_BUNDLE': False}
+2026-11-18 14:16:48,490 INFO    diagnostics:138 | log_file=C:\Users\AD41989\DOCS\q2p\logs\broker.log
+2026-11-18 14:17:00,194 ERROR   agent:184 | Gateway-style key but no LITELLM_BASE_URL configured
+2026-11-18 14:17:56,965 INFO    diagnostics:122 | === Broker startup diagnostics ===
+2026-11-18 14:17:57,282 INFO    diagnostics:123 | python=3.12.9 (C:\Users\AD41989\AppData\Local\Programs\Python\Python312\python.exe) on Windows-11-10.0.26200-SP0
+2026-11-18 14:17:57,282 INFO    diagnostics:125 | openai=3.55.0 streamlit=1.58.0
+2026-11-18 14:17:57,284 INFO    diagnostics:127 | model_profile=dev nlu_model=gpt-5-nano(minimal) codex_model=gpt-5-nano(low)
+2026-11-18 14:17:57,284 INFO    diagnostics:131 | endpoint=https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1 (from LITELLM_BASE_URL) timeout=60.0s max_retries=2
+2026-11-18 14:17:57,284 INFO    diagnostics:135 | api_key (from LITELLM_API_KEY): len=25 prefix=sk-PYV… sha256=6b255705 format=LiteLLM/gateway-style
+2026-11-18 14:17:57,284 INFO    diagnostics:137 | env (set?)={'HTTPS_PROXY': False, 'HTTP_PROXY': False, 'NO_PROXY': False, 'SSL_CERT_FILE': False, 'REQUESTS_CA_BUNDLE': False}
+2026-11-18 14:17:57,284 INFO    diagnostics:138 | log_file=C:\Users\AD41989\DOCS\q2p\logs\broker.log
+2026-11-18 14:18:08,798 INFO    agent:190 | Creating OpenAI client: endpoint=https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1 timeout=60.0s max_retries=2 key=len=25 prefix=sk-PYV… sha256=6b255705 format=LiteLLM/gateway-style
+2026-11-18 14:18:09,462 INFO    openai._base_client:1272 | Retrying request in 0.389994 seconds (retry 1 of 2)
+2026-11-18 14:18:09,963 INFO    openai._base_client:1272 | Retrying request in 0.999639 seconds (retry 2 of 2)
+2026-11-18 14:18:11,013 ERROR   agent:263 | OpenAI call failed: {'operation': 'models.list', 'model': '-', 'endpoint': 'https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1', 'error_type': 'APIConnectionError'}
+2026-11-18 14:18:11,019 ERROR   agent:264 | Cause chain: APIConnectionError: Connection error. <- ConnectError: [Errno 11001] getaddrinfo failed <- ConnectError: [Errno 11001] getaddrinfo failed <- gaierror: [Errno 11001] getaddrinfo failed
+2026-11-18 14:18:11,020 DEBUG   agent:265 | Traceback for failed OpenAI call
+Traceback (most recent call last):
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_transports\default.py", line 95, in map_httpcore_exceptions
+    yield
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_transports\default.py", line 242, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpcore2\_sync\connection_pool.py", line 243, in handle_request
+    raise exc from None
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpcore2\_sync\connection_pool.py", line 225, in handle_request
+    response = connection.handle_request(pool_request.request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpcore2\_sync\connection.py", line 96, in handle_request
+    raise exc
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpcore2\_sync\connection.py", line 76, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpcore2\_sync\connection.py", line 119, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpcore2\_backends\sync.py", line 204, in connect_tcp
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpcore2\_exceptions.py", line 16, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore2.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\_base_client.py", line 1183, in request
+    response = self._send_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\_client.py", line 211, in _send_request
+    return sync_send_request(self, request, stream=stream, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\lib\_client_auth.py", line 328, in sync_send_request
+    response = self._send_with_auth_retry(request, stream=stream, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\_client.py", line 197, in _send_with_auth_retry
+    return sync_send_with_auth_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\lib\_client_auth.py", line 313, in sync_send_with_auth_retry
+    response = super(_owner, self)._send_request(request, stream=stream, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\_base_client.py", line 1104, in _send_request
+    return self._client.send(request, stream=stream, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py", line 974, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py", line 1002, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py", line 1037, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py", line 1070, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_transports\default.py", line 241, in handle_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_transports\default.py", line 112, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx2.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\AD41989\DOCS\q2p\agent.py", line 313, in check_connection
+    models = _client().models.list()
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\resources\models.py", line 95, in list
+    return self._get_api_list(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\_base_client.py", line 1560, in get_api_list
+    return self._request_api_list(model, page, opts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\_base_client.py", line 1360, in _request_api_list
+    return self.request(page, options, stream=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\_base_client.py", line 1218, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+2026-11-18 14:21:35,795 INFO    diagnostics:122 | === Broker startup diagnostics ===
+2026-11-18 14:21:36,918 INFO    diagnostics:123 | python=3.12.9 (C:\Users\AD41989\AppData\Local\Programs\Python\Python312\python.exe) on Windows-11-10.0.26200-SP0
+2026-11-18 14:21:36,918 INFO    diagnostics:125 | openai=3.55.0 streamlit=1.58.0
+2026-11-18 14:21:36,920 INFO    diagnostics:127 | model_profile=dev nlu_model=gpt-5-nano(minimal) codex_model=gpt-5-nano(low)
+2026-11-18 14:21:36,922 INFO    diagnostics:131 | endpoint=https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1 (from LITELLM_BASE_URL) timeout=60.0s max_retries=2
+2026-11-18 14:21:36,927 INFO    diagnostics:135 | api_key (from LITELLM_API_KEY): len=25 prefix=sk-PYV… sha256=6b255705 format=LiteLLM/gateway-style
+2026-11-18 14:21:36,931 INFO    diagnostics:137 | env (set?)={'HTTPS_PROXY': False, 'HTTP_PROXY': False, 'NO_PROXY': False, 'SSL_CERT_FILE': False, 'REQUESTS_CA_BUNDLE': False}
+2026-11-18 14:21:36,935 INFO    diagnostics:138 | log_file=C:\Users\AD41989\DOCS\q2p\logs\broker.log
+2026-11-18 14:23:00,641 INFO    agent:190 | Creating OpenAI client: endpoint=https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1 timeout=60.0s max_retries=2 key=len=25 prefix=sk-PYV… sha256=6b255705 format=LiteLLM/gateway-style
+2026-11-18 14:23:02,899 INFO    httpx2:1079 | HTTP Request: GET https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1/models "HTTP/1.1 403 Forbidden"
+2026-11-18 14:23:02,905 ERROR   agent:263 | OpenAI call failed: {'operation': 'models.list', 'model': '-', 'endpoint': 'https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1', 'error_type': 'PermissionDeniedError', 'http_status': 403, 'request_id': None, 'error_body': {'detail': "Virtual key is not allowed to call this route. Only allowed to call routes: ['/v1/chat/completions', '/chat/completions', '/v1/responses', '/responses', '/v1/embeddings', '/embeddings']. Tried to call route: /v1/models"}, 'response_text': '{"detail":"Virtual key is not allowed to call this route. Only allowed to call routes: [\'/v1/chat/completions\', \'/chat/completions\', \'/v1/responses\', \'/responses\', \'/v1/embeddings\', \'/embeddings\']. Tried to call route: /v1/models"}', 'gateway_headers': {}}
+2026-11-18 14:23:02,906 ERROR   agent:264 | Cause chain: PermissionDeniedError: Error code: 403 <- HTTPStatusError: Client error '403 Forbidden' for url 'https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1/models'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2026-11-18 14:23:02,906 DEBUG   agent:265 | Traceback for failed OpenAI call
+Traceback (most recent call last):
+  File "C:\Users\AD41989\DOCS\q2p\agent.py", line 313, in check_connection
+    models = _client().models.list()
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\resources\models.py", line 95, in list
+    return self._get_api_list(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\_base_client.py", line 1560, in get_api_list
+    return self._request_api_list(model, page, opts)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\_base_client.py", line 1360, in _request_api_list
+    return self.request(page, options, stream=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\_base_client.py", line 1248, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.PermissionDeniedError: Error code: 403
+2026-11-18 14:25:31,270 ERROR   agent:184 | Gateway-style key but no LITELLM_BASE_URL configured
+2026-11-18 14:25:35,123 INFO    agent:190 | Creating OpenAI client: endpoint=http://127.0.0.1:57659/v1 timeout=60.0s max_retries=0 key=len=25 prefix=sk-TES… sha256=6debbc5e format=LiteLLM/gateway-style
+2026-11-18 14:25:37,399 INFO    httpx:1025 | HTTP Request: POST http://127.0.0.1:57659/v1/chat/completions "HTTP/1.0 401 Unauthorized"
+2026-11-18 14:25:37,403 ERROR   agent:282 | OpenAI call failed: {'operation': 'probe chat.completions', 'model': 'gpt-5-nano', 'endpoint': 'http://127.0.0.1:57659/v1', 'error_type': 'AuthenticationError', 'http_status': 401, 'request_id': None, 'error_body': {'message': "key not allowed to access model. This key can only access models=['gpt-5-mini']. Tried to access gpt-5-nano", 'type': 'key_model_access_denied', 'param': None, 'code': '401'}, 'response_text': '{"error": {"message": "key not allowed to access model. This key can only access models=[\'gpt-5-mini\']. Tried to access gpt-5-nano", "type": "key_model_access_denied", "param": null, "code": "401"}}', 'gateway_headers': {'x-litellm-call-id': 'call-123'}}
+2026-11-18 14:25:37,403 ERROR   agent:283 | Cause chain: AuthenticationError: Error code: 401 - {'error': {'message': "key not allowed to access model. This key can only access models=['gpt-5-mini']. Tried to access gpt-5-nano", 'type': 'key_model_access_denied', 'param': None, 'code': '401'}} <- HTTPStatusError: Client error '401 Unauthorized' for url 'http://127.0.0.1:57659/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-11-18 14:25:37,404 DEBUG   agent:284 | Traceback for failed OpenAI call
+Traceback (most recent call last):
+  File "C:\Users\AD41989\DOCS\q2p\agent.py", line 338, in check_connection
+    chat = client.chat.completions.create(
+        model=config.NLU_MODEL,
+    ...<2 lines>...
+        max_completion_tokens=32,
+    )
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\_utils\_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': "key not allowed to access model. This key can only access models=['gpt-5-mini']. Tried to access gpt-5-nano", 'type': 'key_model_access_denied', 'param': None, 'code': '401'}}
+2026-11-18 14:25:37,419 INFO    agent:410 | NLU request: model=gpt-5-nano effort=minimal messages=2 chars=1200
+2026-11-18 14:25:37,419 DEBUG   agent:417 | NLU last user message: x
+2026-11-18 14:25:37,435 INFO    httpx:1025 | HTTP Request: POST http://127.0.0.1:57659/v1/chat/completions "HTTP/1.0 401 Unauthorized"
+2026-11-18 14:25:37,436 ERROR   agent:282 | OpenAI call failed: {'operation': 'chat.completions', 'model': 'gpt-5-nano', 'endpoint': 'http://127.0.0.1:57659/v1', 'error_type': 'AuthenticationError', 'http_status': 401, 'request_id': None, 'error_body': {'message': "key not allowed to access model. This key can only access models=['gpt-5-mini']. Tried to access gpt-5-nano", 'type': 'key_model_access_denied', 'param': None, 'code': '401'}, 'response_text': '{"error": {"message": "key not allowed to access model. This key can only access models=[\'gpt-5-mini\']. Tried to access gpt-5-nano", "type": "key_model_access_denied", "param": null, "code": "401"}}', 'gateway_headers': {'x-litellm-call-id': 'call-123'}}
+2026-11-18 14:25:37,437 ERROR   agent:283 | Cause chain: AuthenticationError: Error code: 401 - {'error': {'message': "key not allowed to access model. This key can only access models=['gpt-5-mini']. Tried to access gpt-5-nano", 'type': 'key_model_access_denied', 'param': None, 'code': '401'}} <- HTTPStatusError: Client error '401 Unauthorized' for url 'http://127.0.0.1:57659/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-11-18 14:25:37,437 DEBUG   agent:284 | Traceback for failed OpenAI call
+Traceback (most recent call last):
+  File "C:\Users\AD41989\DOCS\q2p\agent.py", line 420, in _call_nlu
+    completion = _client().chat.completions.create(
+        model=config.NLU_MODEL,
+    ...<3 lines>...
+        max_completion_tokens=config.NLU_MAX_COMPLETION_TOKENS,
+    )
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\_utils\_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': "key not allowed to access model. This key can only access models=['gpt-5-mini']. Tried to access gpt-5-nano", 'type': 'key_model_access_denied', 'param': None, 'code': '401'}}
+2026-11-18 14:25:41,984 INFO    agent:190 | Creating OpenAI client: endpoint=http://127.0.0.1:57664/v1 timeout=60.0s max_retries=0 key=len=27 prefix=sk-WRO… sha256=61a0d24a format=unrecognised format
+2026-11-18 14:25:44,379 INFO    httpx:1025 | HTTP Request: POST http://127.0.0.1:57664/v1/chat/completions "HTTP/1.0 401 Unauthorized"
+2026-11-18 14:25:44,380 ERROR   agent:282 | OpenAI call failed: {'operation': 'probe chat.completions', 'model': 'gpt-5-nano', 'endpoint': 'http://127.0.0.1:57664/v1', 'error_type': 'AuthenticationError', 'http_status': 401, 'request_id': None, 'error_body': {'message': 'Authentication Error, Invalid proxy server token passed', 'type': 'auth_error', 'param': None, 'code': '401'}, 'response_text': '{"error": {"message": "Authentication Error, Invalid proxy server token passed", "type": "auth_error", "param": null, "code": "401"}}', 'gateway_headers': {'x-litellm-call-id': 'call-123'}}
+2026-11-18 14:25:44,381 ERROR   agent:283 | Cause chain: AuthenticationError: Error code: 401 - {'error': {'message': 'Authentication Error, Invalid proxy server token passed', 'type': 'auth_error', 'param': None, 'code': '401'}} <- HTTPStatusError: Client error '401 Unauthorized' for url 'http://127.0.0.1:57664/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-11-18 14:25:44,381 DEBUG   agent:284 | Traceback for failed OpenAI call
+Traceback (most recent call last):
+  File "C:\Users\AD41989\DOCS\q2p\agent.py", line 338, in check_connection
+    chat = client.chat.completions.create(
+        model=config.NLU_MODEL,
+    ...<2 lines>...
+        max_completion_tokens=32,
+    )
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\_utils\_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Authentication Error, Invalid proxy server token passed', 'type': 'auth_error', 'param': None, 'code': '401'}}
+2026-11-18 14:25:48,447 INFO    agent:190 | Creating OpenAI client: endpoint=http://127.0.0.1:57668/v1 timeout=60.0s max_retries=0 key=len=25 prefix=sk-TES… sha256=6debbc5e format=LiteLLM/gateway-style
+2026-11-18 14:25:50,236 INFO    httpx:1025 | HTTP Request: POST http://127.0.0.1:57668/v1/chat/completions "HTTP/1.0 200 OK"
+2026-11-18 14:25:50,254 INFO    agent:344 | Probe chat.completions/gpt-5-mini OK: finish=stop usage=CompletionUsage(completion_tokens=150, prompt_tokens=900, total_tokens=1050, completion_tokens_details=None, prompt_tokens_details=None)
+2026-11-18 14:25:50,411 ERROR   agent:282 | OpenAI call failed: {'operation': 'probe responses', 'model': 'gpt-5-mini', 'endpoint': 'http://127.0.0.1:57668/v1', 'error_type': 'APIConnectionError'}
+2026-11-18 14:25:50,412 ERROR   agent:283 | Cause chain: APIConnectionError: Connection error. <- RemoteProtocolError: Server disconnected without sending a response. <- RemoteProtocolError: Server disconnected without sending a response.
+2026-11-18 14:25:50,412 DEBUG   agent:284 | Traceback for failed OpenAI call
+Traceback (most recent call last):
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_sync\connection.py", line 103, in handle_request
+    return self._connection.handle_request(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_sync\http11.py", line 136, in handle_request
+    raise exc
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_sync\http11.py", line 106, in handle_request
+    ) = self._receive_response_headers(**kwargs)
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_sync\http11.py", line 177, in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_sync\http11.py", line 231, in _receive_event
+    raise RemoteProtocolError(msg)
+httpcore.RemoteProtocolError: Server disconnected without sending a response.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\_base_client.py", line 1005, in request
+    response = self._client.send(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.RemoteProtocolError: Server disconnected without sending a response.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\AD41989\DOCS\q2p\agent.py", line 358, in check_connection
+    resp = client.responses.create(
+        model=config.CODEX_MODEL,
+    ...<3 lines>...
+        store=False,
+    )
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\resources\responses\responses.py", line 898, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/responses",
+        ^^^^^^^^^^^^^
+    ...<41 lines>...
+        stream_cls=Stream[ResponseStreamEvent],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\_base_client.py", line 1037, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+2026-11-18 14:27:18,239 INFO    agent:190 | Creating OpenAI client: endpoint=http://127.0.0.1:57437/v1 timeout=60.0s max_retries=0 key=len=25 prefix=sk-TES… sha256=6debbc5e format=LiteLLM/gateway-style
+2026-11-18 14:27:20,123 INFO    httpx:1025 | HTTP Request: POST http://127.0.0.1:57437/v1/chat/completions "HTTP/1.0 200 OK"
+2026-11-18 14:27:20,135 INFO    agent:344 | Probe chat.completions/gpt-5-mini OK: finish=stop usage=CompletionUsage(completion_tokens=150, prompt_tokens=900, total_tokens=1050, completion_tokens_details=None, prompt_tokens_details=None)
+2026-11-18 14:27:20,235 INFO    httpx:1025 | HTTP Request: POST http://127.0.0.1:57437/v1/responses "HTTP/1.0 200 OK"
+2026-11-18 14:27:20,311 INFO    agent:365 | Probe responses/gpt-5-mini OK: status=completed usage=ResponseUsage(input_tokens=2000, input_tokens_details=InputTokensDetails(cached_tokens=0), output_tokens=400, output_tokens_details=OutputTokensDetails(reasoning_tokens=0), total_tokens=2400)
+2026-11-18 14:27:20,312 INFO    agent:376 | Connection check OK in 2.07s
+2026-11-18 14:27:20,315 INFO    httpx:1025 | HTTP Request: GET http://127.0.0.1:57437/v1/models "HTTP/1.0 403 Forbidden"
+2026-11-18 14:27:20,316 INFO    agent:410 | NLU request: model=gpt-5-mini effort=minimal messages=2 chars=1230
+2026-11-18 14:27:20,317 DEBUG   agent:417 | NLU last user message: 1G Hyderabad to the cloud, DDoS
+2026-11-18 14:27:20,320 INFO    httpx:1025 | HTTP Request: POST http://127.0.0.1:57437/v1/chat/completions "HTTP/1.0 200 OK"
+2026-11-18 14:27:20,321 INFO    agent:438 | NLU response: 0.00s request_id=None finish=stop in=900 out=150 cost=$0.000525
+2026-11-18 14:27:20,321 DEBUG   agent:450 | NLU raw output: {"customer_name": "Contoso", "source_city": "Hyderabad", "bandwidth_mbps": 1000, "cloud_provider": null, "ddos_protection": true, "reply": "On it!"}
+2026-11-18 14:27:20,323 INFO    agent:636 | Extracted intent: {'customer_name': 'Contoso', 'source_city': 'Hyderabad', 'bandwidth_mbps': 1000, 'cloud_provider': None, 'ddos_protection': True, 'monthly_egress_gb': None, 'reply': 'On it!'}
+2026-11-18 14:27:20,324 INFO    agent:788 | Provisioning started for quote Q-C2381D8E
+2026-11-18 14:27:20,324 INFO    agent:794 | Codex attempt 1/3
+2026-11-18 14:27:20,328 INFO    agent:456 | Codex request: model=gpt-5-mini effort=low prompt_chars=4624
+2026-11-18 14:27:20,332 INFO    httpx:1025 | HTTP Request: POST http://127.0.0.1:57437/v1/responses "HTTP/1.0 200 OK"
+2026-11-18 14:27:20,333 INFO    agent:482 | Codex response: 0.01s request_id=None status=completed in=2000 out=400 cost=$0.001300
+2026-11-18 14:27:20,333 DEBUG   agent:492 | Codex raw output: {"quoteId": "Q-C2381D8E", "customer": {"name": "Contoso"}, "serviceLocation": {"siteCode": "HYD1", "city": "Hyderabad", "countryCode": "IN"}, "port": {"speed": "1G", "quantity": 1, "bandwidthMbps": 1000}, "cloudConnection": {"provider": "AZURE", "region": "centralindia", "product": "Azure ExpressRoute"}, "addOns": {"ddosProtection": true}, "billing": {"hourlyRateUsd": 1.1185, "estimatedMonthlyUsd": 816.5, "pricingModel": "HOURLY", "currency": "USD"}, "orderType": "NEW_INSTALL", "productFamily": "NAAS_CLOUD_CONNECT"}
+2026-11-18 14:27:20,335 INFO    agent:808 | Payload valid on attempt 1; calling mock API
+2026-11-18 14:27:20,335 INFO    mock_api:101 | POST /Customer/v3/Ordering/orderRequest received payload:
+{
+  "quoteId": "Q-C2381D8E",
+  "orderType": "NEW_INSTALL",
+  "productFamily": "NAAS_CLOUD_CONNECT",
+  "customer": {
+    "name": "Contoso"
+  },
+  "serviceLocation": {
+    "siteCode": "HYD1",
+    "city": "Hyderabad",
+    "countryCode": "IN"
+  },
+  "port": {
+    "speed": "1G",
+    "quantity": 1,
+    "bandwidthMbps": 1000
+  },
+  "cloudConnection": {
+    "provider": "AZURE",
+    "region": "centralindia",
+    "product": "Azure ExpressRoute"
+  },
+  "addOns": {
+    "ddosProtection": true
+  },
+  "billing": {
+    "pricingModel": "HOURLY",
+    "currency": "USD",
+    "hourlyRateUsd": 1.1185,
+    "estimatedMonthlyUsd": 816.5
+  }
+}
+2026-11-18 14:27:22,336 INFO    mock_api:128 | POST /Customer/v3/Ordering/orderRequest responded: {'status': 'SUCCESS', 'http_status': 200, 'transaction_id': 'LUMEN-NAAS-97410', 'message': 'Network provisioned', 'quote_id': 'Q-C2381D8E', 'provisioned_at': '2026-11-18T08:57:22+00:00'}
+2026-11-18 14:27:38,610 INFO    agent:190 | Creating OpenAI client: endpoint=https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1 timeout=60.0s max_retries=2 key=len=25 prefix=sk-PYV… sha256=6b255705 format=LiteLLM/gateway-style
+2026-11-18 14:27:41,083 INFO    openai._base_client:1094 | Retrying request to /chat/completions in 0.401699 seconds
+2026-11-18 14:27:42,077 INFO    openai._base_client:1094 | Retrying request to /chat/completions in 0.928700 seconds
+2026-11-18 14:27:43,592 ERROR   agent:282 | OpenAI call failed: {'operation': 'probe chat.completions', 'model': 'gpt-5-nano', 'endpoint': 'https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1', 'error_type': 'APIConnectionError'}
+2026-11-18 14:27:43,593 ERROR   agent:283 | Cause chain: APIConnectionError: Connection error. <- ConnectError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1081) <- ConnectError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1081) <- SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1081)
+2026-11-18 14:27:43,594 DEBUG   agent:284 | Traceback for failed OpenAI call
+Traceback (most recent call last):
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_sync\connection.py", line 101, in handle_request
+    raise exc
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_sync\connection.py", line 78, in handle_request
+    stream = self._connect(request)
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_sync\connection.py", line 156, in _connect
+    stream = stream.start_tls(**kwargs)
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_backends\sync.py", line 154, in start_tls
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1081)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\_base_client.py", line 1005, in request
+    response = self._client.send(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1081)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\AD41989\DOCS\q2p\agent.py", line 338, in check_connection
+    chat = client.chat.completions.create(
+        model=config.NLU_MODEL,
+    ...<2 lines>...
+        max_completion_tokens=32,
+    )
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\_utils\_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1211, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\_base_client.py", line 1037, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+2026-11-18 14:28:34,185 INFO    agent:190 | Creating OpenAI client: endpoint=https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1 timeout=60.0s max_retries=2 key=len=25 prefix=sk-PYV… sha256=6b255705 format=LiteLLM/gateway-style
+2026-11-18 14:28:35,709 INFO    httpx2:1079 | HTTP Request: POST https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1/chat/completions "HTTP/1.1 403 Forbidden"
+2026-11-18 14:28:35,713 ERROR   agent:282 | OpenAI call failed: {'operation': 'probe chat.completions', 'model': 'gpt-5-nano', 'endpoint': 'https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1', 'error_type': 'PermissionDeniedError', 'http_status': 403, 'request_id': None, 'error_body': {'message': "The requested model 'gpt-5-nano' is not available for this API key, or the model name is invalid. Check the models available to you and try again.", 'type': 'key_model_access_denied', 'param': 'model', 'code': '403'}, 'response_text': '{"error":{"message":"The requested model \'gpt-5-nano\' is not available for this API key, or the model name is invalid. Check the models available to you and try again.","type":"key_model_access_denied","param":"model","code":"403"}}', 'gateway_headers': {}}
+2026-11-18 14:28:35,713 ERROR   agent:283 | Cause chain: PermissionDeniedError: Error code: 403 - The requested model 'gpt-5-nano' is not available for this API key, or the model name is invalid. Check the models available to you and try again. <- HTTPStatusError: Client error '403 Forbidden' for url 'https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2026-11-18 14:28:35,714 DEBUG   agent:284 | Traceback for failed OpenAI call
+Traceback (most recent call last):
+  File "C:\Users\AD41989\DOCS\q2p\agent.py", line 338, in check_connection
+    chat = client.chat.completions.create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\_utils\_utils.py", line 298, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1611, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\_base_client.py", line 1474, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\_base_client.py", line 1248, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.PermissionDeniedError: Error code: 403 - The requested model 'gpt-5-nano' is not available for this API key, or the model name is invalid. Check the models available to you and try again.
+2026-11-18 14:30:34,937 INFO    agent:190 | Creating OpenAI client: endpoint=https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1 timeout=60.0s max_retries=2 key=len=25 prefix=sk-PYV… sha256=6b255705 format=LiteLLM/gateway-style
+2026-11-18 14:30:37,523 INFO    httpx2:1079 | HTTP Request: POST https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-18 14:30:37,542 INFO    agent:344 | Probe chat.completions/gpt-5-mini OK: finish=stop usage=CompletionUsage(completion_tokens=10, prompt_tokens=7, total_tokens=17, completion_tokens_details=CompletionTokensDetails(accepted_prediction_tokens=0, audio_tokens=0, reasoning_tokens=0, rejected_prediction_tokens=0, text_tokens=None), prompt_tokens_details=PromptTokensDetails(audio_tokens=0, cache_write_tokens=None, cached_tokens=0, image_tokens=None, text_tokens=None), latency_checkpoint={'engine_tbt_ms': 7, 'engine_ttft_ms': 32, 'engine_ttlt_ms': 162, 'pre_inference_ms': 82, 'service_tbt_ms': 8, 'service_ttft_ms': 458, 'service_ttlt_ms': 611, 'user_visible_ttft_ms': 376})
+2026-11-18 14:30:38,859 INFO    httpx2:1079 | HTTP Request: POST https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1/responses "HTTP/1.1 200 OK"
+2026-11-18 14:30:38,970 INFO    agent:365 | Probe responses/gpt-5-mini OK: status=incomplete usage=ResponseUsage(input_tokens=7, input_tokens_details=InputTokensDetails(cache_write_tokens=0, cached_tokens=0, cache_write_tokens_details=None, audio_tokens=None, cached_tokens_details=None, image_tokens=None, text_tokens=None, video_tokens=None), output_tokens=0, output_tokens_details=OutputTokensDetails(reasoning_tokens=0, audio_tokens=None, text_tokens=None), total_tokens=7, cost=None)
+2026-11-18 14:30:38,970 INFO    agent:376 | Connection check OK in 4.03s
+2026-11-18 14:30:38,970 INFO    agent:410 | NLU request: model=gpt-5-mini effort=minimal messages=2 chars=1275
+2026-11-18 14:30:38,970 DEBUG   agent:417 | NLU last user message: We're Contoso. Need 1 Gbps from Hyderabad to the cloud with DDoS protection.
+2026-11-18 14:30:41,073 INFO    httpx2:1079 | HTTP Request: POST https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-18 14:30:41,075 INFO    agent:438 | NLU response: 2.10s request_id=None finish=stop in=350 out=100 cost=$0.000287
+2026-11-18 14:30:41,075 DEBUG   agent:450 | NLU raw output: {"customer_name":"Contoso","source_city":"Hyderabad","bandwidth_mbps":1000,"cloud_provider":null,"ddos_protection":true,"monthly_egress_gb":null,"reply":"Thanks, Contoso — I’ve noted a 1 Gbps connection from Hyderabad with DDoS protection. Please confirm which cloud provider (AWS, GCP, or Azure) and monthly egress if you want it specified."}
+2026-11-18 14:30:41,080 INFO    agent:636 | Extracted intent: {'customer_name': 'Contoso', 'source_city': 'Hyderabad', 'bandwidth_mbps': 1000, 'cloud_provider': None, 'ddos_protection': True, 'monthly_egress_gb': None, 'reply': 'Thanks, Contoso — I’ve noted a 1 Gbps connection from Hyderabad with DDoS protection. Please confirm which cloud provider (AWS, GCP, or Azure) and monthly egress if you want it specified.'}
+2026-11-18 14:30:41,082 INFO    agent:788 | Provisioning started for quote Q-795E7F36
+2026-11-18 14:30:41,083 INFO    agent:794 | Codex attempt 1/3
+2026-11-18 14:30:41,088 INFO    agent:456 | Codex request: model=gpt-5-mini effort=low prompt_chars=4624
+2026-11-18 14:30:44,887 INFO    httpx2:1079 | HTTP Request: POST https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1/responses "HTTP/1.1 200 OK"
+2026-11-18 14:30:44,933 INFO    agent:482 | Codex response: 3.84s request_id=None status=completed in=1281 out=402 cost=$0.001124
+2026-11-18 14:30:44,933 DEBUG   agent:492 | Codex raw output: {
+  "quoteId": "Q-795E7F36",
+  "orderType": "NEW_INSTALL",
+  "productFamily": "NAAS_CLOUD_CONNECT",
+  "customer": {
+    "name": "Contoso"
+  },
+  "serviceLocation": {
+    "siteCode": "HYD1",
+    "city": "Hyderabad",
+    "countryCode": "IN"
+  },
+  "port": {
+    "speed": "1G",
+    "quantity": 1,
+    "bandwidthMbps": 1000
+  },
+  "cloudConnection": {
+    "provider": "AZURE",
+    "region": "centralindia",
+    "product": "Azure ExpressRoute"
+  },
+  "addOns": {
+    "ddosProtection": true
+  },
+  "billing": {
+    "pricingModel": "HOURLY",
+    "currency": "USD",
+    "hourlyRateUsd": 1.1185,
+    "estimatedMonthlyUsd": 816.5
+  }
+}
+2026-11-18 14:30:44,937 INFO    agent:808 | Payload valid on attempt 1; calling mock API
+2026-11-18 14:30:44,937 INFO    mock_api:101 | POST /Customer/v3/Ordering/orderRequest received payload:
+{
+  "quoteId": "Q-795E7F36",
+  "orderType": "NEW_INSTALL",
+  "productFamily": "NAAS_CLOUD_CONNECT",
+  "customer": {
+    "name": "Contoso"
+  },
+  "serviceLocation": {
+    "siteCode": "HYD1",
+    "city": "Hyderabad",
+    "countryCode": "IN"
+  },
+  "port": {
+    "speed": "1G",
+    "quantity": 1,
+    "bandwidthMbps": 1000
+  },
+  "cloudConnection": {
+    "provider": "AZURE",
+    "region": "centralindia",
+    "product": "Azure ExpressRoute"
+  },
+  "addOns": {
+    "ddosProtection": true
+  },
+  "billing": {
+    "pricingModel": "HOURLY",
+    "currency": "USD",
+    "hourlyRateUsd": 1.1185,
+    "estimatedMonthlyUsd": 816.5
+  }
+}
+2026-11-18 14:30:46,937 INFO    mock_api:128 | POST /Customer/v3/Ordering/orderRequest responded: {'status': 'SUCCESS', 'http_status': 200, 'transaction_id': 'LUMEN-NAAS-22983', 'message': 'Network provisioned', 'quote_id': 'Q-795E7F36', 'provisioned_at': '2026-11-18T09:00:46+00:00'}
+2026-11-18 14:35:39,313 INFO    diagnostics:122 | === Broker startup diagnostics ===
+2026-11-18 14:35:39,455 INFO    diagnostics:123 | python=3.14.3 (C:\Users\AD41989\AppData\Local\Programs\Python\Python314\python.exe) on Windows-11-10.0.26200-SP0
+2026-11-18 14:35:39,455 INFO    diagnostics:125 | openai=3.55.0 streamlit=1.55.0
+2026-11-18 14:35:39,455 INFO    diagnostics:127 | model_profile=dev nlu_model=gpt-5-mini(minimal) codex_model=gpt-5-mini(low)
+2026-11-18 14:35:39,455 INFO    diagnostics:131 | endpoint=https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1 (from LITELLM_BASE_URL) timeout=60.0s max_retries=2
+2026-11-18 14:35:39,456 INFO    diagnostics:135 | api_key (from LITELLM_API_KEY): len=25 prefix=sk-PYV… sha256=6b255705 format=LiteLLM/gateway-style
+2026-11-18 14:35:39,457 INFO    diagnostics:137 | env (set?)={'HTTPS_PROXY': False, 'HTTP_PROXY': False, 'NO_PROXY': False, 'SSL_CERT_FILE': False, 'REQUESTS_CA_BUNDLE': False}
+2026-11-18 14:35:39,458 INFO    diagnostics:138 | log_file=C:\Users\AD41989\DOCS\q2p\logs\broker.log
+2026-11-18 14:35:43,034 INFO    app:111 | User prompt (44 chars): 1 Gbps from Hyderabad to the cloud with DDoS
+2026-11-18 14:35:43,035 INFO    agent:410 | NLU request: model=gpt-5-mini effort=minimal messages=3 chars=1441
+2026-11-18 14:35:43,035 DEBUG   agent:417 | NLU last user message: 1 Gbps from Hyderabad to the cloud with DDoS
+2026-11-18 14:35:43,035 INFO    agent:438 | NLU response: 0.00s request_id=None finish=stop in=900 out=150 cost=$0.000525
+2026-11-18 14:35:43,035 DEBUG   agent:450 | NLU raw output: {"customer_name": "Contoso", "source_city": "Hyderabad", "bandwidth_mbps": 1000, "cloud_provider": null, "ddos_protection": true, "reply": "On it!"}
+2026-11-18 14:35:43,035 INFO    agent:639 | Extracted intent: {'customer_name': 'Contoso', 'source_city': 'Hyderabad', 'bandwidth_mbps': 1000, 'cloud_provider': None, 'ddos_protection': True, 'monthly_egress_gb': None, 'reply': 'On it!'}
+2026-11-18 14:35:43,036 INFO    app:128 | Quote turn done: quote=Q-6CCDFB8E spent_total=$0.000525
+2026-11-18 14:35:43,141 INFO    app:141 | Approval requested (open quote=Q-6CCDFB8E)
+2026-11-18 14:35:43,142 INFO    agent:791 | Provisioning started for quote Q-6CCDFB8E
+2026-11-18 14:35:43,142 INFO    agent:797 | Codex attempt 1/3
+2026-11-18 14:35:43,143 INFO    agent:456 | Codex request: model=gpt-5-mini effort=low prompt_chars=4624
+2026-11-18 14:35:43,143 INFO    agent:482 | Codex response: 0.00s request_id=None status=None in=2000 out=400 cost=$0.001300
+2026-11-18 14:35:43,143 DEBUG   agent:492 | Codex raw output: {"quoteId": "Q-6CCDFB8E", "customer": {"name": "Contoso"}, "serviceLocation": {"siteCode": "HYD1", "city": "Hyderabad", "countryCode": "IN"}, "port": {"speed": "1G", "quantity": 1, "bandwidthMbps": 1000}, "cloudConnection": {"provider": "AZURE", "region": "centralindia", "product": "Azure ExpressRoute"}, "addOns": {"ddosProtection": true}, "billing": {"hourlyRateUsd": 1.1185, "estimatedMonthlyUsd": 816.5, "pricingModel": "HOURLY", "currency": "USD"}, "orderType": "NEW_INSTALL", "productFamily": "NAAS_CLOUD_CONNECT"}
+2026-11-18 14:35:43,144 INFO    agent:811 | Payload valid on attempt 1; calling mock API
+2026-11-18 14:35:43,144 INFO    mock_api:101 | POST /Customer/v3/Ordering/orderRequest received payload:
+{
+  "quoteId": "Q-6CCDFB8E",
+  "orderType": "NEW_INSTALL",
+  "productFamily": "NAAS_CLOUD_CONNECT",
+  "customer": {
+    "name": "Contoso"
+  },
+  "serviceLocation": {
+    "siteCode": "HYD1",
+    "city": "Hyderabad",
+    "countryCode": "IN"
+  },
+  "port": {
+    "speed": "1G",
+    "quantity": 1,
+    "bandwidthMbps": 1000
+  },
+  "cloudConnection": {
+    "provider": "AZURE",
+    "region": "centralindia",
+    "product": "Azure ExpressRoute"
+  },
+  "addOns": {
+    "ddosProtection": true
+  },
+  "billing": {
+    "pricingModel": "HOURLY",
+    "currency": "USD",
+    "hourlyRateUsd": 1.1185,
+    "estimatedMonthlyUsd": 816.5
+  }
+}
+2026-11-18 14:35:45,145 INFO    mock_api:128 | POST /Customer/v3/Ordering/orderRequest responded: {'status': 'SUCCESS', 'http_status': 200, 'transaction_id': 'LUMEN-NAAS-27354', 'message': 'Network provisioned', 'quote_id': 'Q-6CCDFB8E', 'provisioned_at': '2026-11-18T09:05:45+00:00'}
+2026-11-18 14:35:50,219 ERROR   agent:184 | Gateway-style key but no LITELLM_BASE_URL configured
+2026-11-18 14:35:55,752 INFO    agent:190 | Creating OpenAI client: endpoint=http://127.0.0.1:60070/v1 timeout=60.0s max_retries=0 key=len=25 prefix=sk-TES… sha256=6debbc5e format=LiteLLM/gateway-style
+2026-11-18 14:35:57,504 INFO    httpx2:1079 | HTTP Request: POST http://127.0.0.1:60070/v1/chat/completions "HTTP/1.0 200 OK"
+2026-11-18 14:35:57,519 INFO    agent:344 | Probe chat.completions/gpt-5-mini OK: finish=stop usage=CompletionUsage(completion_tokens=150, prompt_tokens=900, total_tokens=1050, completion_tokens_details=None, prompt_tokens_details=None)
+2026-11-18 14:35:58,353 INFO    httpx2:1079 | HTTP Request: POST http://127.0.0.1:60070/v1/responses "HTTP/1.0 200 OK"
+2026-11-18 14:35:58,814 INFO    agent:365 | Probe responses/gpt-5-mini OK: status=completed usage=ResponseUsage(input_tokens=2000, input_tokens_details=InputTokensDetails(cache_write_tokens=None, cached_tokens=0, cache_write_tokens_details=None), output_tokens=400, output_tokens_details=OutputTokensDetails(reasoning_tokens=0), total_tokens=2400)
+2026-11-18 14:35:58,815 INFO    agent:376 | Connection check OK in 3.06s
+2026-11-18 14:36:05,747 INFO    agent:190 | Creating OpenAI client: endpoint=http://127.0.0.1:56465/v1 timeout=60.0s max_retries=0 key=len=27 prefix=sk-WRO… sha256=61a0d24a format=unrecognised format
+2026-11-18 14:36:06,951 INFO    httpx2:1079 | HTTP Request: POST http://127.0.0.1:56465/v1/chat/completions "HTTP/1.0 401 Unauthorized"
+2026-11-18 14:36:06,953 ERROR   agent:282 | OpenAI call failed: {'operation': 'probe chat.completions', 'model': 'gpt-5-mini', 'endpoint': 'http://127.0.0.1:56465/v1', 'error_type': 'AuthenticationError', 'http_status': 401, 'request_id': None, 'error_body': {'message': 'Authentication Error, Invalid proxy server token passed', 'type': 'auth_error', 'param': None, 'code': '401'}, 'response_text': '{"error": {"message": "Authentication Error, Invalid proxy server token passed", "type": "auth_error", "param": null, "code": "401"}}', 'gateway_headers': {'x-litellm-call-id': 'call-123'}}
+2026-11-18 14:36:06,954 ERROR   agent:283 | Cause chain: AuthenticationError: Error code: 401 - Authentication Error, Invalid proxy server token passed <- HTTPStatusError: Client error '401 Unauthorized' for url 'http://127.0.0.1:56465/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-11-18 14:36:06,954 DEBUG   agent:284 | Traceback for failed OpenAI call
+Traceback (most recent call last):
+  File "C:\Users\AD41989\DOCS\q2p\agent.py", line 338, in check_connection
+    chat = client.chat.completions.create(
+        model=config.NLU_MODEL,
+    ...<2 lines>...
+        max_completion_tokens=32,
+    )
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\_utils\_utils.py", line 298, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1611, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<53 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\_base_client.py", line 1474, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\_base_client.py", line 1248, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - Authentication Error, Invalid proxy server token passed
+2026-11-18 14:36:14,767 INFO    agent:190 | Creating OpenAI client: endpoint=http://127.0.0.1:64185/v1 timeout=60.0s max_retries=0 key=len=25 prefix=sk-TES… sha256=6debbc5e format=LiteLLM/gateway-style
+2026-11-18 14:36:16,185 INFO    httpx2:1079 | HTTP Request: POST http://127.0.0.1:64185/v1/chat/completions "HTTP/1.0 200 OK"
+2026-11-18 14:36:16,217 INFO    agent:344 | Probe chat.completions/gpt-5-mini OK: finish=stop usage=CompletionUsage(completion_tokens=150, prompt_tokens=900, total_tokens=1050, completion_tokens_details=None, prompt_tokens_details=None)
+2026-11-18 14:36:16,667 INFO    httpx2:1079 | HTTP Request: POST http://127.0.0.1:64185/v1/responses "HTTP/1.0 200 OK"
+2026-11-18 14:36:17,405 INFO    agent:365 | Probe responses/gpt-5-mini OK: status=completed usage=ResponseUsage(input_tokens=2000, input_tokens_details=InputTokensDetails(cache_write_tokens=None, cached_tokens=0, cache_write_tokens_details=None), output_tokens=400, output_tokens_details=OutputTokensDetails(reasoning_tokens=0), total_tokens=2400)
+2026-11-18 14:36:17,406 INFO    agent:376 | Connection check OK in 2.64s
+2026-11-18 14:36:17,446 INFO    httpx2:1079 | HTTP Request: GET http://127.0.0.1:64185/v1/models "HTTP/1.0 403 Forbidden"
+2026-11-18 14:36:17,449 INFO    agent:410 | NLU request: model=gpt-5-mini effort=minimal messages=2 chars=1230
+2026-11-18 14:36:17,451 DEBUG   agent:417 | NLU last user message: 1G Hyderabad to the cloud, DDoS
+2026-11-18 14:36:17,472 INFO    httpx2:1079 | HTTP Request: POST http://127.0.0.1:64185/v1/chat/completions "HTTP/1.0 200 OK"
+2026-11-18 14:36:17,477 INFO    agent:438 | NLU response: 0.02s request_id=None finish=stop in=900 out=150 cost=$0.000525
+2026-11-18 14:36:17,477 DEBUG   agent:450 | NLU raw output: {"customer_name": "Contoso", "source_city": "Hyderabad", "bandwidth_mbps": 1000, "cloud_provider": null, "ddos_protection": true, "reply": "On it!"}
+2026-11-18 14:36:17,479 INFO    agent:639 | Extracted intent: {'customer_name': 'Contoso', 'source_city': 'Hyderabad', 'bandwidth_mbps': 1000, 'cloud_provider': None, 'ddos_protection': True, 'monthly_egress_gb': None, 'reply': 'On it!'}
+2026-11-18 14:36:17,482 INFO    agent:791 | Provisioning started for quote Q-8F83DB9B
+2026-11-18 14:36:17,483 INFO    agent:797 | Codex attempt 1/3
+2026-11-18 14:36:17,486 INFO    agent:456 | Codex request: model=gpt-5-mini effort=low prompt_chars=4624
+2026-11-18 14:36:17,500 INFO    httpx2:1079 | HTTP Request: POST http://127.0.0.1:64185/v1/responses "HTTP/1.0 200 OK"
+2026-11-18 14:36:17,503 INFO    agent:482 | Codex response: 0.02s request_id=None status=completed in=2000 out=400 cost=$0.001300
+2026-11-18 14:36:17,504 DEBUG   agent:492 | Codex raw output: {"quoteId": "Q-8F83DB9B", "customer": {"name": "Contoso"}, "serviceLocation": {"siteCode": "HYD1", "city": "Hyderabad", "countryCode": "IN"}, "port": {"speed": "1G", "quantity": 1, "bandwidthMbps": 1000}, "cloudConnection": {"provider": "AZURE", "region": "centralindia", "product": "Azure ExpressRoute"}, "addOns": {"ddosProtection": true}, "billing": {"hourlyRateUsd": 1.1185, "estimatedMonthlyUsd": 816.5, "pricingModel": "HOURLY", "currency": "USD"}, "orderType": "NEW_INSTALL", "productFamily": "NAAS_CLOUD_CONNECT"}
+2026-11-18 14:36:17,507 INFO    agent:811 | Payload valid on attempt 1; calling mock API
+2026-11-18 14:36:17,508 INFO    mock_api:101 | POST /Customer/v3/Ordering/orderRequest received payload:
+{
+  "quoteId": "Q-8F83DB9B",
+  "orderType": "NEW_INSTALL",
+  "productFamily": "NAAS_CLOUD_CONNECT",
+  "customer": {
+    "name": "Contoso"
+  },
+  "serviceLocation": {
+    "siteCode": "HYD1",
+    "city": "Hyderabad",
+    "countryCode": "IN"
+  },
+  "port": {
+    "speed": "1G",
+    "quantity": 1,
+    "bandwidthMbps": 1000
+  },
+  "cloudConnection": {
+    "provider": "AZURE",
+    "region": "centralindia",
+    "product": "Azure ExpressRoute"
+  },
+  "addOns": {
+    "ddosProtection": true
+  },
+  "billing": {
+    "pricingModel": "HOURLY",
+    "currency": "USD",
+    "hourlyRateUsd": 1.1185,
+    "estimatedMonthlyUsd": 816.5
+  }
+}
+2026-11-18 14:36:19,510 INFO    mock_api:128 | POST /Customer/v3/Ordering/orderRequest responded: {'status': 'SUCCESS', 'http_status': 200, 'transaction_id': 'LUMEN-NAAS-69259', 'message': 'Network provisioned', 'quote_id': 'Q-8F83DB9B', 'provisioned_at': '2026-11-18T09:06:19+00:00'}
+2026-11-18 14:38:59,592 INFO    diagnostics:122 | === Broker startup diagnostics ===
+2026-11-18 14:38:59,747 INFO    diagnostics:123 | python=3.12.9 (C:\Users\AD41989\AppData\Local\Programs\Python\Python312\python.exe) on Windows-11-10.0.26200-SP0
+2026-11-18 14:38:59,748 INFO    diagnostics:125 | openai=3.55.0 streamlit=1.58.0
+2026-11-18 14:38:59,748 INFO    diagnostics:127 | model_profile=dev nlu_model=gpt-5-mini(minimal) codex_model=gpt-5-mini(low)
+2026-11-18 14:38:59,748 INFO    diagnostics:131 | endpoint=https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1 (from LITELLM_BASE_URL) timeout=60.0s max_retries=2
+2026-11-18 14:38:59,749 INFO    diagnostics:135 | api_key (from LITELLM_API_KEY): len=25 prefix=sk-PYV… sha256=6b255705 format=LiteLLM/gateway-style
+2026-11-18 14:38:59,749 INFO    diagnostics:137 | env (set?)={'HTTPS_PROXY': False, 'HTTP_PROXY': False, 'NO_PROXY': False, 'SSL_CERT_FILE': False, 'REQUESTS_CA_BUNDLE': False}
+2026-11-18 14:38:59,749 INFO    diagnostics:138 | log_file=C:\Users\AD41989\DOCS\q2p\logs\broker.log
+2026-11-18 14:39:03,151 INFO    app:111 | User prompt (44 chars): 1 Gbps from Hyderabad to the cloud with DDoS
+2026-11-18 14:39:03,151 INFO    agent:410 | NLU request: model=gpt-5-mini effort=minimal messages=3 chars=1441
+2026-11-18 14:39:03,151 DEBUG   agent:417 | NLU last user message: 1 Gbps from Hyderabad to the cloud with DDoS
+2026-11-18 14:39:03,151 INFO    agent:438 | NLU response: 0.00s request_id=None finish=stop in=900 out=150 cost=$0.000525
+2026-11-18 14:39:03,151 DEBUG   agent:450 | NLU raw output: {"customer_name": "Contoso", "source_city": "Hyderabad", "bandwidth_mbps": 1000, "cloud_provider": null, "ddos_protection": true, "reply": "On it!"}
+2026-11-18 14:39:03,152 INFO    agent:639 | Extracted intent: {'customer_name': 'Contoso', 'source_city': 'Hyderabad', 'bandwidth_mbps': 1000, 'cloud_provider': None, 'ddos_protection': True, 'monthly_egress_gb': None, 'reply': 'On it!'}
+2026-11-18 14:39:03,152 INFO    app:128 | Quote turn done: quote=Q-1B3CE916 spent_total=$0.000525
+2026-11-18 14:39:03,259 INFO    app:141 | Approval requested (open quote=Q-1B3CE916)
+2026-11-18 14:39:03,259 INFO    agent:791 | Provisioning started for quote Q-1B3CE916
+2026-11-18 14:39:03,259 INFO    agent:797 | Codex attempt 1/3
+2026-11-18 14:39:03,259 INFO    agent:456 | Codex request: model=gpt-5-mini effort=low prompt_chars=4624
+2026-11-18 14:39:03,260 INFO    agent:482 | Codex response: 0.00s request_id=None status=None in=2000 out=400 cost=$0.001300
+2026-11-18 14:39:03,260 DEBUG   agent:492 | Codex raw output: {"quoteId": "Q-1B3CE916", "customer": {"name": "Contoso"}, "serviceLocation": {"siteCode": "HYD1", "city": "Hyderabad", "countryCode": "IN"}, "port": {"speed": "1G", "quantity": 1, "bandwidthMbps": 1000}, "cloudConnection": {"provider": "AZURE", "region": "centralindia", "product": "Azure ExpressRoute"}, "addOns": {"ddosProtection": true}, "billing": {"hourlyRateUsd": 1.1185, "estimatedMonthlyUsd": 816.5, "pricingModel": "HOURLY", "currency": "USD"}, "orderType": "NEW_INSTALL", "productFamily": "NAAS_CLOUD_CONNECT"}
+2026-11-18 14:39:03,260 INFO    agent:811 | Payload valid on attempt 1; calling mock API
+2026-11-18 14:39:03,261 INFO    mock_api:101 | POST /Customer/v3/Ordering/orderRequest received payload:
+{
+  "quoteId": "Q-1B3CE916",
+  "orderType": "NEW_INSTALL",
+  "productFamily": "NAAS_CLOUD_CONNECT",
+  "customer": {
+    "name": "Contoso"
+  },
+  "serviceLocation": {
+    "siteCode": "HYD1",
+    "city": "Hyderabad",
+    "countryCode": "IN"
+  },
+  "port": {
+    "speed": "1G",
+    "quantity": 1,
+    "bandwidthMbps": 1000
+  },
+  "cloudConnection": {
+    "provider": "AZURE",
+    "region": "centralindia",
+    "product": "Azure ExpressRoute"
+  },
+  "addOns": {
+    "ddosProtection": true
+  },
+  "billing": {
+    "pricingModel": "HOURLY",
+    "currency": "USD",
+    "hourlyRateUsd": 1.1185,
+    "estimatedMonthlyUsd": 816.5
+  }
+}
+2026-11-18 14:39:05,261 INFO    mock_api:128 | POST /Customer/v3/Ordering/orderRequest responded: {'status': 'SUCCESS', 'http_status': 200, 'transaction_id': 'LUMEN-NAAS-39537', 'message': 'Network provisioned', 'quote_id': 'Q-1B3CE916', 'provisioned_at': '2026-11-18T09:09:05+00:00'}
+2026-11-18 14:39:09,714 ERROR   agent:184 | Gateway-style key but no LITELLM_BASE_URL configured
+2026-11-18 14:39:13,731 INFO    agent:190 | Creating OpenAI client: endpoint=http://127.0.0.1:58374/v1 timeout=60.0s max_retries=0 key=len=25 prefix=sk-TES… sha256=6debbc5e format=LiteLLM/gateway-style
+2026-11-18 14:39:14,234 INFO    httpx2:1079 | HTTP Request: POST http://127.0.0.1:58374/v1/chat/completions "HTTP/1.0 200 OK"
+2026-11-18 14:39:14,246 INFO    agent:344 | Probe chat.completions/gpt-5-mini OK: finish=stop usage=CompletionUsage(completion_tokens=150, prompt_tokens=900, total_tokens=1050, completion_tokens_details=None, prompt_tokens_details=None)
+2026-11-18 14:39:14,409 INFO    httpx2:1079 | HTTP Request: POST http://127.0.0.1:58374/v1/responses "HTTP/1.0 200 OK"
+2026-11-18 14:39:14,583 INFO    agent:365 | Probe responses/gpt-5-mini OK: status=completed usage=ResponseUsage(input_tokens=2000, input_tokens_details=InputTokensDetails(cache_write_tokens=None, cached_tokens=0, cache_write_tokens_details=None), output_tokens=400, output_tokens_details=OutputTokensDetails(reasoning_tokens=0), total_tokens=2400)
+2026-11-18 14:39:14,584 INFO    agent:376 | Connection check OK in 0.85s
+2026-11-18 14:39:18,751 INFO    agent:190 | Creating OpenAI client: endpoint=http://127.0.0.1:58378/v1 timeout=60.0s max_retries=0 key=len=27 prefix=sk-WRO… sha256=61a0d24a format=unrecognised format
+2026-11-18 14:39:19,113 INFO    httpx2:1079 | HTTP Request: POST http://127.0.0.1:58378/v1/chat/completions "HTTP/1.0 401 Unauthorized"
+2026-11-18 14:39:19,115 ERROR   agent:282 | OpenAI call failed: {'operation': 'probe chat.completions', 'model': 'gpt-5-mini', 'endpoint': 'http://127.0.0.1:58378/v1', 'error_type': 'AuthenticationError', 'http_status': 401, 'request_id': None, 'error_body': {'message': 'Authentication Error, Invalid proxy server token passed', 'type': 'auth_error', 'param': None, 'code': '401'}, 'response_text': '{"error": {"message": "Authentication Error, Invalid proxy server token passed", "type": "auth_error", "param": null, "code": "401"}}', 'gateway_headers': {'x-litellm-call-id': 'call-123'}}
+2026-11-18 14:39:19,116 ERROR   agent:283 | Cause chain: AuthenticationError: Error code: 401 - Authentication Error, Invalid proxy server token passed <- HTTPStatusError: Client error '401 Unauthorized' for url 'http://127.0.0.1:58378/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-11-18 14:39:19,116 DEBUG   agent:284 | Traceback for failed OpenAI call
+Traceback (most recent call last):
+  File "C:\Users\AD41989\DOCS\q2p\agent.py", line 338, in check_connection
+    chat = client.chat.completions.create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\_utils\_utils.py", line 298, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1611, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\_base_client.py", line 1474, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\_base_client.py", line 1248, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - Authentication Error, Invalid proxy server token passed
+2026-11-18 14:39:23,195 INFO    agent:190 | Creating OpenAI client: endpoint=http://127.0.0.1:58380/v1 timeout=60.0s max_retries=0 key=len=25 prefix=sk-TES… sha256=6debbc5e format=LiteLLM/gateway-style
+2026-11-18 14:39:23,540 INFO    httpx2:1079 | HTTP Request: POST http://127.0.0.1:58380/v1/chat/completions "HTTP/1.0 200 OK"
+2026-11-18 14:39:23,559 INFO    agent:344 | Probe chat.completions/gpt-5-mini OK: finish=stop usage=CompletionUsage(completion_tokens=150, prompt_tokens=900, total_tokens=1050, completion_tokens_details=None, prompt_tokens_details=None)
+2026-11-18 14:39:23,704 INFO    httpx2:1079 | HTTP Request: POST http://127.0.0.1:58380/v1/responses "HTTP/1.0 200 OK"
+2026-11-18 14:39:23,829 INFO    agent:365 | Probe responses/gpt-5-mini OK: status=completed usage=ResponseUsage(input_tokens=2000, input_tokens_details=InputTokensDetails(cache_write_tokens=None, cached_tokens=0, cache_write_tokens_details=None), output_tokens=400, output_tokens_details=OutputTokensDetails(reasoning_tokens=0), total_tokens=2400)
+2026-11-18 14:39:23,829 INFO    agent:376 | Connection check OK in 0.63s
+2026-11-18 14:39:23,841 INFO    httpx2:1079 | HTTP Request: GET http://127.0.0.1:58380/v1/models "HTTP/1.0 403 Forbidden"
+2026-11-18 14:39:23,842 INFO    agent:410 | NLU request: model=gpt-5-mini effort=minimal messages=2 chars=1230
+2026-11-18 14:39:23,842 DEBUG   agent:417 | NLU last user message: 1G Hyderabad to the cloud, DDoS
+2026-11-18 14:39:23,845 INFO    httpx2:1079 | HTTP Request: POST http://127.0.0.1:58380/v1/chat/completions "HTTP/1.0 200 OK"
+2026-11-18 14:39:23,846 INFO    agent:438 | NLU response: 0.00s request_id=None finish=stop in=900 out=150 cost=$0.000525
+2026-11-18 14:39:23,846 DEBUG   agent:450 | NLU raw output: {"customer_name": "Contoso", "source_city": "Hyderabad", "bandwidth_mbps": 1000, "cloud_provider": null, "ddos_protection": true, "reply": "On it!"}
+2026-11-18 14:39:23,846 INFO    agent:639 | Extracted intent: {'customer_name': 'Contoso', 'source_city': 'Hyderabad', 'bandwidth_mbps': 1000, 'cloud_provider': None, 'ddos_protection': True, 'monthly_egress_gb': None, 'reply': 'On it!'}
+2026-11-18 14:39:23,847 INFO    agent:791 | Provisioning started for quote Q-5C2F9371
+2026-11-18 14:39:23,847 INFO    agent:797 | Codex attempt 1/3
+2026-11-18 14:39:23,847 INFO    agent:456 | Codex request: model=gpt-5-mini effort=low prompt_chars=4624
+2026-11-18 14:39:23,850 INFO    httpx2:1079 | HTTP Request: POST http://127.0.0.1:58380/v1/responses "HTTP/1.0 200 OK"
+2026-11-18 14:39:23,851 INFO    agent:482 | Codex response: 0.00s request_id=None status=completed in=2000 out=400 cost=$0.001300
+2026-11-18 14:39:23,851 DEBUG   agent:492 | Codex raw output: {"quoteId": "Q-5C2F9371", "customer": {"name": "Contoso"}, "serviceLocation": {"siteCode": "HYD1", "city": "Hyderabad", "countryCode": "IN"}, "port": {"speed": "1G", "quantity": 1, "bandwidthMbps": 1000}, "cloudConnection": {"provider": "AZURE", "region": "centralindia", "product": "Azure ExpressRoute"}, "addOns": {"ddosProtection": true}, "billing": {"hourlyRateUsd": 1.1185, "estimatedMonthlyUsd": 816.5, "pricingModel": "HOURLY", "currency": "USD"}, "orderType": "NEW_INSTALL", "productFamily": "NAAS_CLOUD_CONNECT"}
+2026-11-18 14:39:23,851 INFO    agent:811 | Payload valid on attempt 1; calling mock API
+2026-11-18 14:39:23,851 INFO    mock_api:101 | POST /Customer/v3/Ordering/orderRequest received payload:
+{
+  "quoteId": "Q-5C2F9371",
+  "orderType": "NEW_INSTALL",
+  "productFamily": "NAAS_CLOUD_CONNECT",
+  "customer": {
+    "name": "Contoso"
+  },
+  "serviceLocation": {
+    "siteCode": "HYD1",
+    "city": "Hyderabad",
+    "countryCode": "IN"
+  },
+  "port": {
+    "speed": "1G",
+    "quantity": 1,
+    "bandwidthMbps": 1000
+  },
+  "cloudConnection": {
+    "provider": "AZURE",
+    "region": "centralindia",
+    "product": "Azure ExpressRoute"
+  },
+  "addOns": {
+    "ddosProtection": true
+  },
+  "billing": {
+    "pricingModel": "HOURLY",
+    "currency": "USD",
+    "hourlyRateUsd": 1.1185,
+    "estimatedMonthlyUsd": 816.5
+  }
+}
+2026-11-18 14:39:25,853 INFO    mock_api:128 | POST /Customer/v3/Ordering/orderRequest responded: {'status': 'SUCCESS', 'http_status': 200, 'transaction_id': 'LUMEN-NAAS-28599', 'message': 'Network provisioned', 'quote_id': 'Q-5C2F9371', 'provisioned_at': '2026-11-18T09:09:25+00:00'}
+2026-11-18 14:40:14,092 INFO    agent:190 | Creating OpenAI client: endpoint=http://127.0.0.1:58398/v1 timeout=60.0s max_retries=0 key=len=25 prefix=sk-TES… sha256=6debbc5e format=LiteLLM/gateway-style
+2026-11-18 14:40:14,860 INFO    httpx2:1079 | HTTP Request: POST http://127.0.0.1:58398/v1/chat/completions "HTTP/1.0 401 Unauthorized"
+2026-11-18 14:40:14,863 ERROR   agent:282 | OpenAI call failed: {'operation': 'probe chat.completions', 'model': 'gpt-5-nano', 'endpoint': 'http://127.0.0.1:58398/v1', 'error_type': 'AuthenticationError', 'http_status': 401, 'request_id': None, 'error_body': {'message': "key not allowed to access model. This key can only access models=['gpt-5-mini']. Tried to access gpt-5-nano", 'type': 'key_model_access_denied', 'param': None, 'code': '401'}, 'response_text': '{"error": {"message": "key not allowed to access model. This key can only access models=[\'gpt-5-mini\']. Tried to access gpt-5-nano", "type": "key_model_access_denied", "param": null, "code": "401"}}', 'gateway_headers': {'x-litellm-call-id': 'call-123'}}
+2026-11-18 14:40:14,864 ERROR   agent:283 | Cause chain: AuthenticationError: Error code: 401 - key not allowed to access model. This key can only access models=['gpt-5-mini']. Tried to access gpt-5-nano <- HTTPStatusError: Client error '401 Unauthorized' for url 'http://127.0.0.1:58398/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-11-18 14:40:14,864 DEBUG   agent:284 | Traceback for failed OpenAI call
+Traceback (most recent call last):
+  File "C:\Users\AD41989\DOCS\q2p\agent.py", line 338, in check_connection
+    chat = client.chat.completions.create(
+        model=config.NLU_MODEL,
+    ...<2 lines>...
+        max_completion_tokens=32,
+    )
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\_utils\_utils.py", line 298, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1611, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<53 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\_base_client.py", line 1474, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\_base_client.py", line 1248, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - key not allowed to access model. This key can only access models=['gpt-5-mini']. Tried to access gpt-5-nano
+2026-11-18 14:40:14,998 INFO    agent:410 | NLU request: model=gpt-5-nano effort=minimal messages=2 chars=1200
+2026-11-18 14:40:14,998 DEBUG   agent:417 | NLU last user message: x
+2026-11-18 14:40:15,005 INFO    httpx2:1079 | HTTP Request: POST http://127.0.0.1:58398/v1/chat/completions "HTTP/1.0 401 Unauthorized"
+2026-11-18 14:40:15,006 ERROR   agent:282 | OpenAI call failed: {'operation': 'chat.completions', 'model': 'gpt-5-nano', 'endpoint': 'http://127.0.0.1:58398/v1', 'error_type': 'AuthenticationError', 'http_status': 401, 'request_id': None, 'error_body': {'message': "key not allowed to access model. This key can only access models=['gpt-5-mini']. Tried to access gpt-5-nano", 'type': 'key_model_access_denied', 'param': None, 'code': '401'}, 'response_text': '{"error": {"message": "key not allowed to access model. This key can only access models=[\'gpt-5-mini\']. Tried to access gpt-5-nano", "type": "key_model_access_denied", "param": null, "code": "401"}}', 'gateway_headers': {'x-litellm-call-id': 'call-123'}}
+2026-11-18 14:40:15,007 ERROR   agent:283 | Cause chain: AuthenticationError: Error code: 401 - key not allowed to access model. This key can only access models=['gpt-5-mini']. Tried to access gpt-5-nano <- HTTPStatusError: Client error '401 Unauthorized' for url 'http://127.0.0.1:58398/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-11-18 14:40:15,007 DEBUG   agent:284 | Traceback for failed OpenAI call
+Traceback (most recent call last):
+  File "C:\Users\AD41989\DOCS\q2p\agent.py", line 420, in _call_nlu
+    completion = _client().chat.completions.create(
+        model=config.NLU_MODEL,
+    ...<3 lines>...
+        max_completion_tokens=config.NLU_MAX_COMPLETION_TOKENS,
+    )
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\_utils\_utils.py", line 298, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1611, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<53 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\_base_client.py", line 1474, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\_base_client.py", line 1248, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - key not allowed to access model. This key can only access models=['gpt-5-mini']. Tried to access gpt-5-nano
+2026-11-18 14:40:18,738 INFO    agent:190 | Creating OpenAI client: endpoint=https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1 timeout=60.0s max_retries=2 key=len=25 prefix=sk-PYV… sha256=6b255705 format=LiteLLM/gateway-style
+2026-11-18 14:40:21,765 INFO    httpx2:1079 | HTTP Request: POST https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-18 14:40:21,785 INFO    agent:344 | Probe chat.completions/gpt-5-mini OK: finish=stop usage=CompletionUsage(completion_tokens=10, prompt_tokens=7, total_tokens=17, completion_tokens_details=CompletionTokensDetails(accepted_prediction_tokens=0, audio_tokens=0, reasoning_tokens=0, rejected_prediction_tokens=0, text_tokens=None), prompt_tokens_details=PromptTokensDetails(audio_tokens=0, cache_write_tokens=None, cached_tokens=0, image_tokens=None, text_tokens=None), latency_checkpoint={'engine_tbt_ms': 6, 'engine_ttft_ms': 28, 'engine_ttlt_ms': 136, 'pre_inference_ms': 83, 'service_tbt_ms': 8, 'service_ttft_ms': 447, 'service_ttlt_ms': 599, 'user_visible_ttft_ms': 364})
+2026-11-18 14:40:23,617 INFO    httpx2:1079 | HTTP Request: POST https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1/responses "HTTP/1.1 200 OK"
+2026-11-18 14:40:23,715 INFO    agent:365 | Probe responses/gpt-5-mini OK: status=incomplete usage=ResponseUsage(input_tokens=7, input_tokens_details=InputTokensDetails(cache_write_tokens=0, cached_tokens=0, cache_write_tokens_details=None, audio_tokens=None, cached_tokens_details=None, image_tokens=None, text_tokens=None, video_tokens=None), output_tokens=0, output_tokens_details=OutputTokensDetails(reasoning_tokens=0, audio_tokens=None, text_tokens=None), total_tokens=7, cost=None)
+2026-11-18 14:40:23,716 INFO    agent:376 | Connection check OK in 4.98s
+2026-11-18 14:40:23,716 INFO    agent:410 | NLU request: model=gpt-5-mini effort=minimal messages=2 chars=1232
+2026-11-18 14:40:23,716 DEBUG   agent:417 | NLU last user message: 10 Gbps from Seattle to the cloud
+2026-11-18 14:40:25,701 INFO    httpx2:1079 | HTTP Request: POST https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-18 14:40:25,702 INFO    agent:438 | NLU response: 1.99s request_id=None finish=stop in=338 out=92 cost=$0.000269
+2026-11-18 14:40:25,703 DEBUG   agent:450 | NLU raw output: {"customer_name":null,"source_city":"Seattle","bandwidth_mbps":10000,"cloud_provider":null,"ddos_protection":false,"monthly_egress_gb":null,"reply":"Got it — 10 Gbps connection from Seattle to a cloud. Which cloud provider (AWS, GCP, or Azure) and would you like DDoS protection or monthly egress included?"}
+2026-11-18 14:40:25,704 INFO    agent:639 | Extracted intent: {'customer_name': 'Enterprise Customer', 'source_city': 'Seattle', 'bandwidth_mbps': 10000, 'cloud_provider': None, 'ddos_protection': False, 'monthly_egress_gb': None, 'reply': 'Got it — 10 Gbps connection from Seattle to a cloud. Which cloud provider (AWS, GCP, or Azure) and would you like DDoS protection or monthly egress included?'}
+2026-11-18 14:40:25,706 INFO    agent:791 | Provisioning started for quote Q-894B82EE
+2026-11-18 14:40:25,706 INFO    agent:797 | Codex attempt 1/3
+2026-11-18 14:40:25,709 INFO    agent:456 | Codex request: model=gpt-5-mini effort=low prompt_chars=4636
+2026-11-18 14:40:29,793 INFO    httpx2:1079 | HTTP Request: POST https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1/responses "HTTP/1.1 200 OK"
+2026-11-18 14:40:29,858 INFO    agent:482 | Codex response: 4.15s request_id=None status=completed in=1279 out=402 cost=$0.001124
+2026-11-18 14:40:29,858 DEBUG   agent:492 | Codex raw output: {
+  "quoteId": "Q-894B82EE",
+  "orderType": "NEW_INSTALL",
+  "productFamily": "NAAS_CLOUD_CONNECT",
+  "customer": {
+    "name": "Enterprise Customer"
+  },
+  "serviceLocation": {
+    "siteCode": "SEA1",
+    "city": "Seattle",
+    "countryCode": "US"
+  },
+  "port": {
+    "speed": "10G",
+    "quantity": 1,
+    "bandwidthMbps": 10000
+  },
+  "cloudConnection": {
+    "provider": "AWS",
+    "region": "us-west-2",
+    "product": "AWS Direct Connect"
+  },
+  "addOns": {
+    "ddosProtection": false
+  },
+  "billing": {
+    "pricingModel": "HOURLY",
+    "currency": "USD",
+    "hourlyRateUsd": 5.1548,
+    "estimatedMonthlyUsd": 3763.0
+  }
+}
+2026-11-18 14:40:29,860 INFO    agent:811 | Payload valid on attempt 1; calling mock API
+2026-11-18 14:40:29,861 INFO    mock_api:101 | POST /Customer/v3/Ordering/orderRequest received payload:
+{
+  "quoteId": "Q-894B82EE",
+  "orderType": "NEW_INSTALL",
+  "productFamily": "NAAS_CLOUD_CONNECT",
+  "customer": {
+    "name": "Enterprise Customer"
+  },
+  "serviceLocation": {
+    "siteCode": "SEA1",
+    "city": "Seattle",
+    "countryCode": "US"
+  },
+  "port": {
+    "speed": "10G",
+    "quantity": 1,
+    "bandwidthMbps": 10000
+  },
+  "cloudConnection": {
+    "provider": "AWS",
+    "region": "us-west-2",
+    "product": "AWS Direct Connect"
+  },
+  "addOns": {
+    "ddosProtection": false
+  },
+  "billing": {
+    "pricingModel": "HOURLY",
+    "currency": "USD",
+    "hourlyRateUsd": 5.1548,
+    "estimatedMonthlyUsd": 3763.0
+  }
+}
+2026-11-18 14:40:31,861 INFO    mock_api:128 | POST /Customer/v3/Ordering/orderRequest responded: {'status': 'SUCCESS', 'http_status': 200, 'transaction_id': 'LUMEN-NAAS-58158', 'message': 'Network provisioned', 'quote_id': 'Q-894B82EE', 'provisioned_at': '2026-11-18T09:10:31+00:00'}
+2026-11-18 15:06:49,257 INFO    diagnostics:122 | === Broker startup diagnostics ===
+2026-11-18 15:06:49,504 INFO    diagnostics:123 | python=3.14.3 (C:\Users\AD41989\AppData\Local\Programs\Python\Python314\python.exe) on Windows-11-10.0.26200-SP0
+2026-11-18 15:06:49,504 INFO    diagnostics:125 | openai=3.55.0 streamlit=1.55.0
+2026-11-18 15:06:49,505 INFO    diagnostics:127 | model_profile=dev nlu_model=gpt-5.6-luna(low) codex_model=gpt-5.6-luna(low)
+2026-11-18 15:06:49,505 INFO    diagnostics:131 | endpoint=https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1 (from LITELLM_BASE_URL) timeout=60.0s max_retries=2
+2026-11-18 15:06:49,506 INFO    diagnostics:135 | api_key (from LITELLM_API_KEY): len=25 prefix=sk-PYV… sha256=6b255705 format=LiteLLM/gateway-style
+2026-11-18 15:06:49,507 INFO    diagnostics:137 | env (set?)={'HTTPS_PROXY': False, 'HTTP_PROXY': False, 'NO_PROXY': False, 'SSL_CERT_FILE': False, 'REQUESTS_CA_BUNDLE': False}
+2026-11-18 15:06:49,508 INFO    diagnostics:138 | log_file=C:\Users\AD41989\DOCS\q2p\logs\broker.log
+2026-11-18 15:06:53,865 INFO    app:111 | User prompt (44 chars): 1 Gbps from Hyderabad to the cloud with DDoS
+2026-11-18 15:06:53,865 INFO    agent:428 | NLU request: model=gpt-5.6-luna effort=low messages=3 chars=1441
+2026-11-18 15:06:53,865 DEBUG   agent:435 | NLU last user message: 1 Gbps from Hyderabad to the cloud with DDoS
+2026-11-18 15:06:53,867 INFO    agent:458 | NLU response: 0.00s request_id=None finish=stop in=900 out=150 cost=$0.003675
+2026-11-18 15:06:53,868 DEBUG   agent:470 | NLU raw output: {"customer_name": "Contoso", "source_city": "Hyderabad", "bandwidth_mbps": 1000, "cloud_provider": null, "ddos_protection": true, "reply": "On it!"}
+2026-11-18 15:06:53,868 INFO    agent:661 | Extracted intent: {'customer_name': 'Contoso', 'source_city': 'Hyderabad', 'bandwidth_mbps': 1000, 'cloud_provider': None, 'ddos_protection': True, 'monthly_egress_gb': None, 'reply': 'On it!'}
+2026-11-18 15:06:53,869 INFO    app:128 | Quote turn done: quote=Q-C3DED429 spent_total=$0.003675
+2026-11-18 15:06:53,984 INFO    app:141 | Approval requested (open quote=Q-C3DED429)
+2026-11-18 15:06:53,985 INFO    agent:813 | Provisioning started for quote Q-C3DED429
+2026-11-18 15:06:53,985 INFO    agent:819 | Codex attempt 1/3
+2026-11-18 15:06:53,985 INFO    agent:476 | Codex request: model=gpt-5.6-luna effort=low prompt_chars=4624
+2026-11-18 15:06:53,986 INFO    agent:504 | Codex response: 0.00s request_id=None status=None in=2000 out=400 cost=$0.009100
+2026-11-18 15:06:53,986 DEBUG   agent:514 | Codex raw output: {"quoteId": "Q-C3DED429", "customer": {"name": "Contoso"}, "serviceLocation": {"siteCode": "HYD1", "city": "Hyderabad", "countryCode": "IN"}, "port": {"speed": "1G", "quantity": 1, "bandwidthMbps": 1000}, "cloudConnection": {"provider": "AZURE", "region": "centralindia", "product": "Azure ExpressRoute"}, "addOns": {"ddosProtection": true}, "billing": {"hourlyRateUsd": 1.1185, "estimatedMonthlyUsd": 816.5, "pricingModel": "HOURLY", "currency": "USD"}, "orderType": "NEW_INSTALL", "productFamily": "NAAS_CLOUD_CONNECT"}
+2026-11-18 15:06:53,987 INFO    agent:833 | Payload valid on attempt 1; calling mock API
+2026-11-18 15:06:53,987 INFO    mock_api:101 | POST /Customer/v3/Ordering/orderRequest received payload:
+{
+  "quoteId": "Q-C3DED429",
+  "orderType": "NEW_INSTALL",
+  "productFamily": "NAAS_CLOUD_CONNECT",
+  "customer": {
+    "name": "Contoso"
+  },
+  "serviceLocation": {
+    "siteCode": "HYD1",
+    "city": "Hyderabad",
+    "countryCode": "IN"
+  },
+  "port": {
+    "speed": "1G",
+    "quantity": 1,
+    "bandwidthMbps": 1000
+  },
+  "cloudConnection": {
+    "provider": "AZURE",
+    "region": "centralindia",
+    "product": "Azure ExpressRoute"
+  },
+  "addOns": {
+    "ddosProtection": true
+  },
+  "billing": {
+    "pricingModel": "HOURLY",
+    "currency": "USD",
+    "hourlyRateUsd": 1.1185,
+    "estimatedMonthlyUsd": 816.5
+  }
+}
+2026-11-18 15:06:55,988 INFO    mock_api:128 | POST /Customer/v3/Ordering/orderRequest responded: {'status': 'SUCCESS', 'http_status': 200, 'transaction_id': 'LUMEN-NAAS-39689', 'message': 'Network provisioned', 'quote_id': 'Q-C3DED429', 'provisioned_at': '2026-11-18T09:36:55+00:00'}
+2026-11-18 15:07:01,738 ERROR   agent:202 | Gateway-style key but no LITELLM_BASE_URL configured
+2026-11-18 15:07:06,389 INFO    agent:208 | Creating OpenAI client: endpoint=http://127.0.0.1:52939/v1 timeout=60.0s max_retries=0 key=len=25 prefix=sk-TES… sha256=6debbc5e format=LiteLLM/gateway-style
+2026-11-18 15:07:07,091 INFO    httpx2:1079 | HTTP Request: POST http://127.0.0.1:52939/v1/chat/completions "HTTP/1.0 401 Unauthorized"
+2026-11-18 15:07:07,093 ERROR   agent:300 | OpenAI call failed: {'operation': 'probe chat.completions', 'model': 'gpt-5-nano', 'endpoint': 'http://127.0.0.1:52939/v1', 'error_type': 'AuthenticationError', 'http_status': 401, 'request_id': None, 'error_body': {'message': "key not allowed to access model. This key can only access models=['gpt-5-mini']. Tried to access gpt-5-nano", 'type': 'key_model_access_denied', 'param': None, 'code': '401'}, 'response_text': '{"error": {"message": "key not allowed to access model. This key can only access models=[\'gpt-5-mini\']. Tried to access gpt-5-nano", "type": "key_model_access_denied", "param": null, "code": "401"}}', 'gateway_headers': {'x-litellm-call-id': 'call-123', 'x-litellm-response-cost': '0.000123'}}
+2026-11-18 15:07:07,094 ERROR   agent:301 | Cause chain: AuthenticationError: Error code: 401 - key not allowed to access model. This key can only access models=['gpt-5-mini']. Tried to access gpt-5-nano <- HTTPStatusError: Client error '401 Unauthorized' for url 'http://127.0.0.1:52939/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-11-18 15:07:07,095 DEBUG   agent:302 | Traceback for failed OpenAI call
+Traceback (most recent call last):
+  File "C:\Users\AD41989\DOCS\q2p\agent.py", line 356, in check_connection
+    chat = client.chat.completions.create(
+        model=config.NLU_MODEL,
+    ...<2 lines>...
+        max_completion_tokens=32,
+    )
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\_utils\_utils.py", line 298, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1611, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<53 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\_base_client.py", line 1474, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\_base_client.py", line 1248, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - key not allowed to access model. This key can only access models=['gpt-5-mini']. Tried to access gpt-5-nano
+2026-11-18 15:07:07,114 INFO    agent:428 | NLU request: model=gpt-5-nano effort=low messages=2 chars=1200
+2026-11-18 15:07:07,115 DEBUG   agent:435 | NLU last user message: x
+2026-11-18 15:07:07,120 INFO    httpx2:1079 | HTTP Request: POST http://127.0.0.1:52939/v1/chat/completions "HTTP/1.0 401 Unauthorized"
+2026-11-18 15:07:07,121 ERROR   agent:300 | OpenAI call failed: {'operation': 'chat.completions', 'model': 'gpt-5-nano', 'endpoint': 'http://127.0.0.1:52939/v1', 'error_type': 'AuthenticationError', 'http_status': 401, 'request_id': None, 'error_body': {'message': "key not allowed to access model. This key can only access models=['gpt-5-mini']. Tried to access gpt-5-nano", 'type': 'key_model_access_denied', 'param': None, 'code': '401'}, 'response_text': '{"error": {"message": "key not allowed to access model. This key can only access models=[\'gpt-5-mini\']. Tried to access gpt-5-nano", "type": "key_model_access_denied", "param": null, "code": "401"}}', 'gateway_headers': {'x-litellm-call-id': 'call-123', 'x-litellm-response-cost': '0.000123'}}
+2026-11-18 15:07:07,122 ERROR   agent:301 | Cause chain: AuthenticationError: Error code: 401 - key not allowed to access model. This key can only access models=['gpt-5-mini']. Tried to access gpt-5-nano <- HTTPStatusError: Client error '401 Unauthorized' for url 'http://127.0.0.1:52939/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-11-18 15:07:07,122 DEBUG   agent:302 | Traceback for failed OpenAI call
+Traceback (most recent call last):
+  File "C:\Users\AD41989\DOCS\q2p\agent.py", line 438, in _call_nlu
+    raw = _client().chat.completions.with_raw_response.create(
+        model=config.NLU_MODEL,
+    ...<3 lines>...
+        max_completion_tokens=config.NLU_MAX_COMPLETION_TOKENS,
+    )
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\_utils\_utils.py", line 298, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1611, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<53 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\_base_client.py", line 1474, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\_base_client.py", line 1248, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - key not allowed to access model. This key can only access models=['gpt-5-mini']. Tried to access gpt-5-nano
+2026-11-18 15:07:11,771 INFO    agent:208 | Creating OpenAI client: endpoint=http://127.0.0.1:52942/v1 timeout=60.0s max_retries=0 key=len=27 prefix=sk-WRO… sha256=61a0d24a format=unrecognised format
+2026-11-18 15:07:12,379 INFO    httpx2:1079 | HTTP Request: POST http://127.0.0.1:52942/v1/chat/completions "HTTP/1.0 401 Unauthorized"
+2026-11-18 15:07:12,382 ERROR   agent:300 | OpenAI call failed: {'operation': 'probe chat.completions', 'model': 'gpt-5.6-luna', 'endpoint': 'http://127.0.0.1:52942/v1', 'error_type': 'AuthenticationError', 'http_status': 401, 'request_id': None, 'error_body': {'message': 'Authentication Error, Invalid proxy server token passed', 'type': 'auth_error', 'param': None, 'code': '401'}, 'response_text': '{"error": {"message": "Authentication Error, Invalid proxy server token passed", "type": "auth_error", "param": null, "code": "401"}}', 'gateway_headers': {'x-litellm-call-id': 'call-123', 'x-litellm-response-cost': '0.000123'}}
+2026-11-18 15:07:12,383 ERROR   agent:301 | Cause chain: AuthenticationError: Error code: 401 - Authentication Error, Invalid proxy server token passed <- HTTPStatusError: Client error '401 Unauthorized' for url 'http://127.0.0.1:52942/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-11-18 15:07:12,384 DEBUG   agent:302 | Traceback for failed OpenAI call
+Traceback (most recent call last):
+  File "C:\Users\AD41989\DOCS\q2p\agent.py", line 356, in check_connection
+    chat = client.chat.completions.create(
+        model=config.NLU_MODEL,
+    ...<2 lines>...
+        max_completion_tokens=32,
+    )
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\_utils\_utils.py", line 298, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1611, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<53 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\_base_client.py", line 1474, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python314\Lib\site-packages\openai\_base_client.py", line 1248, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - Authentication Error, Invalid proxy server token passed
+2026-11-18 15:07:17,048 INFO    agent:208 | Creating OpenAI client: endpoint=http://127.0.0.1:52944/v1 timeout=60.0s max_retries=0 key=len=25 prefix=sk-TES… sha256=6debbc5e format=LiteLLM/gateway-style
+2026-11-18 15:07:19,182 INFO    httpx2:1079 | HTTP Request: POST http://127.0.0.1:52944/v1/chat/completions "HTTP/1.0 200 OK"
+2026-11-18 15:07:19,227 INFO    agent:362 | Probe chat.completions/gpt-5-mini OK: finish=stop usage=CompletionUsage(completion_tokens=150, prompt_tokens=900, total_tokens=1050, completion_tokens_details=None, prompt_tokens_details=None)
+2026-11-18 15:07:20,379 INFO    httpx2:1079 | HTTP Request: POST http://127.0.0.1:52944/v1/responses "HTTP/1.0 200 OK"
+2026-11-18 15:07:20,896 INFO    agent:383 | Probe responses/gpt-5-mini OK: status=completed usage=ResponseUsage(input_tokens=2000, input_tokens_details=InputTokensDetails(cache_write_tokens=None, cached_tokens=0, cache_write_tokens_details=None), output_tokens=400, output_tokens_details=OutputTokensDetails(reasoning_tokens=0), total_tokens=2400)
+2026-11-18 15:07:20,897 INFO    agent:394 | Connection check OK in 3.85s
+2026-11-18 15:07:20,914 INFO    httpx2:1079 | HTTP Request: GET http://127.0.0.1:52944/v1/models "HTTP/1.0 403 Forbidden"
+2026-11-18 15:07:20,918 INFO    agent:428 | NLU request: model=gpt-5-mini effort=low messages=2 chars=1230
+2026-11-18 15:07:20,919 DEBUG   agent:435 | NLU last user message: 1G Hyderabad to the cloud, DDoS
+2026-11-18 15:07:20,929 INFO    httpx2:1079 | HTTP Request: POST http://127.0.0.1:52944/v1/chat/completions "HTTP/1.0 200 OK"
+2026-11-18 15:07:20,932 INFO    agent:458 | NLU response: 0.01s request_id=None finish=stop in=900 out=150 cost=$0.000123
+2026-11-18 15:07:20,933 DEBUG   agent:470 | NLU raw output: {"customer_name": "Contoso", "source_city": "Hyderabad", "bandwidth_mbps": 1000, "cloud_provider": null, "ddos_protection": true, "reply": "On it!"}
+2026-11-18 15:07:20,934 INFO    agent:661 | Extracted intent: {'customer_name': 'Contoso', 'source_city': 'Hyderabad', 'bandwidth_mbps': 1000, 'cloud_provider': None, 'ddos_protection': True, 'monthly_egress_gb': None, 'reply': 'On it!'}
+2026-11-18 15:07:20,935 INFO    agent:813 | Provisioning started for quote Q-89D4CD49
+2026-11-18 15:07:20,936 INFO    agent:819 | Codex attempt 1/3
+2026-11-18 15:07:20,936 INFO    agent:476 | Codex request: model=gpt-5-mini effort=low prompt_chars=4624
+2026-11-18 15:07:20,943 INFO    httpx2:1079 | HTTP Request: POST http://127.0.0.1:52944/v1/responses "HTTP/1.0 200 OK"
+2026-11-18 15:07:20,945 INFO    agent:504 | Codex response: 0.01s request_id=None status=completed in=2000 out=400 cost=$0.000123
+2026-11-18 15:07:20,946 DEBUG   agent:514 | Codex raw output: {"quoteId": "Q-89D4CD49", "customer": {"name": "Contoso"}, "serviceLocation": {"siteCode": "HYD1", "city": "Hyderabad", "countryCode": "IN"}, "port": {"speed": "1G", "quantity": 1, "bandwidthMbps": 1000}, "cloudConnection": {"provider": "AZURE", "region": "centralindia", "product": "Azure ExpressRoute"}, "addOns": {"ddosProtection": true}, "billing": {"hourlyRateUsd": 1.1185, "estimatedMonthlyUsd": 816.5, "pricingModel": "HOURLY", "currency": "USD"}, "orderType": "NEW_INSTALL", "productFamily": "NAAS_CLOUD_CONNECT"}
+2026-11-18 15:07:20,947 INFO    agent:833 | Payload valid on attempt 1; calling mock API
+2026-11-18 15:07:20,948 INFO    mock_api:101 | POST /Customer/v3/Ordering/orderRequest received payload:
+{
+  "quoteId": "Q-89D4CD49",
+  "orderType": "NEW_INSTALL",
+  "productFamily": "NAAS_CLOUD_CONNECT",
+  "customer": {
+    "name": "Contoso"
+  },
+  "serviceLocation": {
+    "siteCode": "HYD1",
+    "city": "Hyderabad",
+    "countryCode": "IN"
+  },
+  "port": {
+    "speed": "1G",
+    "quantity": 1,
+    "bandwidthMbps": 1000
+  },
+  "cloudConnection": {
+    "provider": "AZURE",
+    "region": "centralindia",
+    "product": "Azure ExpressRoute"
+  },
+  "addOns": {
+    "ddosProtection": true
+  },
+  "billing": {
+    "pricingModel": "HOURLY",
+    "currency": "USD",
+    "hourlyRateUsd": 1.1185,
+    "estimatedMonthlyUsd": 816.5
+  }
+}
+2026-11-18 15:07:22,952 INFO    mock_api:128 | POST /Customer/v3/Ordering/orderRequest responded: {'status': 'SUCCESS', 'http_status': 200, 'transaction_id': 'LUMEN-NAAS-23409', 'message': 'Network provisioned', 'quote_id': 'Q-89D4CD49', 'provisioned_at': '2026-11-18T09:37:22+00:00'}
+2026-11-18 15:09:44,351 INFO    diagnostics:122 | === Broker startup diagnostics ===
+2026-11-18 15:09:44,669 INFO    diagnostics:123 | python=3.12.9 (C:\Users\AD41989\AppData\Local\Programs\Python\Python312\python.exe) on Windows-11-10.0.26200-SP0
+2026-11-18 15:09:44,670 INFO    diagnostics:125 | openai=3.55.0 streamlit=1.58.0
+2026-11-18 15:09:44,670 INFO    diagnostics:127 | model_profile=dev nlu_model=gpt-5.6-luna(low) codex_model=gpt-5.6-luna(low)
+2026-11-18 15:09:44,671 INFO    diagnostics:131 | endpoint=https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1 (from LITELLM_BASE_URL) timeout=60.0s max_retries=2
+2026-11-18 15:09:44,673 INFO    diagnostics:135 | api_key (from LITELLM_API_KEY): len=25 prefix=sk-PYV… sha256=6b255705 format=LiteLLM/gateway-style
+2026-11-18 15:09:44,674 INFO    diagnostics:137 | env (set?)={'HTTPS_PROXY': False, 'HTTP_PROXY': False, 'NO_PROXY': False, 'SSL_CERT_FILE': False, 'REQUESTS_CA_BUNDLE': False}
+2026-11-18 15:09:44,674 INFO    diagnostics:138 | log_file=C:\Users\AD41989\DOCS\q2p\logs\broker.log
+2026-11-18 15:09:53,278 INFO    app:111 | User prompt (44 chars): 1 Gbps from Hyderabad to the cloud with DDoS
+2026-11-18 15:09:53,279 INFO    agent:428 | NLU request: model=gpt-5.6-luna effort=low messages=3 chars=1441
+2026-11-18 15:09:53,280 DEBUG   agent:435 | NLU last user message: 1 Gbps from Hyderabad to the cloud with DDoS
+2026-11-18 15:09:53,281 INFO    agent:458 | NLU response: 0.00s request_id=None finish=stop in=900 out=150 cost=$0.003675
+2026-11-18 15:09:53,281 DEBUG   agent:470 | NLU raw output: {"customer_name": "Contoso", "source_city": "Hyderabad", "bandwidth_mbps": 1000, "cloud_provider": null, "ddos_protection": true, "reply": "On it!"}
+2026-11-18 15:09:53,281 INFO    agent:661 | Extracted intent: {'customer_name': 'Contoso', 'source_city': 'Hyderabad', 'bandwidth_mbps': 1000, 'cloud_provider': None, 'ddos_protection': True, 'monthly_egress_gb': None, 'reply': 'On it!'}
+2026-11-18 15:09:53,284 INFO    app:128 | Quote turn done: quote=Q-798FECA8 spent_total=$0.003675
+2026-11-18 15:09:53,503 INFO    app:141 | Approval requested (open quote=Q-798FECA8)
+2026-11-18 15:09:53,504 INFO    agent:813 | Provisioning started for quote Q-798FECA8
+2026-11-18 15:09:53,504 INFO    agent:819 | Codex attempt 1/3
+2026-11-18 15:09:53,507 INFO    agent:476 | Codex request: model=gpt-5.6-luna effort=low prompt_chars=4624
+2026-11-18 15:09:53,508 INFO    agent:504 | Codex response: 0.00s request_id=None status=None in=2000 out=400 cost=$0.009100
+2026-11-18 15:09:53,508 DEBUG   agent:514 | Codex raw output: {"quoteId": "Q-798FECA8", "customer": {"name": "Contoso"}, "serviceLocation": {"siteCode": "HYD1", "city": "Hyderabad", "countryCode": "IN"}, "port": {"speed": "1G", "quantity": 1, "bandwidthMbps": 1000}, "cloudConnection": {"provider": "AZURE", "region": "centralindia", "product": "Azure ExpressRoute"}, "addOns": {"ddosProtection": true}, "billing": {"hourlyRateUsd": 1.1185, "estimatedMonthlyUsd": 816.5, "pricingModel": "HOURLY", "currency": "USD"}, "orderType": "NEW_INSTALL", "productFamily": "NAAS_CLOUD_CONNECT"}
+2026-11-18 15:09:53,509 INFO    agent:833 | Payload valid on attempt 1; calling mock API
+2026-11-18 15:09:53,509 INFO    mock_api:101 | POST /Customer/v3/Ordering/orderRequest received payload:
+{
+  "quoteId": "Q-798FECA8",
+  "orderType": "NEW_INSTALL",
+  "productFamily": "NAAS_CLOUD_CONNECT",
+  "customer": {
+    "name": "Contoso"
+  },
+  "serviceLocation": {
+    "siteCode": "HYD1",
+    "city": "Hyderabad",
+    "countryCode": "IN"
+  },
+  "port": {
+    "speed": "1G",
+    "quantity": 1,
+    "bandwidthMbps": 1000
+  },
+  "cloudConnection": {
+    "provider": "AZURE",
+    "region": "centralindia",
+    "product": "Azure ExpressRoute"
+  },
+  "addOns": {
+    "ddosProtection": true
+  },
+  "billing": {
+    "pricingModel": "HOURLY",
+    "currency": "USD",
+    "hourlyRateUsd": 1.1185,
+    "estimatedMonthlyUsd": 816.5
+  }
+}
+2026-11-18 15:09:55,511 INFO    mock_api:128 | POST /Customer/v3/Ordering/orderRequest responded: {'status': 'SUCCESS', 'http_status': 200, 'transaction_id': 'LUMEN-NAAS-69150', 'message': 'Network provisioned', 'quote_id': 'Q-798FECA8', 'provisioned_at': '2026-11-18T09:39:55+00:00'}
+2026-11-18 15:10:00,844 ERROR   agent:202 | Gateway-style key but no LITELLM_BASE_URL configured
+2026-11-18 15:10:06,105 INFO    agent:208 | Creating OpenAI client: endpoint=http://127.0.0.1:62733/v1 timeout=60.0s max_retries=0 key=len=25 prefix=sk-TES… sha256=6debbc5e format=LiteLLM/gateway-style
+2026-11-18 15:10:06,586 INFO    httpx2:1079 | HTTP Request: POST http://127.0.0.1:62733/v1/chat/completions "HTTP/1.0 401 Unauthorized"
+2026-11-18 15:10:06,588 ERROR   agent:300 | OpenAI call failed: {'operation': 'probe chat.completions', 'model': 'gpt-5-nano', 'endpoint': 'http://127.0.0.1:62733/v1', 'error_type': 'AuthenticationError', 'http_status': 401, 'request_id': None, 'error_body': {'message': "key not allowed to access model. This key can only access models=['gpt-5-mini']. Tried to access gpt-5-nano", 'type': 'key_model_access_denied', 'param': None, 'code': '401'}, 'response_text': '{"error": {"message": "key not allowed to access model. This key can only access models=[\'gpt-5-mini\']. Tried to access gpt-5-nano", "type": "key_model_access_denied", "param": null, "code": "401"}}', 'gateway_headers': {'x-litellm-call-id': 'call-123', 'x-litellm-response-cost': '0.000123'}}
+2026-11-18 15:10:06,589 ERROR   agent:301 | Cause chain: AuthenticationError: Error code: 401 - key not allowed to access model. This key can only access models=['gpt-5-mini']. Tried to access gpt-5-nano <- HTTPStatusError: Client error '401 Unauthorized' for url 'http://127.0.0.1:62733/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-11-18 15:10:06,589 DEBUG   agent:302 | Traceback for failed OpenAI call
+Traceback (most recent call last):
+  File "C:\Users\AD41989\DOCS\q2p\agent.py", line 356, in check_connection
+    chat = client.chat.completions.create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\_utils\_utils.py", line 298, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1611, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\_base_client.py", line 1474, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\_base_client.py", line 1248, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - key not allowed to access model. This key can only access models=['gpt-5-mini']. Tried to access gpt-5-nano
+2026-11-18 15:10:06,604 INFO    agent:428 | NLU request: model=gpt-5-nano effort=low messages=2 chars=1200
+2026-11-18 15:10:06,604 DEBUG   agent:435 | NLU last user message: x
+2026-11-18 15:10:06,608 INFO    httpx2:1079 | HTTP Request: POST http://127.0.0.1:62733/v1/chat/completions "HTTP/1.0 401 Unauthorized"
+2026-11-18 15:10:06,609 ERROR   agent:300 | OpenAI call failed: {'operation': 'chat.completions', 'model': 'gpt-5-nano', 'endpoint': 'http://127.0.0.1:62733/v1', 'error_type': 'AuthenticationError', 'http_status': 401, 'request_id': None, 'error_body': {'message': "key not allowed to access model. This key can only access models=['gpt-5-mini']. Tried to access gpt-5-nano", 'type': 'key_model_access_denied', 'param': None, 'code': '401'}, 'response_text': '{"error": {"message": "key not allowed to access model. This key can only access models=[\'gpt-5-mini\']. Tried to access gpt-5-nano", "type": "key_model_access_denied", "param": null, "code": "401"}}', 'gateway_headers': {'x-litellm-call-id': 'call-123', 'x-litellm-response-cost': '0.000123'}}
+2026-11-18 15:10:06,609 ERROR   agent:301 | Cause chain: AuthenticationError: Error code: 401 - key not allowed to access model. This key can only access models=['gpt-5-mini']. Tried to access gpt-5-nano <- HTTPStatusError: Client error '401 Unauthorized' for url 'http://127.0.0.1:62733/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-11-18 15:10:06,609 DEBUG   agent:302 | Traceback for failed OpenAI call
+Traceback (most recent call last):
+  File "C:\Users\AD41989\DOCS\q2p\agent.py", line 438, in _call_nlu
+    raw = _client().chat.completions.with_raw_response.create(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\_utils\_utils.py", line 298, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1611, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\_base_client.py", line 1474, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\_base_client.py", line 1248, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - key not allowed to access model. This key can only access models=['gpt-5-mini']. Tried to access gpt-5-nano
+2026-11-18 15:10:13,619 INFO    agent:208 | Creating OpenAI client: endpoint=http://127.0.0.1:62736/v1 timeout=60.0s max_retries=0 key=len=27 prefix=sk-WRO… sha256=61a0d24a format=unrecognised format
+2026-11-18 15:10:14,276 INFO    httpx2:1079 | HTTP Request: POST http://127.0.0.1:62736/v1/chat/completions "HTTP/1.0 401 Unauthorized"
+2026-11-18 15:10:14,278 ERROR   agent:300 | OpenAI call failed: {'operation': 'probe chat.completions', 'model': 'gpt-5.6-luna', 'endpoint': 'http://127.0.0.1:62736/v1', 'error_type': 'AuthenticationError', 'http_status': 401, 'request_id': None, 'error_body': {'message': 'Authentication Error, Invalid proxy server token passed', 'type': 'auth_error', 'param': None, 'code': '401'}, 'response_text': '{"error": {"message": "Authentication Error, Invalid proxy server token passed", "type": "auth_error", "param": null, "code": "401"}}', 'gateway_headers': {'x-litellm-call-id': 'call-123', 'x-litellm-response-cost': '0.000123'}}
+2026-11-18 15:10:14,279 ERROR   agent:301 | Cause chain: AuthenticationError: Error code: 401 - Authentication Error, Invalid proxy server token passed <- HTTPStatusError: Client error '401 Unauthorized' for url 'http://127.0.0.1:62736/v1/chat/completions'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+2026-11-18 15:10:14,279 DEBUG   agent:302 | Traceback for failed OpenAI call
+Traceback (most recent call last):
+  File "C:\Users\AD41989\DOCS\q2p\agent.py", line 356, in check_connection
+    chat = client.chat.completions.create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\_utils\_utils.py", line 298, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1611, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\_base_client.py", line 1474, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\_base_client.py", line 1248, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - Authentication Error, Invalid proxy server token passed
+2026-11-18 15:10:23,853 INFO    agent:208 | Creating OpenAI client: endpoint=http://127.0.0.1:62738/v1 timeout=60.0s max_retries=0 key=len=25 prefix=sk-TES… sha256=6debbc5e format=LiteLLM/gateway-style
+2026-11-18 15:10:24,890 INFO    httpx2:1079 | HTTP Request: POST http://127.0.0.1:62738/v1/chat/completions "HTTP/1.0 200 OK"
+2026-11-18 15:10:24,922 INFO    agent:362 | Probe chat.completions/gpt-5-mini OK: finish=stop usage=CompletionUsage(completion_tokens=150, prompt_tokens=900, total_tokens=1050, completion_tokens_details=None, prompt_tokens_details=None)
+2026-11-18 15:10:25,340 INFO    httpx2:1079 | HTTP Request: POST http://127.0.0.1:62738/v1/responses "HTTP/1.0 200 OK"
+2026-11-18 15:10:25,720 INFO    agent:383 | Probe responses/gpt-5-mini OK: status=completed usage=ResponseUsage(input_tokens=2000, input_tokens_details=InputTokensDetails(cache_write_tokens=None, cached_tokens=0, cache_write_tokens_details=None), output_tokens=400, output_tokens_details=OutputTokensDetails(reasoning_tokens=0), total_tokens=2400)
+2026-11-18 15:10:25,721 INFO    agent:394 | Connection check OK in 1.87s
+2026-11-18 15:10:25,740 INFO    httpx2:1079 | HTTP Request: GET http://127.0.0.1:62738/v1/models "HTTP/1.0 403 Forbidden"
+2026-11-18 15:10:25,741 INFO    agent:428 | NLU request: model=gpt-5-mini effort=low messages=2 chars=1230
+2026-11-18 15:10:25,742 DEBUG   agent:435 | NLU last user message: 1G Hyderabad to the cloud, DDoS
+2026-11-18 15:10:25,752 INFO    httpx2:1079 | HTTP Request: POST http://127.0.0.1:62738/v1/chat/completions "HTTP/1.0 200 OK"
+2026-11-18 15:10:25,754 INFO    agent:458 | NLU response: 0.01s request_id=None finish=stop in=900 out=150 cost=$0.000123
+2026-11-18 15:10:25,755 DEBUG   agent:470 | NLU raw output: {"customer_name": "Contoso", "source_city": "Hyderabad", "bandwidth_mbps": 1000, "cloud_provider": null, "ddos_protection": true, "reply": "On it!"}
+2026-11-18 15:10:25,755 INFO    agent:661 | Extracted intent: {'customer_name': 'Contoso', 'source_city': 'Hyderabad', 'bandwidth_mbps': 1000, 'cloud_provider': None, 'ddos_protection': True, 'monthly_egress_gb': None, 'reply': 'On it!'}
+2026-11-18 15:10:25,756 INFO    agent:813 | Provisioning started for quote Q-A67B48F1
+2026-11-18 15:10:25,757 INFO    agent:819 | Codex attempt 1/3
+2026-11-18 15:10:25,758 INFO    agent:476 | Codex request: model=gpt-5-mini effort=low prompt_chars=4624
+2026-11-18 15:10:25,765 INFO    httpx2:1079 | HTTP Request: POST http://127.0.0.1:62738/v1/responses "HTTP/1.0 200 OK"
+2026-11-18 15:10:25,768 INFO    agent:504 | Codex response: 0.01s request_id=None status=completed in=2000 out=400 cost=$0.000123
+2026-11-18 15:10:25,769 DEBUG   agent:514 | Codex raw output: {"quoteId": "Q-A67B48F1", "customer": {"name": "Contoso"}, "serviceLocation": {"siteCode": "HYD1", "city": "Hyderabad", "countryCode": "IN"}, "port": {"speed": "1G", "quantity": 1, "bandwidthMbps": 1000}, "cloudConnection": {"provider": "AZURE", "region": "centralindia", "product": "Azure ExpressRoute"}, "addOns": {"ddosProtection": true}, "billing": {"hourlyRateUsd": 1.1185, "estimatedMonthlyUsd": 816.5, "pricingModel": "HOURLY", "currency": "USD"}, "orderType": "NEW_INSTALL", "productFamily": "NAAS_CLOUD_CONNECT"}
+2026-11-18 15:10:25,769 INFO    agent:833 | Payload valid on attempt 1; calling mock API
+2026-11-18 15:10:25,771 INFO    mock_api:101 | POST /Customer/v3/Ordering/orderRequest received payload:
+{
+  "quoteId": "Q-A67B48F1",
+  "orderType": "NEW_INSTALL",
+  "productFamily": "NAAS_CLOUD_CONNECT",
+  "customer": {
+    "name": "Contoso"
+  },
+  "serviceLocation": {
+    "siteCode": "HYD1",
+    "city": "Hyderabad",
+    "countryCode": "IN"
+  },
+  "port": {
+    "speed": "1G",
+    "quantity": 1,
+    "bandwidthMbps": 1000
+  },
+  "cloudConnection": {
+    "provider": "AZURE",
+    "region": "centralindia",
+    "product": "Azure ExpressRoute"
+  },
+  "addOns": {
+    "ddosProtection": true
+  },
+  "billing": {
+    "pricingModel": "HOURLY",
+    "currency": "USD",
+    "hourlyRateUsd": 1.1185,
+    "estimatedMonthlyUsd": 816.5
+  }
+}
+2026-11-18 15:10:27,772 INFO    mock_api:128 | POST /Customer/v3/Ordering/orderRequest responded: {'status': 'SUCCESS', 'http_status': 200, 'transaction_id': 'LUMEN-NAAS-26571', 'message': 'Network provisioned', 'quote_id': 'Q-A67B48F1', 'provisioned_at': '2026-11-18T09:40:27+00:00'}
+2026-11-18 15:11:04,660 INFO    agent:208 | Creating OpenAI client: endpoint=https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1 timeout=60.0s max_retries=2 key=len=25 prefix=sk-PYV… sha256=6b255705 format=LiteLLM/gateway-style
+2026-11-18 15:11:08,821 INFO    httpx2:1079 | HTTP Request: POST https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-18 15:11:08,848 INFO    agent:362 | Probe chat.completions/gpt-5.6-luna OK: finish=stop usage=CompletionUsage(completion_tokens=4, prompt_tokens=7, total_tokens=11, completion_tokens_details=CompletionTokensDetails(accepted_prediction_tokens=0, audio_tokens=0, reasoning_tokens=0, rejected_prediction_tokens=0, text_tokens=None), prompt_tokens_details=PromptTokensDetails(audio_tokens=0, cache_write_tokens=0, cached_tokens=0, image_tokens=None, text_tokens=None, cache_creation_tokens=0), latency_checkpoint={'engine_tbt_ms': 12, 'engine_ttft_ms': 75, 'engine_ttlt_ms': 134, 'pre_inference_ms': 91, 'service_tbt_ms': 13, 'service_ttft_ms': 522, 'service_ttlt_ms': 576, 'user_visible_ttft_ms': 431})
+2026-11-18 15:11:10,458 INFO    httpx2:1079 | HTTP Request: POST https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1/responses "HTTP/1.1 200 OK"
+2026-11-18 15:11:10,759 INFO    agent:383 | Probe responses/gpt-5.6-luna OK: status=completed usage=ResponseUsage(input_tokens=7, input_tokens_details=InputTokensDetails(cache_write_tokens=0, cached_tokens=0, cache_write_tokens_details=None, audio_tokens=None, cached_tokens_details=None, image_tokens=None, text_tokens=None, video_tokens=None), output_tokens=5, output_tokens_details=OutputTokensDetails(reasoning_tokens=0, audio_tokens=None, text_tokens=None), total_tokens=12, cost=None)
+2026-11-18 15:11:10,759 INFO    agent:394 | Connection check OK in 6.10s
+2026-11-18 15:11:10,760 INFO    agent:428 | NLU request: model=gpt-5.6-luna effort=low messages=2 chars=1274
+2026-11-18 15:11:10,761 DEBUG   agent:435 | NLU last user message: We're Contoso. Need 10 Gbps from Seattle to the cloud with DDoS protection.
+2026-11-18 15:11:12,421 INFO    httpx2:1079 | HTTP Request: POST https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-18 15:11:12,424 INFO    agent:458 | NLU response: 1.66s request_id=None finish=stop in=350 out=86 cost=$0.000173
+2026-11-18 15:11:12,424 DEBUG   agent:470 | NLU raw output: {"customer_name":"Contoso","source_city":"Seattle","bandwidth_mbps":10000,"cloud_provider":null,"ddos_protection":true,"monthly_egress_gb":null,"reply":"Thanks, Contoso! We can provision 10 Gbps from Seattle with DDoS protection. Which cloud provider would you like: AWS, GCP, or AZURE?"}
+2026-11-18 15:11:12,429 INFO    agent:661 | Extracted intent: {'customer_name': 'Contoso', 'source_city': 'Seattle', 'bandwidth_mbps': 10000, 'cloud_provider': None, 'ddos_protection': True, 'monthly_egress_gb': None, 'reply': 'Thanks, Contoso! We can provision 10 Gbps from Seattle with DDoS protection. Which cloud provider would you like: AWS, GCP, or AZURE?'}
+2026-11-18 15:11:12,430 INFO    agent:813 | Provisioning started for quote Q-3B597660
+2026-11-18 15:11:12,431 INFO    agent:819 | Codex attempt 1/3
+2026-11-18 15:11:12,436 INFO    agent:476 | Codex request: model=gpt-5.6-luna effort=low prompt_chars=4623
+2026-11-18 15:11:14,974 INFO    httpx2:1079 | HTTP Request: POST https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1/responses "HTTP/1.1 200 OK"
+2026-11-18 15:11:15,158 INFO    agent:504 | Codex response: 2.72s request_id=None status=completed in=1279 out=137 cost=$0.000484
+2026-11-18 15:11:15,159 DEBUG   agent:514 | Codex raw output: {"quoteId":"Q-3B597660","orderType":"NEW_INSTALL","productFamily":"NAAS_CLOUD_CONNECT","customer":{"name":"Contoso"},"serviceLocation":{"siteCode":"SEA1","city":"Seattle","countryCode":"US"},"port":{"speed":"10G","quantity":1,"bandwidthMbps":10000},"cloudConnection":{"provider":"AWS","region":"us-west-2","product":"AWS Direct Connect"},"addOns":{"ddosProtection":true},"billing":{"pricingModel":"HOURLY","currency":"USD","hourlyRateUsd":6.1048,"estimatedMonthlyUsd":4456.5}}
+2026-11-18 15:11:15,163 INFO    agent:833 | Payload valid on attempt 1; calling mock API
+2026-11-18 15:11:15,163 INFO    mock_api:101 | POST /Customer/v3/Ordering/orderRequest received payload:
+{
+  "quoteId": "Q-3B597660",
+  "orderType": "NEW_INSTALL",
+  "productFamily": "NAAS_CLOUD_CONNECT",
+  "customer": {
+    "name": "Contoso"
+  },
+  "serviceLocation": {
+    "siteCode": "SEA1",
+    "city": "Seattle",
+    "countryCode": "US"
+  },
+  "port": {
+    "speed": "10G",
+    "quantity": 1,
+    "bandwidthMbps": 10000
+  },
+  "cloudConnection": {
+    "provider": "AWS",
+    "region": "us-west-2",
+    "product": "AWS Direct Connect"
+  },
+  "addOns": {
+    "ddosProtection": true
+  },
+  "billing": {
+    "pricingModel": "HOURLY",
+    "currency": "USD",
+    "hourlyRateUsd": 6.1048,
+    "estimatedMonthlyUsd": 4456.5
+  }
+}
+2026-11-18 15:11:17,165 INFO    mock_api:128 | POST /Customer/v3/Ordering/orderRequest responded: {'status': 'SUCCESS', 'http_status': 200, 'transaction_id': 'LUMEN-NAAS-67317', 'message': 'Network provisioned', 'quote_id': 'Q-3B597660', 'provisioned_at': '2026-11-18T09:41:17+00:00'}
+2026-11-18 15:12:56,123 INFO    diagnostics:122 | === Broker startup diagnostics ===
+2026-11-18 15:12:56,496 INFO    diagnostics:123 | python=3.12.9 (C:\Users\AD41989\AppData\Local\Programs\Python\Python312\python.exe) on Windows-11-10.0.26200-SP0
+2026-11-18 15:12:56,496 INFO    diagnostics:125 | openai=3.55.0 streamlit=1.58.0
+2026-11-18 15:12:56,497 INFO    diagnostics:127 | model_profile=dev nlu_model=gpt-5.6-luna(low) codex_model=gpt-5.6-luna(low)
+2026-11-18 15:12:56,497 INFO    diagnostics:131 | endpoint=https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1 (from LITELLM_BASE_URL) timeout=60.0s max_retries=2
+2026-11-18 15:12:56,498 INFO    diagnostics:135 | api_key (from LITELLM_API_KEY): len=25 prefix=sk-PYV… sha256=6b255705 format=LiteLLM/gateway-style
+2026-11-18 15:12:56,500 INFO    diagnostics:137 | env (set?)={'HTTPS_PROXY': False, 'HTTP_PROXY': False, 'NO_PROXY': False, 'SSL_CERT_FILE': False, 'REQUESTS_CA_BUNDLE': False}
+2026-11-18 15:12:56,500 INFO    diagnostics:138 | log_file=C:\Users\AD41989\DOCS\q2p\logs\broker.log
+2026-11-18 15:13:11,004 INFO    agent:208 | Creating OpenAI client: endpoint=https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1 timeout=60.0s max_retries=2 key=len=25 prefix=sk-PYV… sha256=6b255705 format=LiteLLM/gateway-style
+2026-11-18 15:13:14,948 INFO    httpx2:1079 | HTTP Request: POST https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-18 15:13:14,973 INFO    agent:362 | Probe chat.completions/gpt-5.6-luna OK: finish=stop usage=CompletionUsage(completion_tokens=4, prompt_tokens=7, total_tokens=11, completion_tokens_details=CompletionTokensDetails(accepted_prediction_tokens=0, audio_tokens=0, reasoning_tokens=0, rejected_prediction_tokens=0, text_tokens=None), prompt_tokens_details=PromptTokensDetails(audio_tokens=0, cache_write_tokens=0, cached_tokens=0, image_tokens=None, text_tokens=None, cache_creation_tokens=0), latency_checkpoint={'engine_tbt_ms': 12, 'engine_ttft_ms': 82, 'engine_ttlt_ms': 142, 'pre_inference_ms': 91, 'service_tbt_ms': 14, 'service_ttft_ms': 514, 'service_ttlt_ms': 570, 'user_visible_ttft_ms': 423})
+2026-11-18 15:13:17,082 INFO    httpx2:1079 | HTTP Request: POST https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1/responses "HTTP/1.1 200 OK"
+2026-11-18 15:13:17,473 INFO    agent:383 | Probe responses/gpt-5.6-luna OK: status=completed usage=ResponseUsage(input_tokens=7, input_tokens_details=InputTokensDetails(cache_write_tokens=0, cached_tokens=0, cache_write_tokens_details=None, audio_tokens=None, cached_tokens_details=None, image_tokens=None, text_tokens=None, video_tokens=None), output_tokens=5, output_tokens_details=OutputTokensDetails(reasoning_tokens=0, audio_tokens=None, text_tokens=None), total_tokens=12, cost=None)
+2026-11-18 15:13:17,476 INFO    agent:394 | Connection check OK in 6.47s
+2026-11-18 15:13:31,277 INFO    app:111 | User prompt (66 chars): 10 Gbps from our Seattle office to the cloud with DDoS protection.
+2026-11-18 15:13:31,278 INFO    agent:428 | NLU request: model=gpt-5.6-luna effort=low messages=3 chars=1463
+2026-11-18 15:13:31,280 DEBUG   agent:435 | NLU last user message: 10 Gbps from our Seattle office to the cloud with DDoS protection.
+2026-11-18 15:13:33,721 INFO    httpx2:1079 | HTTP Request: POST https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-18 15:13:33,723 INFO    agent:458 | NLU response: 2.44s request_id=None finish=stop in=398 out=130 cost=$0.000236
+2026-11-18 15:13:33,723 DEBUG   agent:470 | NLU raw output: {"customer_name":null,"source_city":"Seattle","bandwidth_mbps":10000,"cloud_provider":null,"ddos_protection":true,"monthly_egress_gb":null,"reply":"Thanks! I have 10 Gbps from Seattle with DDoS protection. Which cloud provider should I connect to: AWS, GCP, or AZURE?"}
+2026-11-18 15:13:33,725 INFO    agent:661 | Extracted intent: {'customer_name': 'Enterprise Customer', 'source_city': 'Seattle', 'bandwidth_mbps': 10000, 'cloud_provider': None, 'ddos_protection': True, 'monthly_egress_gb': None, 'reply': 'Thanks! I have 10 Gbps from Seattle with DDoS protection. Which cloud provider should I connect to: AWS, GCP, or AZURE?'}
+2026-11-18 15:13:33,728 INFO    app:128 | Quote turn done: quote=Q-1899B618 spent_total=$0.000236
+2026-11-18 15:29:46,488 INFO    app:141 | Approval requested (open quote=Q-1899B618)
+2026-11-18 15:29:46,488 INFO    agent:813 | Provisioning started for quote Q-1899B618
+2026-11-18 15:29:46,489 INFO    agent:819 | Codex attempt 1/3
+2026-11-18 15:29:46,496 INFO    agent:476 | Codex request: model=gpt-5.6-luna effort=low prompt_chars=4635
+2026-11-18 15:29:49,000 INFO    httpx2:1079 | HTTP Request: POST https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1/responses "HTTP/1.1 200 OK"
+2026-11-18 15:29:49,153 INFO    agent:504 | Codex response: 2.66s request_id=None status=completed in=1279 out=137 cost=$0.000484
+2026-11-18 15:29:49,154 DEBUG   agent:514 | Codex raw output: {"quoteId":"Q-1899B618","orderType":"NEW_INSTALL","productFamily":"NAAS_CLOUD_CONNECT","customer":{"name":"Enterprise Customer"},"serviceLocation":{"siteCode":"SEA1","city":"Seattle","countryCode":"US"},"port":{"speed":"10G","quantity":1,"bandwidthMbps":10000},"cloudConnection":{"provider":"AWS","region":"us-west-2","product":"AWS Direct Connect"},"addOns":{"ddosProtection":true},"billing":{"pricingModel":"HOURLY","currency":"USD","hourlyRateUsd":6.1048,"estimatedMonthlyUsd":4456.5}}
+2026-11-18 15:29:49,158 INFO    agent:833 | Payload valid on attempt 1; calling mock API
+2026-11-18 15:29:49,160 INFO    mock_api:101 | POST /Customer/v3/Ordering/orderRequest received payload:
+{
+  "quoteId": "Q-1899B618",
+  "orderType": "NEW_INSTALL",
+  "productFamily": "NAAS_CLOUD_CONNECT",
+  "customer": {
+    "name": "Enterprise Customer"
+  },
+  "serviceLocation": {
+    "siteCode": "SEA1",
+    "city": "Seattle",
+    "countryCode": "US"
+  },
+  "port": {
+    "speed": "10G",
+    "quantity": 1,
+    "bandwidthMbps": 10000
+  },
+  "cloudConnection": {
+    "provider": "AWS",
+    "region": "us-west-2",
+    "product": "AWS Direct Connect"
+  },
+  "addOns": {
+    "ddosProtection": true
+  },
+  "billing": {
+    "pricingModel": "HOURLY",
+    "currency": "USD",
+    "hourlyRateUsd": 6.1048,
+    "estimatedMonthlyUsd": 4456.5
+  }
+}
+2026-11-18 15:29:51,161 INFO    mock_api:128 | POST /Customer/v3/Ordering/orderRequest responded: {'status': 'SUCCESS', 'http_status': 200, 'transaction_id': 'LUMEN-NAAS-13670', 'message': 'Network provisioned', 'quote_id': 'Q-1899B618', 'provisioned_at': '2026-11-18T09:59:51+00:00'}
+2026-11-18 15:57:01,153 INFO    diagnostics:122 | === Broker startup diagnostics ===
+2026-11-18 15:57:01,467 INFO    diagnostics:123 | python=3.12.9 (C:\Users\AD41989\AppData\Local\Programs\Python\Python312\python.exe) on Windows-11-10.0.26200-SP0
+2026-11-18 15:57:01,468 INFO    diagnostics:125 | openai=3.55.0 streamlit=1.58.0
+2026-11-18 15:57:01,468 INFO    diagnostics:127 | model_profile=dev nlu_model=gpt-5.6-luna(low) codex_model=gpt-5.6-luna(low)
+2026-11-18 15:57:01,469 INFO    diagnostics:131 | endpoint=https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1 (from LITELLM_BASE_URL) timeout=60.0s max_retries=2
+2026-11-18 15:57:01,470 INFO    diagnostics:135 | api_key (from LITELLM_API_KEY): len=25 prefix=sk-PYV… sha256=6b255705 format=LiteLLM/gateway-style
+2026-11-18 15:57:01,470 INFO    diagnostics:137 | env (set?)={'HTTPS_PROXY': False, 'HTTP_PROXY': False, 'NO_PROXY': False, 'SSL_CERT_FILE': False, 'REQUESTS_CA_BUNDLE': False}
+2026-11-18 15:57:01,471 INFO    diagnostics:138 | log_file=C:\Users\AD41989\DOCS\q2p\logs\broker.log
+2026-11-18 15:57:16,017 INFO    agent:208 | Creating OpenAI client: endpoint=https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1 timeout=60.0s max_retries=2 key=len=25 prefix=sk-PYV… sha256=6b255705 format=LiteLLM/gateway-style
+2026-11-18 15:57:19,558 INFO    httpx2:1079 | HTTP Request: POST https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-18 15:57:19,593 INFO    agent:362 | Probe chat.completions/gpt-5.6-luna OK: finish=stop usage=CompletionUsage(completion_tokens=4, prompt_tokens=7, total_tokens=11, completion_tokens_details=CompletionTokensDetails(accepted_prediction_tokens=0, audio_tokens=0, reasoning_tokens=0, rejected_prediction_tokens=0, text_tokens=None), prompt_tokens_details=PromptTokensDetails(audio_tokens=0, cache_write_tokens=0, cached_tokens=0, image_tokens=None, text_tokens=None, cache_creation_tokens=0), latency_checkpoint={'engine_tbt_ms': 13, 'engine_ttft_ms': 72, 'engine_ttlt_ms': 138, 'pre_inference_ms': 79, 'service_tbt_ms': 15, 'service_ttft_ms': 511, 'service_ttlt_ms': 572, 'user_visible_ttft_ms': 432})
+2026-11-18 15:57:21,407 INFO    httpx2:1079 | HTTP Request: POST https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1/responses "HTTP/1.1 200 OK"
+2026-11-18 15:57:21,793 INFO    agent:383 | Probe responses/gpt-5.6-luna OK: status=completed usage=ResponseUsage(input_tokens=7, input_tokens_details=InputTokensDetails(cache_write_tokens=0, cached_tokens=0, cache_write_tokens_details=None, audio_tokens=None, cached_tokens_details=None, image_tokens=None, text_tokens=None, video_tokens=None), output_tokens=5, output_tokens_details=OutputTokensDetails(reasoning_tokens=0, audio_tokens=None, text_tokens=None), total_tokens=12, cost=None)
+2026-11-18 15:57:21,793 INFO    agent:394 | Connection check OK in 5.78s
+2026-11-18 15:57:53,440 INFO    app:111 | User prompt (59 chars): i need 5 gbps from seatle office with ddos with aws or gcp 
+2026-11-18 15:57:53,441 INFO    agent:428 | NLU request: model=gpt-5.6-luna effort=low messages=3 chars=1456
+2026-11-18 15:57:53,443 DEBUG   agent:435 | NLU last user message: i need 5 gbps from seatle office with ddos with aws or gcp 
+2026-11-18 15:57:56,368 INFO    httpx2:1079 | HTTP Request: POST https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-18 15:57:56,372 INFO    agent:458 | NLU response: 2.93s request_id=None finish=stop in=401 out=177 cost=$0.000293
+2026-11-18 15:57:56,373 DEBUG   agent:470 | NLU raw output: {"customer_name":null,"source_city":"Seattle","bandwidth_mbps":null,"cloud_provider":null,"ddos_protection":true,"monthly_egress_gb":null,"reply":"We have Seattle and DDoS protection. Please choose a supported 1G or 10G port and specify either AWS or GCP."}
+2026-11-18 15:57:56,375 INFO    agent:661 | Extracted intent: {'customer_name': 'Enterprise Customer', 'source_city': 'Seattle', 'bandwidth_mbps': None, 'cloud_provider': None, 'ddos_protection': True, 'monthly_egress_gb': None, 'reply': 'We have Seattle and DDoS protection. Please choose a supported 1G or 10G port and specify either AWS or GCP.'}
+2026-11-18 15:57:56,377 INFO    app:128 | Quote turn done: quote=None spent_total=$0.000293
+2026-11-18 15:58:07,550 INFO    app:111 | User prompt (3 chars): aws
+2026-11-18 15:58:07,551 INFO    agent:428 | NLU request: model=gpt-5.6-luna effort=low messages=5 chars=1567
+2026-11-18 15:58:07,553 DEBUG   agent:435 | NLU last user message: aws
+2026-11-18 15:58:10,219 INFO    httpx2:1079 | HTTP Request: POST https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-18 15:58:10,222 INFO    agent:458 | NLU response: 2.67s request_id=None finish=stop in=441 out=156 cost=$0.000275
+2026-11-18 15:58:10,224 DEBUG   agent:470 | NLU raw output: {"customer_name":null,"source_city":"Seattle","bandwidth_mbps":null,"cloud_provider":"AWS","ddos_protection":true,"monthly_egress_gb":null,"reply":"Thanks—AWS and DDoS protection are selected. Please choose a supported port speed: 1 Gbps or 10 Gbps."}
+2026-11-18 15:58:10,226 INFO    agent:661 | Extracted intent: {'customer_name': 'Enterprise Customer', 'source_city': 'Seattle', 'bandwidth_mbps': None, 'cloud_provider': 'AWS', 'ddos_protection': True, 'monthly_egress_gb': None, 'reply': 'Thanks—AWS and DDoS protection are selected. Please choose a supported port speed: 1 Gbps or 10 Gbps.'}
+2026-11-18 15:58:10,230 INFO    app:128 | Quote turn done: quote=None spent_total=$0.000568
+2026-11-18 15:58:21,011 INFO    app:111 | User prompt (6 chars): 10gbps
+2026-11-18 15:58:21,012 INFO    agent:428 | NLU request: model=gpt-5.6-luna effort=low messages=7 chars=1674
+2026-11-18 15:58:21,013 DEBUG   agent:435 | NLU last user message: 10gbps
+2026-11-18 15:58:23,168 INFO    httpx2:1079 | HTTP Request: POST https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-18 15:58:23,169 INFO    agent:458 | NLU response: 2.16s request_id=None finish=stop in=482 out=107 cost=$0.000225
+2026-11-18 15:58:23,171 DEBUG   agent:470 | NLU raw output: {"customer_name":null,"source_city":"Seattle","bandwidth_mbps":10000,"cloud_provider":"AWS","ddos_protection":true,"monthly_egress_gb":null,"reply":"Thanks! Your order is 10 Gbps from Seattle to AWS with DDoS protection."}
+2026-11-18 15:58:23,171 INFO    agent:661 | Extracted intent: {'customer_name': 'Enterprise Customer', 'source_city': 'Seattle', 'bandwidth_mbps': 10000, 'cloud_provider': 'AWS', 'ddos_protection': True, 'monthly_egress_gb': None, 'reply': 'Thanks! Your order is 10 Gbps from Seattle to AWS with DDoS protection.'}
+2026-11-18 15:58:23,173 INFO    app:128 | Quote turn done: quote=Q-363E6654 spent_total=$0.000793
+2026-11-18 15:59:05,480 INFO    app:141 | Approval requested (open quote=Q-363E6654)
+2026-11-18 15:59:05,489 INFO    agent:813 | Provisioning started for quote Q-363E6654
+2026-11-18 15:59:05,492 INFO    agent:819 | Codex attempt 1/3
+2026-11-18 15:59:05,494 INFO    agent:476 | Codex request: model=gpt-5.6-luna effort=low prompt_chars=4636
+2026-11-18 15:59:08,369 INFO    httpx2:1079 | HTTP Request: POST https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1/responses "HTTP/1.1 200 OK"
+2026-11-18 15:59:08,500 INFO    agent:504 | Codex response: 3.00s request_id=None status=completed in=1279 out=137 cost=$0.000484
+2026-11-18 15:59:08,501 DEBUG   agent:514 | Codex raw output: {"quoteId":"Q-363E6654","orderType":"NEW_INSTALL","productFamily":"NAAS_CLOUD_CONNECT","customer":{"name":"Enterprise Customer"},"serviceLocation":{"siteCode":"SEA1","city":"Seattle","countryCode":"US"},"port":{"speed":"10G","quantity":1,"bandwidthMbps":10000},"cloudConnection":{"provider":"AWS","region":"us-west-2","product":"AWS Direct Connect"},"addOns":{"ddosProtection":true},"billing":{"pricingModel":"HOURLY","currency":"USD","hourlyRateUsd":6.1048,"estimatedMonthlyUsd":4456.5}}
+2026-11-18 15:59:08,502 INFO    agent:833 | Payload valid on attempt 1; calling mock API
+2026-11-18 15:59:08,505 INFO    mock_api:101 | POST /Customer/v3/Ordering/orderRequest received payload:
+{
+  "quoteId": "Q-363E6654",
+  "orderType": "NEW_INSTALL",
+  "productFamily": "NAAS_CLOUD_CONNECT",
+  "customer": {
+    "name": "Enterprise Customer"
+  },
+  "serviceLocation": {
+    "siteCode": "SEA1",
+    "city": "Seattle",
+    "countryCode": "US"
+  },
+  "port": {
+    "speed": "10G",
+    "quantity": 1,
+    "bandwidthMbps": 10000
+  },
+  "cloudConnection": {
+    "provider": "AWS",
+    "region": "us-west-2",
+    "product": "AWS Direct Connect"
+  },
+  "addOns": {
+    "ddosProtection": true
+  },
+  "billing": {
+    "pricingModel": "HOURLY",
+    "currency": "USD",
+    "hourlyRateUsd": 6.1048,
+    "estimatedMonthlyUsd": 4456.5
+  }
+}
+2026-11-18 15:59:10,508 INFO    mock_api:128 | POST /Customer/v3/Ordering/orderRequest responded: {'status': 'SUCCESS', 'http_status': 200, 'transaction_id': 'LUMEN-NAAS-91826', 'message': 'Network provisioned', 'quote_id': 'Q-363E6654', 'provisioned_at': '2026-11-18T10:29:10+00:00'}
