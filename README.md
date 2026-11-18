@@ -152,6 +152,33 @@ request (about 1,300 input tokens). Costs vary slightly with the model's reasoni
 All measured responses passed schema validation. `gpt-5-codex` and `gpt-5.3-codex` returned transient `429` rate
 limits during the test, so their cost was not measured.
 
+### 6. New-customer onboarding (sidebar → **Customer type: New customer**)
+
+The chat flow above is for **existing customers** and is unchanged. It is still the default. New customers get a
+guided site survey:
+
+1. **Intake:** the customer describes the need in plain English, for example *"New connection for our Seattle
+   office, 5 floors, 10 Gbps, with DDoS protection"*. The NLU model (one cheap call) pre-fills an editable form:
+   company, contact, on-net city, floors, area, speed, preferred cloud, DDoS and egress. The form works without the
+   LLM too.
+2. **Serviceability:** the mock `GET /Customer/v3/Serviceability?siteCode=` returns the Lumen services sold at that
+   site (NaaS Cloud Connect, DIA, DDoS Mitigation, SD-WAN, SASE, Wavelength 100G), plus idle ports and cloud
+   on-ramps.
+3. **Site sizing (Lumen standards in `lumen_services.json`):** it estimates users from area (or from floors when
+   the area is unknown) and peak demand from users × Mbps per user × concurrency × headroom. It also gives the
+   floor-switch count and advises a diverse building entry for 4 or more floors. Speeds below the demand are
+   raised to it, with a warning.
+4. **Price plans:** every plan is priced on **AWS, GCP and Azure** using the same deterministic BOM engine. The
+   *Recommended* plan is the requested speed or the demand, whichever is higher. A cheaper *Right-sized* plan is
+   added when it uses a smaller port. The cheapest Recommended plan is highlighted as the **best optimal plan**,
+   with the monthly saving compared with the most expensive cloud. If the site lacks capacity, you get a warning
+   and nearby on-net sites.
+5. **Order:** the customer picks a plan. The mock `POST /Customer/v3/Accounts` creates the account (it is created
+   once, so a failed provisioning can be retried). The chosen quote then goes through the **existing**
+   payload-generation, self-healing validation and mock provisioning pipeline.
+
+Only intake (optional) and payload compilation call an LLM. Serviceability, sizing and pricing are $0.
+
 ---
 
 ## Project Structure
@@ -159,12 +186,16 @@ limits during the test, so their cost was not measured.
 ```
 .
 ├── app.py               # Streamlit UI: chat, BOM, topology, approval workflow
+├── new_customer_ui.py   # New-customer page: intake form, availability, plans, order
+├── onboarding.py        # New-customer intake (NLU), site sizing, AWS/GCP/Azure plan finder
+├── mock_onboarding_api.py # Mock Serviceability + Accounts APIs, service catalogue loader
 ├── agent.py             # LLM orchestration: NLU, Mermaid, Codex + self-healing
 ├── tools.py             # Context loading, $0 CapEx check, cloud optimizer, BOM pricing
 ├── mock_api.py          # Pydantic orderRequest schema + mock provisioning API
 ├── config.py            # Env vars, model routing, budget constants
 ├── logging_setup.py     # Rotating file + console logging, key redaction, diagnostics
 ├── lumen_context.json   # Mock on-net sites, pricing, DDoS, cloud egress, API JSON schema
+├── lumen_services.json  # Service catalogue per geography/site + Lumen site-sizing standards
 ├── requirements.txt
 ├── .env.example
 └── README.md

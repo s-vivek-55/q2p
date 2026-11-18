@@ -31,6 +31,7 @@ try:
         setup_logging,
         tail_log,
     )
+    from new_customer_ui import render_new_customer
     from tools import ContextError, LumenContext, Quote, load_context
 except ModuleNotFoundError as missing:
     sys.exit(
@@ -338,12 +339,19 @@ def main() -> None:
         st.error(f"Unable to start: {exc}")
         st.stop()
 
+    customer_mode = st.sidebar.radio(
+        "Customer type", ("Existing customer", "New customer"),
+        key="customer_mode",
+    )
     _render_sidebar(ctx)
     st.title("🌐 Lumen Zero-Touch NaaS Broker")
     st.caption(
         "Natural language → priced Bill of Materials → validated order → "
         "provisioned network. Mock environment: no live Lumen APIs are called."
     )
+    if customer_mode == "New customer":
+        render_new_customer(ctx, _render_quote, _render_provisioning)
+        return
 
     prompt = st.chat_input("Describe the network you need…")
     chat_col, quote_col = st.columns([3, 2], gap="large")

@@ -1,0 +1,56 @@
+{
+  "sizing": {
+    "sqft_per_user": 150,
+    "users_per_floor": 40,
+    "mbps_per_user": 10,
+    "peak_concurrency": 0.6,
+    "headroom": 1.3,
+    "switch_ports": 48,
+    "redundancy_min_floors": 4
+  },
+  "services": [
+    {
+      "code": "NAAS_CLOUD_CONNECT",
+      "name": "Lumen NaaS Cloud Connect",
+      "description": "On-demand Ethernet on-ramp to AWS, GCP and Azure over the Lumen fabric",
+      "geos": ["NA", "EMEA", "APAC"],
+      "from_hourly_usd": 0.55
+    },
+    {
+      "code": "DIA",
+      "name": "Lumen Dedicated Internet Access",
+      "description": "Symmetric, SLA-backed dedicated internet",
+      "geos": ["NA", "EMEA", "APAC"],
+      "from_hourly_usd": 0.62
+    },
+    {
+      "code": "DDOS",
+      "name": "Lumen DDoS Mitigation",
+      "description": "Always-on network-edge scrubbing for the access port",
+      "geos": ["NA", "EMEA", "APAC"],
+      "from_hourly_usd": 0.18
+    },
+    {
+      "code": "SDWAN",
+      "name": "Lumen Managed SD-WAN",
+      "description": "Policy-based multi-site WAN with central management",
+      "geos": ["NA", "EMEA"],
+      "from_hourly_usd": 0.40
+    },
+    {
+      "code": "SASE",
+      "name": "Lumen SASE Secure Access",
+      "description": "Cloud-delivered SWG, ZTNA and firewall for users",
+      "geos": ["NA", "EMEA"],
+      "from_hourly_usd": 0.35
+    },
+    {
+      "code": "WAVE_100G",
+      "name": "Lumen Wavelength 100G",
+      "description": "Dedicated optical wavelength for very high bandwidth",
+      "geos": ["NA", "EMEA"],
+      "from_hourly_usd": 9.50,
+      "sites": ["SEA1", "CHI1", "NYC1", "DAL1", "LON1"]
+    }
+  ]
+}
