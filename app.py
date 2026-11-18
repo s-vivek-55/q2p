@@ -230,7 +230,7 @@ def _render_sidebar(ctx: LumenContext) -> None:
             f"**Endpoint:** `{config.OPENAI_BASE_URL or 'api.openai.com'}`  \n"
             "**Provisioning:** local mock API (no live calls)"
         )
-        if st.button("🔌 Test OpenAI connection"):
+        if st.button("🔌 Test LLM connection", help="Two tiny requests (~$0.0001)"):
             with st.spinner("Contacting the endpoint…"):
                 ok, message = check_connection()
             (st.success if ok else st.error)(message)

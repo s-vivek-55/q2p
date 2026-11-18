@@ -45,10 +45,12 @@ class ModelProfile(NamedTuple):
     codex_effort: ReasoningEffort
 
 
-# "dev" (default) runs everything on the cheapest model while the app is
-# being built. Set MODEL_PROFILE=prod for the target production routing.
+# "dev" (default) runs everything on the cheapest model that works on the
+# hackathon gateway: gpt-5.6-luna was measured at ~40% of gpt-5-mini's cost
+# per call on both endpoints, with valid output every time. Set
+# MODEL_PROFILE=prod for the target production routing.
 MODEL_PROFILES: Final[dict[str, ModelProfile]] = {
-    "dev": ModelProfile("gpt-5-nano", "minimal", "gpt-5-nano", "low"),
+    "dev": ModelProfile("gpt-5.6-luna", "low", "gpt-5.6-luna", "low"),
     "prod": ModelProfile("gpt-5-mini", "low", "gpt-5.3-codex", "low"),
 }
 MODEL_PROFILE: Final[str] = os.getenv("MODEL_PROFILE", "dev").strip().lower()

@@ -6,8 +6,9 @@
   orderRequest payload, which is self-healed against Pydantic validation and
   executed against the local mock API.
 
-Models come from ``config.MODEL_PROFILE``: "dev" uses gpt-5-nano for both
-roles; "prod" uses gpt-5-mini (NLU) and gpt-5.3-codex (payload).
+Models come from ``config.MODEL_PROFILE``: "dev" uses gpt-5.6-luna for both
+roles (cheapest measured on the gateway); "prod" uses gpt-5-mini (NLU) and
+gpt-5.3-codex (payload).
 """
 
 import json
@@ -15,7 +16,7 @@ import logging
 import math
 import re
 import time
-from collections.abc import Sequence
+from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from functools import lru_cache
 from typing import Any, Literal, TypedDict
@@ -75,13 +76,30 @@ class Usage:
         )
 
     @classmethod
-    def for_model(cls, model: str, input_tokens: int, output_tokens: int) -> "Usage":
+    def for_model(
+        cls,
+        model: str,
+        input_tokens: int,
+        output_tokens: int,
+        gateway_cost_usd: float | None = None,
+    ) -> "Usage":
+        """Prefer the cost the gateway reports; else estimate from the table."""
+        if gateway_cost_usd is not None:
+            return cls(input_tokens, output_tokens, gateway_cost_usd)
         # Unknown models are billed at the most expensive known rate.
         in_rate, out_rate = config.MODEL_PRICING_PER_MTOK.get(
             model, max(config.MODEL_PRICING_PER_MTOK.values())
         )
         cost = (input_tokens * in_rate + output_tokens * out_rate) / 1_000_000
         return cls(input_tokens, output_tokens, cost)
+
+
+def _gateway_cost(headers: Mapping[str, str]) -> float | None:
+    """Per-call cost reported by LiteLLM (``x-litellm-response-cost``)."""
+    try:
+        return float(headers["x-litellm-response-cost"])
+    except (KeyError, TypeError, ValueError):
+        return None
 
 
 class AgentError(Exception):
@@ -203,24 +221,43 @@ def _client() -> OpenAI:
 
 
 def _server_message(exc: openai.OpenAIError) -> str:
-    """The server's own error text (OpenAI or LiteLLM), key-redacted."""
+    """The server's own error text (OpenAI or LiteLLM), key-redacted.
+
+    OpenAI uses ``{"error": {"message": ...}}``; LiteLLM route/permission
+    errors use ``{"detail": ...}``.
+    """
     body = getattr(exc, "body", None)
-    text = body.get("message") if isinstance(body, dict) else None
-    return redact(str(text or exc))[:400]
+    text: object = None
+    if isinstance(body, dict):
+        inner = body.get("error")
+        source = inner if isinstance(inner, dict) else body
+        text = source.get("message") or source.get("detail")
+    elif isinstance(body, str):
+        text = body
+    return redact(str(text or exc))[:500]
 
 
 def _auth_help(exc: openai.OpenAIError) -> str:
     """Actionable explanation for an HTTP 401/403 from the endpoint."""
     status = getattr(exc, "status_code", 401)
     message = _server_message(exc)
-    hint = (
-        f" Click 'Test OpenAI connection' to list the models this key may use, "
-        f"then set NLU_MODEL / CODEX_MODEL in .env "
-        f"(currently {config.NLU_MODEL} / {config.CODEX_MODEL})."
-        if "model" in message.lower()
-        else " Check LITELLM_API_KEY (team key still active?) and that "
-        "LITELLM_BASE_URL is the gateway that issued it."
-    )
+    lowered = message.lower()
+    if "route" in lowered:
+        hint = (
+            " This key may only call the routes listed above; the app uses "
+            "only /chat/completions and /responses."
+        )
+    elif "model" in lowered:
+        hint = (
+            " The key cannot use this model: set NLU_MODEL / CODEX_MODEL in "
+            f".env (currently {config.NLU_MODEL} / {config.CODEX_MODEL}) to "
+            "one of the models named above."
+        )
+    else:
+        hint = (
+            " Check LITELLM_API_KEY (team key still active?) and that "
+            "LITELLM_BASE_URL is the gateway that issued it."
+        )
     return (
         f"HTTP {status} from {_endpoint()}: {message} "
         f"[key: {describe_api_key(config.OPENAI_API_KEY)}].{hint} "
@@ -307,29 +344,59 @@ def _friendly_error(exc: openai.OpenAIError) -> str:
 
 
 def check_connection() -> tuple[bool, str]:
-    """Free probe: lists the models this key may use (no tokens spent)."""
+    """Live probe of both configured models via the routes the app uses.
+
+    Team keys are route-restricted (``/v1/models`` is typically forbidden),
+    so this sends two tiny requests (a few tokens each) instead of listing
+    models: one to /chat/completions (NLU) and one to /responses (payload).
+    """
     started = time.perf_counter()
     try:
-        models = _client().models.list()
-        allowed = sorted(m.id for m in models.data)
+        client = _client()
+        chat = client.chat.completions.create(
+            model=config.NLU_MODEL,
+            messages=[{"role": "user", "content": "ping"}],
+            reasoning_effort=config.NLU_REASONING_EFFORT,
+            max_completion_tokens=32,
+        )
+        logger.info("Probe chat.completions/%s OK: finish=%s usage=%s",
+                    config.NLU_MODEL,
+                    chat.choices[0].finish_reason if chat.choices else None,
+                    chat.usage)
     except AgentError as exc:
         return False, str(exc)
     except openai.OpenAIError as exc:
-        _log_openai_error("models.list", "-", exc)
-        return False, _friendly_error(exc)
-    elapsed = time.perf_counter() - started
-    logger.info("Connection OK in %.2fs; allowed models: %s", elapsed, allowed)
-
-    summary = f"Connected to {_endpoint()} in {elapsed:.1f}s."
-    missing = sorted({config.NLU_MODEL, config.CODEX_MODEL} - set(allowed))
-    if allowed and missing:
-        logger.warning("Configured models not allowed for this key: %s", missing)
+        _log_openai_error("probe chat.completions", config.NLU_MODEL, exc)
         return False, (
-            f"{summary} But {', '.join(missing)} is not in this key's allowed "
-            f"models: {', '.join(allowed)}. Set NLU_MODEL / CODEX_MODEL in "
-            ".env to one of these."
+            f"/chat/completions with {config.NLU_MODEL} failed: "
+            f"{_friendly_error(exc)}"
         )
-    return True, f"{summary} {len(allowed)} model(s) available."
+
+    try:
+        resp = client.responses.create(
+            model=config.CODEX_MODEL,
+            input="ping",
+            reasoning={"effort": config.CODEX_REASONING_EFFORT},
+            max_output_tokens=16,
+            store=False,
+        )
+        logger.info("Probe responses/%s OK: status=%s usage=%s",
+                    config.CODEX_MODEL, getattr(resp, "status", None),
+                    resp.usage)
+    except openai.OpenAIError as exc:
+        _log_openai_error("probe responses", config.CODEX_MODEL, exc)
+        return False, (
+            f"/responses with {config.CODEX_MODEL} failed: "
+            f"{_friendly_error(exc)}"
+        )
+
+    elapsed = time.perf_counter() - started
+    logger.info("Connection check OK in %.2fs", elapsed)
+    return True, (
+        f"Connected to {_endpoint()} in {elapsed:.1f}s: "
+        f"{config.NLU_MODEL} (chat) and {config.CODEX_MODEL} (responses) "
+        "both accepted."
+    )
 
 
 def _extract_json_object(text: str) -> dict[str, Any]:
@@ -368,13 +435,14 @@ def _call_nlu(system_prompt: str, history: Sequence[ChatMessage]) -> tuple[str, 
     logger.debug("NLU last user message: %.500s", history[-1]["content"])
     started = time.perf_counter()
     try:
-        completion = _client().chat.completions.create(
+        raw = _client().chat.completions.with_raw_response.create(
             model=config.NLU_MODEL,
             messages=messages,
             response_format={"type": "json_object"},
             reasoning_effort=config.NLU_REASONING_EFFORT,
             max_completion_tokens=config.NLU_MAX_COMPLETION_TOKENS,
         )
+        completion = raw.parse()
     except openai.OpenAIError as exc:
         _log_openai_error("chat.completions", config.NLU_MODEL, exc)
         raise AgentError(_friendly_error(exc)) from exc
@@ -384,6 +452,7 @@ def _call_nlu(system_prompt: str, history: Sequence[ChatMessage]) -> tuple[str, 
         config.NLU_MODEL,
         tokens.prompt_tokens if tokens else 0,
         tokens.completion_tokens if tokens else 0,
+        _gateway_cost(raw.headers),
     )
     choice = completion.choices[0] if completion.choices else None
     logger.info(
@@ -412,7 +481,7 @@ def _call_codex(prompt: str) -> tuple[str, Usage]:
     )
     started = time.perf_counter()
     try:
-        response = _client().responses.create(
+        raw = _client().responses.with_raw_response.create(
             model=config.CODEX_MODEL,
             instructions=_CODEX_INSTRUCTIONS,
             input=prompt,
@@ -420,6 +489,7 @@ def _call_codex(prompt: str) -> tuple[str, Usage]:
             max_output_tokens=config.CODEX_MAX_OUTPUT_TOKENS,
             store=False,
         )
+        response = raw.parse()
     except openai.OpenAIError as exc:
         _log_openai_error("responses", config.CODEX_MODEL, exc)
         raise AgentError(_friendly_error(exc)) from exc
@@ -429,6 +499,7 @@ def _call_codex(prompt: str) -> tuple[str, Usage]:
         config.CODEX_MODEL,
         tokens.input_tokens if tokens else 0,
         tokens.output_tokens if tokens else 0,
+        _gateway_cost(raw.headers),
     )
     logger.info(
         "Codex response: %.2fs request_id=%s status=%s in=%d out=%d "
@@ -562,7 +633,10 @@ def _build_quote_reply(
         )
     except QuoteError as exc:
         return str(exc), None
-    return _quote_summary(intent.reply, quote, availability.message), quote
+    # The model's free-text reply is only used for clarifications; a priced
+    # quote gets a deterministic lead so it can never contradict the quote.
+    lead = f"Thanks, {quote.customer_name} — here is your quote."
+    return _quote_summary(lead, quote, availability.message), quote
 
 
 def generate_quote(

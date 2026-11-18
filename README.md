@@ -126,12 +126,31 @@ production Lumen systems.
 
 ### Cost controls (USD 20 budget)
 
-- The low-cost `gpt-5-mini` model handles every conversational turn. `gpt-5.3-codex` runs **once per approved
-  quote**, plus at most 2 correction retries.
+- **Development profile (default):** `MODEL_PROFILE=dev` runs both roles on `gpt-5.6-luna`, the cheapest model on
+  the hackathon gateway. It was measured with the app's real requests (see the table below). **Production
+  profile:** `MODEL_PROFILE=prod` uses `gpt-5-mini` for NLU and `gpt-5.3-codex` for the payload.
+- The payload model runs **once per approved quote**, plus at most 2 correction retries.
 - Pricing, inventory, cloud optimization and diagrams are plain Python, so they use no tokens.
 - Reasoning effort is `low`, output tokens are capped and the chat history is windowed.
-- The sidebar spend meter tracks estimated cost from real token usage. A per-session budget guard
+- The sidebar spend meter uses the **cost the gateway reports for each call** (`x-litellm-response-cost`) and falls
+  back to the price table in `config.py` only when that header is missing. A per-session budget guard
   (`SESSION_BUDGET_USD`, default $2.00) blocks further LLM calls once the limit is reached.
+
+Measured cost per call on the gateway, using one real NLU request (about 350 input tokens) and one real payload
+request (about 1,300 input tokens). Costs vary slightly with the model's reasoning length:
+
+| Model | NLU `/chat/completions` | Payload `/responses` |
+|-------|-------------------------|----------------------|
+| `gpt-5.6-luna` | **$0.00018** | **$0.0002–0.0005** |
+| `gpt-5-mini` | $0.00029 | $0.0008–0.0012 |
+| `gpt-4.1` / `gpt-4o` | $0.0014 / $0.0016 | not tested |
+| `gpt-5` | $0.0015 | not tested |
+| `gpt-5.1-codex` / `gpt-5.2-codex` | not listed for chat | $0.0031 / $0.0045 |
+| `gpt-5.4` / `gpt-5.6-terra` / `gpt-5.6-sol` / `claude-sonnet-4-6` | $0.0022 / $0.0025 / $0.0037 / $0.0032 | not tested |
+| `gpt-5.2` / `gpt-5.5` | $0.0028 / $0.0061 | not tested |
+
+All measured responses passed schema validation. `gpt-5-codex` and `gpt-5.3-codex` returned transient `429` rate
+limits during the test, so their cost was not measured.
 
 ---
 
@@ -176,7 +195,8 @@ streamlit run app.py
 python app.py                         # re-launches itself under Streamlit
 ```
 
-Then click **🔌 Test OpenAI connection** in the sidebar. It lists the models your key may use, with no tokens spent.
+Then click **🔌 Test LLM connection** in the sidebar. It sends two tiny requests (about $0.0001) to confirm that
+both configured models are reachable and allowed for your key.
 
 In VS Code you can press **F5** and choose **Streamlit: Lumen NaaS Broker** from `.vscode/launch.json`.
 
@@ -200,7 +220,7 @@ Open <http://localhost:8501> and try:
 |----------|---------|---------|
 | `LITELLM_API_KEY` | *(required)* | Hackathon team key (`OPENAI_API_KEY` is accepted as a fallback) |
 | `LITELLM_BASE_URL` | `https://api.openai.com/v1` | Gateway base URL from the access guide (`OPENAI_BASE_URL` also accepted). **Required for team keys**: the app refuses to send a team key to `api.openai.com` |
-| `MODEL_PROFILE` | `dev` | `dev` = `gpt-5-nano` for both roles (cheapest); `prod` = `gpt-5-mini` + `gpt-5.3-codex` |
+| `MODEL_PROFILE` | `dev` | `dev` = `gpt-5.6-luna` for both roles (cheapest on the gateway); `prod` = `gpt-5-mini` (NLU) + `gpt-5.3-codex` (payload) |
 | `NLU_MODEL` | from profile | Overrides the intent extraction model |
 | `CODEX_MODEL` | from profile | Overrides the payload compiler model |
 | `SESSION_BUDGET_USD` | `2.00` | Per-session spend guard |
@@ -211,28 +231,32 @@ Token prices for the spend meter are in `config.MODEL_PRICING_PER_MTOK`. Update 
 ### Logging & diagnostics
 
 - **Where:** `logs/broker.log` (rotating, 2 MB × 3, gitignored) holds the full DEBUG log. The console shows INFO
-  and above. The sidebar has a **🪵 Diagnostic log** viewer and a **🔌 Test OpenAI connection** button, which is a
-  free `models.list` probe that uses no tokens.
+  and above. The sidebar has a **🪵 Diagnostic log** viewer and a **🔌 Test LLM connection** button (two tiny
+  requests, about $0.0001).
 - **Startup:** Python and package versions, model profile, endpoint and which env var supplied it, proxy and
   certificate variables, and a non-reversible API-key fingerprint (length, prefix, SHA-256 prefix, key format).
 - **Per LLM call:** model, reasoning effort, message sizes, duration, token usage, estimated cost, finish reason
-  and the `request_id`. On failure it also logs the HTTP status, the gateway's error body, `x-litellm-*` headers
-  (such as the call id) and the full cause chain. Quote the call id when asking the hackathon team for help.
-- **Connection test:** also logs the exact list of models your key is allowed to call, and warns if
-  `NLU_MODEL` / `CODEX_MODEL` aren't in it.
+  and the `request_id`. On failure it also logs the HTTP status, the gateway's error body (`message` or LiteLLM's
+  `detail`), `x-litellm-*` headers (such as the call id) and the full cause chain. Quote the call id when asking
+  the hackathon team for help.
 - **Secrets:** anything that looks like an API key (`sk-…`) or bearer token is masked in every log line.
 
-> **HTTP 401 from the gateway:** LiteLLM uses 401 for two different problems, and the app shows the gateway's own
-> message so you can tell which:
+> **Gateway 401/403:** LiteLLM team keys are restricted by route *and* by model, and the app shows the gateway's
+> own message so you can tell which problem you have:
 > 1. *"Invalid proxy server token"*: the key is wrong or revoked, or `LITELLM_BASE_URL` points at a different
 >    gateway than the one that issued it.
-> 2. *"key not allowed to access model…"*: your team key can't use the configured model. Click **Test OpenAI
->    connection** to see the allowed names and set `NLU_MODEL` / `CODEX_MODEL` in `.env`.
+> 2. *"…model … is not available for this API key"* or *"key not allowed to access model"*: set `NLU_MODEL` /
+>    `CODEX_MODEL` in `.env` to a model your key may use. Chat models available to all teams: `gpt-5.6-sol`,
+>    `gpt-5.6-luna`, `gpt-5.6-terra`, `gpt-5.5`, `gpt-5.4`, `gpt-5.2`, `gpt-5`, `gpt-5-mini`, `gpt-4.1`, `gpt-4o`,
+>    `claude-sonnet-4-6`. Responses-API models: `gpt-5.3-codex`, `gpt-5.2-codex`, `gpt-5.1-codex`, `gpt-5-codex`.
+> 3. *"Virtual key is not allowed to call this route"*: the key may only call `/chat/completions`, `/responses`
+>    and `/embeddings`. The app uses only the first two, and does not call `/v1/models`.
 >
 > A 401 `invalid_api_key` from `api.openai.com` means a gateway key was sent to OpenAI. Set `LITELLM_BASE_URL`.
 >
-> **`CERTIFICATE_VERIFY_FAILED` in the log:** a corporate proxy is re-signing HTTPS traffic. Point `SSL_CERT_FILE`
-> at your corporate CA bundle.
+> **`CERTIFICATE_VERIFY_FAILED` in the log:** the gateway uses an internal certificate authority that this Python
+> or SDK build does not trust. Use a current `openai` release (it trusts the OS certificate store), or point
+> `SSL_CERT_FILE` at your corporate CA bundle.
 
 ### Notes
 
