@@ -1,0 +1,215 @@
+1
+00:00:00,250 --> 00:00:02,421
+Lumen's network is ready.
+
+2
+00:00:02,371 --> 00:00:03,850
+Let's remove the wait.
+
+3
+00:00:04,250 --> 00:00:08,720
+Lumen provides Internet-on-Demand on a network controlled by software.
+
+4
+00:00:08,670 --> 00:00:12,601
+In buildings already connected to Lumen, the fiber is in place.
+
+5
+00:00:12,601 --> 00:00:16,465
+An API call is simply an instruction between systems.
+
+6
+00:00:16,465 --> 00:00:20,850
+One call can activate eligible services, with no new construction cost.
+
+7
+00:00:21,250 --> 00:00:26,068
+The customer emails an agent, who reads the message to work out what is needed.
+
+8
+00:00:26,018 --> 00:00:33,132
+The agent checks local services and prices using Lumen's APIs, chooses a cloud provider, and prepares a quote.
+
+9
+00:00:34,250 --> 00:00:39,320
+The agent then retypes the details into JSON, the order message Lumen needs.
+
+10
+00:00:39,270 --> 00:00:41,486
+This can introduce errors.
+
+11
+00:00:41,486 --> 00:00:44,986
+Quotes can take one to three weeks, delaying revenue.
+
+12
+00:00:46,250 --> 00:00:48,693
+Our goal is to remove that delay.
+
+13
+00:00:48,643 --> 00:00:52,064
+Customers describe their needs in everyday language.
+
+14
+00:00:52,064 --> 00:00:56,234
+The broker handles checks and orders for existing and new customers.
+
+15
+00:00:57,250 --> 00:01:00,653
+First, the AI reads the customer's request.
+
+16
+00:01:00,603 --> 00:01:04,058
+The broker checks the site and its available capacity.
+
+17
+00:01:04,058 --> 00:01:09,850
+It compares cloud options and calculates costs from fixed rates, so the AI never invents a price.
+
+18
+00:01:10,250 --> 00:01:13,390
+The customer reviews the quote and clicks approve.
+
+19
+00:01:13,340 --> 00:01:18,850
+The broker checks the order details, sends the API request, and returns the result.
+
+20
+00:01:19,250 --> 00:01:25,317
+We used Lumen's Developer Portal to model how service checks, quotes, and cloud orders should work.
+
+21
+00:01:26,250 --> 00:01:30,850
+This Ordering API sends the approved order with the customer's Lumen identifier.
+
+22
+00:01:31,250 --> 00:01:33,605
+Customers do not write JSON.
+
+23
+00:01:33,557 --> 00:01:36,850
+The broker fills this order message with their billing account and quote.
+
+24
+00:01:37,250 --> 00:01:40,503
+Our mock APIs simulate these steps safely.
+
+25
+00:01:40,453 --> 00:01:43,737
+No live connections or real bills are created.
+
+26
+00:01:44,250 --> 00:01:48,509
+An existing customer requests five gigabits with attack protection.
+
+27
+00:01:48,459 --> 00:01:51,850
+After one question, they confirm Dallas and Google Cloud.
+
+28
+00:01:52,250 --> 00:01:56,751
+The price is six dollars fifteen per hour, with no construction cost.
+
+29
+00:01:56,701 --> 00:02:00,690
+Six unused network ports are already available in Dallas.
+
+30
+00:02:01,250 --> 00:02:05,850
+The quote lists every charge, including the connection and attack protection.
+
+31
+00:02:06,250 --> 00:02:09,719
+This table explains the cost of each cloud option.
+
+32
+00:02:10,250 --> 00:02:14,850
+The diagram shows how Dallas connects through Lumen's protected network to Google Cloud.
+
+33
+00:02:15,250 --> 00:02:18,750
+The customer approves the quote before anything is ordered.
+
+34
+00:02:19,250 --> 00:02:22,762
+The broker checks that the order matches the approved quote.
+
+35
+00:02:23,250 --> 00:02:25,443
+The test order succeeds.
+
+36
+00:02:25,393 --> 00:02:29,461
+In production, billing could start as soon as the connection is active.
+
+37
+00:02:30,250 --> 00:02:34,495
+A new customer describes Apple's Chicago office with five floors.
+
+38
+00:02:34,445 --> 00:02:37,850
+They want AWS and protection from online attacks.
+
+39
+00:02:38,250 --> 00:02:41,336
+That description fills the form automatically.
+
+40
+00:02:41,286 --> 00:02:45,850
+The customer can check and edit every detail without waiting for a discovery call.
+
+41
+00:02:46,250 --> 00:02:52,763
+After checking available services, it recommends thirty-two megabits and five floor switches for this office.
+
+42
+00:02:53,250 --> 00:02:59,796
+At about one dollar eight per hour, AWS is the lowest-priced option, with no new construction cost.
+
+43
+00:03:01,250 --> 00:03:05,850
+The final quote shows all charges, so the customer knows the full price before committing.
+
+44
+00:03:06,250 --> 00:03:11,445
+One click creates the account and places the order, without retyping any details.
+
+45
+00:03:12,250 --> 00:03:14,636
+Lumen can start earning sooner.
+
+46
+00:03:14,586 --> 00:03:20,850
+At this example rate, removing three weeks of delay brings forward about three thousand dollars per connection.
+
+47
+00:03:21,250 --> 00:03:24,008
+First, Lumen earns revenue sooner.
+
+48
+00:03:23,958 --> 00:03:29,401
+Second, staff spend less time preparing routine quotes, which lowers sales costs.
+
+49
+00:03:29,401 --> 00:03:35,128
+Third, customers can buy extra capacity more easily, so existing fiber earns more.
+
+50
+00:03:35,128 --> 00:03:39,344
+Fourth, checked orders mean fewer mistakes and less support work.
+
+51
+00:03:39,344 --> 00:03:44,139
+Finally, instant prices help more new customers buy before they lose interest.
+
+52
+00:03:45,250 --> 00:03:50,850
+Next, we plan to connect live Lumen services, pricing, and secure customer accounts.
+
+53
+00:03:51,250 --> 00:03:56,850
+Later, it could adjust capacity automatically and help find, fix, and prevent network problems.
+
+54
+00:03:57,250 --> 00:03:58,623
+Thank you.

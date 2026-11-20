@@ -1933,3 +1933,246 @@ openai.APIConnectionError: Connection error.
   }
 }
 2026-11-18 19:21:51,532 INFO    mock_api:128 | POST /Customer/v3/Ordering/orderRequest responded: {'status': 'SUCCESS', 'http_status': 200, 'transaction_id': 'LUMEN-NAAS-94422', 'message': 'Network provisioned', 'quote_id': 'Q-5C040B46', 'provisioned_at': '2026-11-18T13:51:51+00:00'}
+2026-11-19 11:55:42,111 INFO    diagnostics:122 | === Broker startup diagnostics ===
+2026-11-19 11:55:42,406 INFO    diagnostics:123 | python=3.12.9 (C:\Users\AD41989\AppData\Local\Programs\Python\Python312\python.exe) on Windows-11-10.0.26200-SP0
+2026-11-19 11:55:42,406 INFO    diagnostics:125 | openai=3.55.0 streamlit=1.58.0
+2026-11-19 11:55:42,407 INFO    diagnostics:127 | model_profile=dev nlu_model=gpt-5.6-luna(low) codex_model=gpt-5.6-luna(low)
+2026-11-19 11:55:42,407 INFO    diagnostics:131 | endpoint=https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1 (from LITELLM_BASE_URL) timeout=60.0s max_retries=2
+2026-11-19 11:55:42,409 INFO    diagnostics:135 | api_key (from LITELLM_API_KEY): len=25 prefix=sk-PYV… sha256=6b255705 format=LiteLLM/gateway-style
+2026-11-19 11:55:42,412 INFO    diagnostics:137 | env (set?)={'HTTPS_PROXY': False, 'HTTP_PROXY': False, 'NO_PROXY': False, 'SSL_CERT_FILE': False, 'REQUESTS_CA_BUNDLE': False}
+2026-11-19 11:55:42,413 INFO    diagnostics:138 | log_file=C:\Users\AD41989\DOCS\q2p\logs\broker.log
+2026-11-19 11:56:25,206 INFO    app:112 | User prompt (73 chars): i need 5gbps connection from dallas with ddos protection using aws or gcp
+2026-11-19 11:56:25,207 INFO    agent:428 | NLU request: model=gpt-5.6-luna effort=low messages=3 chars=1470
+2026-11-19 11:56:25,208 DEBUG   agent:435 | NLU last user message: i need 5gbps connection from dallas with ddos protection using aws or gcp
+2026-11-19 11:56:25,209 INFO    agent:208 | Creating OpenAI client: endpoint=https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1 timeout=60.0s max_retries=2 key=len=25 prefix=sk-PYV… sha256=6b255705 format=LiteLLM/gateway-style
+2026-11-19 11:56:26,198 INFO    openai._base_client:1272 | Retrying request in 0.393902 seconds (retry 1 of 2)
+2026-11-19 11:56:26,615 INFO    openai._base_client:1272 | Retrying request in 0.813339 seconds (retry 2 of 2)
+2026-11-19 11:56:27,453 ERROR   agent:300 | OpenAI call failed: {'operation': 'chat.completions', 'model': 'gpt-5.6-luna', 'endpoint': 'https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1', 'error_type': 'APIConnectionError'}
+2026-11-19 11:56:27,454 ERROR   agent:301 | Cause chain: APIConnectionError: Connection error. <- ConnectError: [Errno 11001] getaddrinfo failed <- ConnectError: [Errno 11001] getaddrinfo failed <- gaierror: [Errno 11001] getaddrinfo failed
+2026-11-19 11:56:27,455 DEBUG   agent:302 | Traceback for failed OpenAI call
+Traceback (most recent call last):
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_transports\default.py", line 95, in map_httpcore_exceptions
+    yield
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_transports\default.py", line 242, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpcore2\_sync\connection_pool.py", line 243, in handle_request
+    raise exc from None
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpcore2\_sync\connection_pool.py", line 225, in handle_request
+    response = connection.handle_request(pool_request.request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpcore2\_sync\connection.py", line 96, in handle_request
+    raise exc
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpcore2\_sync\connection.py", line 76, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpcore2\_sync\connection.py", line 119, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpcore2\_backends\sync.py", line 204, in connect_tcp
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpcore2\_exceptions.py", line 16, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore2.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\_base_client.py", line 1183, in request
+    response = self._send_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\_client.py", line 211, in _send_request
+    return sync_send_request(self, request, stream=stream, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\lib\_client_auth.py", line 328, in sync_send_request
+    response = self._send_with_auth_retry(request, stream=stream, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\_client.py", line 197, in _send_with_auth_retry
+    return sync_send_with_auth_retry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\lib\_client_auth.py", line 313, in sync_send_with_auth_retry
+    response = super(_owner, self)._send_request(request, stream=stream, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\_base_client.py", line 1104, in _send_request
+    return self._client.send(request, stream=stream, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py", line 974, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py", line 1002, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py", line 1037, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_client.py", line 1070, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_transports\default.py", line 241, in handle_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\httpx2\_transports\default.py", line 112, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx2.ConnectError: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\AD41989\DOCS\q2p\agent.py", line 438, in _call_nlu
+    raw = _client().chat.completions.with_raw_response.create(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\_legacy_response.py", line 364, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\_utils\_utils.py", line 298, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1611, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\_base_client.py", line 1474, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\AD41989\AppData\Local\Programs\Python\Python312\Lib\site-packages\openai\_base_client.py", line 1218, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+2026-11-19 11:56:28,190 WARNING app:119 | generate_quote failed: Cannot reach https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1. Check your network/VPN, proxy and LITELLM_BASE_URL. Details are in logs/broker.log.
+2026-11-19 11:58:12,587 INFO    diagnostics:122 | === Broker startup diagnostics ===
+2026-11-19 11:58:12,810 INFO    diagnostics:123 | python=3.12.9 (C:\Users\AD41989\AppData\Local\Programs\Python\Python312\python.exe) on Windows-11-10.0.26200-SP0
+2026-11-19 11:58:12,811 INFO    diagnostics:125 | openai=3.55.0 streamlit=1.58.0
+2026-11-19 11:58:12,811 INFO    diagnostics:127 | model_profile=dev nlu_model=gpt-5.6-luna(low) codex_model=gpt-5.6-luna(low)
+2026-11-19 11:58:12,812 INFO    diagnostics:131 | endpoint=https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1 (from LITELLM_BASE_URL) timeout=60.0s max_retries=2
+2026-11-19 11:58:12,813 INFO    diagnostics:135 | api_key (from LITELLM_API_KEY): len=25 prefix=sk-PYV… sha256=6b255705 format=LiteLLM/gateway-style
+2026-11-19 11:58:12,813 INFO    diagnostics:137 | env (set?)={'HTTPS_PROXY': False, 'HTTP_PROXY': False, 'NO_PROXY': False, 'SSL_CERT_FILE': False, 'REQUESTS_CA_BUNDLE': False}
+2026-11-19 11:58:12,814 INFO    diagnostics:138 | log_file=C:\Users\AD41989\DOCS\q2p\logs\broker.log
+2026-11-19 11:58:55,986 INFO    app:112 | User prompt (95 chars): i need 5gbps speed network connection using aws or gcp with ddos protection and fraud detection
+2026-11-19 11:58:55,991 INFO    agent:428 | NLU request: model=gpt-5.6-luna effort=low messages=3 chars=1492
+2026-11-19 11:58:55,993 DEBUG   agent:435 | NLU last user message: i need 5gbps speed network connection using aws or gcp with ddos protection and fraud detection
+2026-11-19 11:58:55,994 INFO    agent:208 | Creating OpenAI client: endpoint=https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1 timeout=60.0s max_retries=2 key=len=25 prefix=sk-PYV… sha256=6b255705 format=LiteLLM/gateway-style
+2026-11-19 11:59:00,593 INFO    httpx2:1079 | HTTP Request: POST https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-19 11:59:00,651 INFO    agent:458 | NLU response: 4.66s request_id=None finish=stop in=403 out=186 cost=$0.000304
+2026-11-19 11:59:00,653 DEBUG   agent:470 | NLU raw output: {"customer_name":null,"source_city":null,"bandwidth_mbps":5000,"cloud_provider":null,"ddos_protection":true,"monthly_egress_gb":null,"reply":"Thanks! I noted a 5 Gbps connection with DDoS protection and AWS or GCP preference. What is your source city? Also, please confirm whether AWS or GCP is preferred."}
+2026-11-19 11:59:00,661 INFO    agent:661 | Extracted intent: {'customer_name': 'Enterprise Customer', 'source_city': None, 'bandwidth_mbps': 5000, 'cloud_provider': None, 'ddos_protection': True, 'monthly_egress_gb': None, 'reply': 'Thanks! I noted a 5 Gbps connection with DDoS protection and AWS or GCP preference. What is your source city? Also, please confirm whether AWS or GCP is preferred.'}
+2026-11-19 11:59:00,662 INFO    app:129 | Quote turn done: quote=None spent_total=$0.000304
+2026-11-19 11:59:27,938 INFO    app:112 | User prompt (19 chars): AWS and Dallas city
+2026-11-19 11:59:27,938 INFO    agent:428 | NLU request: model=gpt-5.6-luna effort=low messages=5 chars=1674
+2026-11-19 11:59:27,938 DEBUG   agent:435 | NLU last user message: AWS and Dallas city
+2026-11-19 11:59:30,550 INFO    httpx2:1079 | HTTP Request: POST https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-19 11:59:30,553 INFO    agent:458 | NLU response: 2.61s request_id=None finish=stop in=457 out=138 cost=$0.000257
+2026-11-19 11:59:30,554 DEBUG   agent:470 | NLU raw output: {"customer_name":null,"source_city":"Dallas","bandwidth_mbps":5000,"cloud_provider":"AWS","ddos_protection":true,"monthly_egress_gb":null,"reply":"Thanks! I’ve recorded your AWS connection from Dallas at 5 Gbps with DDoS protection."}
+2026-11-19 11:59:30,555 INFO    agent:661 | Extracted intent: {'customer_name': 'Enterprise Customer', 'source_city': 'Dallas', 'bandwidth_mbps': 5000, 'cloud_provider': 'AWS', 'ddos_protection': True, 'monthly_egress_gb': None, 'reply': 'Thanks! I’ve recorded your AWS connection from Dallas at 5 Gbps with DDoS protection.'}
+2026-11-19 11:59:30,557 INFO    app:129 | Quote turn done: quote=Q-A4E259B8 spent_total=$0.000561
+2026-11-19 11:59:58,408 INFO    app:112 | User prompt (75 chars): i need 5gbps speed network connection using aws or gcp with ddos protection
+2026-11-19 11:59:58,408 INFO    agent:428 | NLU request: model=gpt-5.6-luna effort=low messages=3 chars=1472
+2026-11-19 11:59:58,408 DEBUG   agent:435 | NLU last user message: i need 5gbps speed network connection using aws or gcp with ddos protection
+2026-11-19 12:00:01,385 INFO    httpx2:1079 | HTTP Request: POST https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-19 12:00:01,388 INFO    agent:458 | NLU response: 2.97s request_id=None finish=stop in=400 out=171 cost=$0.000285
+2026-11-19 12:00:01,390 DEBUG   agent:470 | NLU raw output: {"customer_name":null,"source_city":null,"bandwidth_mbps":5000,"cloud_provider":null,"ddos_protection":true,"monthly_egress_gb":null,"reply":"Thanks! I’ve noted a 5 Gbps connection with DDoS protection to AWS or GCP. Which source city should we use?"}
+2026-11-19 12:00:01,390 INFO    agent:661 | Extracted intent: {'customer_name': 'Enterprise Customer', 'source_city': None, 'bandwidth_mbps': 5000, 'cloud_provider': None, 'ddos_protection': True, 'monthly_egress_gb': None, 'reply': 'Thanks! I’ve noted a 5 Gbps connection with DDoS protection to AWS or GCP. Which source city should we use?'}
+2026-11-19 12:00:01,391 INFO    app:129 | Quote turn done: quote=None spent_total=$0.000285
+2026-11-19 12:00:09,330 INFO    app:112 | User prompt (19 chars): dallas city and GCP
+2026-11-19 12:00:09,331 INFO    agent:428 | NLU request: model=gpt-5.6-luna effort=low messages=5 chars=1598
+2026-11-19 12:00:09,332 DEBUG   agent:435 | NLU last user message: dallas city and GCP
+2026-11-19 12:00:12,395 INFO    httpx2:1079 | HTTP Request: POST https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-19 12:00:12,397 INFO    agent:458 | NLU response: 3.07s request_id=None finish=stop in=445 out=188 cost=$0.000315
+2026-11-19 12:00:12,398 DEBUG   agent:470 | NLU raw output: {"customer_name":null,"source_city":"Dallas","bandwidth_mbps":5000,"cloud_provider":"GCP","ddos_protection":true,"monthly_egress_gb":null,"reply":"Thanks! I’ve noted a 5 Gbps GCP connection from Dallas with DDoS protection."}
+2026-11-19 12:00:12,399 INFO    agent:661 | Extracted intent: {'customer_name': 'Enterprise Customer', 'source_city': 'Dallas', 'bandwidth_mbps': 5000, 'cloud_provider': 'GCP', 'ddos_protection': True, 'monthly_egress_gb': None, 'reply': 'Thanks! I’ve noted a 5 Gbps GCP connection from Dallas with DDoS protection.'}
+2026-11-19 12:00:12,401 INFO    app:129 | Quote turn done: quote=Q-989666A8 spent_total=$0.000600
+2026-11-19 12:00:52,188 INFO    app:142 | Approval requested (open quote=Q-989666A8)
+2026-11-19 12:00:52,190 INFO    agent:813 | Provisioning started for quote Q-989666A8
+2026-11-19 12:00:52,195 INFO    agent:819 | Codex attempt 1/3
+2026-11-19 12:00:52,246 INFO    agent:476 | Codex request: model=gpt-5.6-luna effort=low prompt_chars=4641
+2026-11-19 12:00:55,089 INFO    httpx2:1079 | HTTP Request: POST https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1/responses "HTTP/1.1 200 OK"
+2026-11-19 12:00:55,331 INFO    agent:504 | Codex response: 3.08s request_id=None status=completed in=1282 out=140 cost=$0.000488
+2026-11-19 12:00:55,332 DEBUG   agent:514 | Codex raw output: {"quoteId":"Q-989666A8","orderType":"NEW_INSTALL","productFamily":"NAAS_CLOUD_CONNECT","customer":{"name":"Enterprise Customer"},"serviceLocation":{"siteCode":"DAL1","city":"Dallas","countryCode":"US"},"port":{"speed":"10G","quantity":1,"bandwidthMbps":5000},"cloudConnection":{"provider":"GCP","region":"us-south1","product":"Google Cloud Partner Interconnect"},"addOns":{"ddosProtection":true},"billing":{"pricingModel":"HOURLY","currency":"USD","hourlyRateUsd":6.1548,"estimatedMonthlyUsd":4493.0}}
+2026-11-19 12:00:55,334 INFO    agent:833 | Payload valid on attempt 1; calling mock API
+2026-11-19 12:00:55,335 INFO    mock_api:101 | POST /Customer/v3/Ordering/orderRequest received payload:
+{
+  "quoteId": "Q-989666A8",
+  "orderType": "NEW_INSTALL",
+  "productFamily": "NAAS_CLOUD_CONNECT",
+  "customer": {
+    "name": "Enterprise Customer"
+  },
+  "serviceLocation": {
+    "siteCode": "DAL1",
+    "city": "Dallas",
+    "countryCode": "US"
+  },
+  "port": {
+    "speed": "10G",
+    "quantity": 1,
+    "bandwidthMbps": 5000
+  },
+  "cloudConnection": {
+    "provider": "GCP",
+    "region": "us-south1",
+    "product": "Google Cloud Partner Interconnect"
+  },
+  "addOns": {
+    "ddosProtection": true
+  },
+  "billing": {
+    "pricingModel": "HOURLY",
+    "currency": "USD",
+    "hourlyRateUsd": 6.1548,
+    "estimatedMonthlyUsd": 4493.0
+  }
+}
+2026-11-19 12:00:57,336 INFO    mock_api:128 | POST /Customer/v3/Ordering/orderRequest responded: {'status': 'SUCCESS', 'http_status': 200, 'transaction_id': 'LUMEN-NAAS-30104', 'message': 'Network provisioned', 'quote_id': 'Q-989666A8', 'provisioned_at': '2026-11-19T06:30:57+00:00'}
+2026-11-19 12:03:39,955 INFO    agent:428 | NLU request: model=gpt-5.6-luna effort=low messages=2 chars=1062
+2026-11-19 12:03:39,956 DEBUG   agent:435 | NLU last user message: I am from Apple company and I need a new connection for my office which is located in Chicago. My office is having five floors and each floor spread across 100 square feet. I need a connection with DDoS protection. And I wanted to use AWS for the provisioning. Give me complete pricing details.
+2026-11-19 12:03:42,592 INFO    httpx2:1079 | HTTP Request: POST https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1/chat/completions "HTTP/1.1 200 OK"
+2026-11-19 12:03:42,597 INFO    agent:458 | NLU response: 2.64s request_id=None finish=stop in=281 out=154 cost=$0.000241
+2026-11-19 12:03:42,597 DEBUG   agent:470 | NLU raw output: {"customer_name":"Apple","contact_name":null,"contact_email":null,"source_city":"Chicago","floors":5,"area_sqft":500,"bandwidth_mbps":null,"cloud_provider":"AWS","ddos_protection":true,"monthly_egress_gb":null,"reply":"Please provide the required bandwidth, monthly egress, and contact details to complete your request."}
+2026-11-19 12:03:42,597 INFO    onboarding:140 | New-customer intent: {'customer_name': 'Apple', 'source_city': 'Chicago', 'bandwidth_mbps': None, 'cloud_provider': 'AWS', 'ddos_protection': True, 'monthly_egress_gb': None, 'reply': 'Please provide the required bandwidth, monthly egress, and contact details to complete your request.', 'floors': 5, 'area_sqft': 500}
+2026-11-19 12:04:14,487 INFO    mock_onboarding_api:74 | GET /Customer/v3/Serviceability?siteCode=CHI1
+2026-11-19 12:04:15,489 INFO    mock_onboarding_api:97 | GET /Customer/v3/Serviceability responded: 6 services at CHI1
+2026-11-19 12:04:15,491 INFO    onboarding:236 | Proposal for Apple @ CHI1: 3 options, best=('Recommended', 'AWS')
+2026-11-19 12:04:59,734 INFO    mock_onboarding_api:151 | POST /Customer/v3/Accounts created LUMEN-ACCT-850571 for Apple at CHI1
+2026-11-19 12:04:59,734 INFO    agent:813 | Provisioning started for quote Q-4D383D44
+2026-11-19 12:04:59,734 INFO    agent:819 | Codex attempt 1/3
+2026-11-19 12:04:59,734 INFO    agent:476 | Codex request: model=gpt-5.6-luna effort=low prompt_chars=4610
+2026-11-19 12:05:02,157 INFO    httpx2:1079 | HTTP Request: POST https://litellm-api.azu-aks-hcahktn-np-cus-01.azu.corp.intranet/v1/responses "HTTP/1.1 200 OK"
+2026-11-19 12:05:02,157 INFO    agent:504 | Codex response: 2.42s request_id=None status=completed in=1276 out=135 cost=$0.000481
+2026-11-19 12:05:02,157 DEBUG   agent:514 | Codex raw output: {"quoteId":"Q-4D383D44","orderType":"NEW_INSTALL","productFamily":"NAAS_CLOUD_CONNECT","customer":{"name":"Apple"},"serviceLocation":{"siteCode":"CHI1","city":"Chicago","countryCode":"US"},"port":{"speed":"1G","quantity":1,"bandwidthMbps":32},"cloudConnection":{"provider":"AWS","region":"us-east-2","product":"AWS Direct Connect"},"addOns":{"ddosProtection":true},"billing":{"pricingModel":"HOURLY","currency":"USD","hourlyRateUsd":1.0848,"estimatedMonthlyUsd":791.9}}
+2026-11-19 12:05:02,157 INFO    agent:833 | Payload valid on attempt 1; calling mock API
+2026-11-19 12:05:02,157 INFO    mock_api:101 | POST /Customer/v3/Ordering/orderRequest received payload:
+{
+  "quoteId": "Q-4D383D44",
+  "orderType": "NEW_INSTALL",
+  "productFamily": "NAAS_CLOUD_CONNECT",
+  "customer": {
+    "name": "Apple"
+  },
+  "serviceLocation": {
+    "siteCode": "CHI1",
+    "city": "Chicago",
+    "countryCode": "US"
+  },
+  "port": {
+    "speed": "1G",
+    "quantity": 1,
+    "bandwidthMbps": 32
+  },
+  "cloudConnection": {
+    "provider": "AWS",
+    "region": "us-east-2",
+    "product": "AWS Direct Connect"
+  },
+  "addOns": {
+    "ddosProtection": true
+  },
+  "billing": {
+    "pricingModel": "HOURLY",
+    "currency": "USD",
+    "hourlyRateUsd": 1.0848,
+    "estimatedMonthlyUsd": 791.9
+  }
+}
+2026-11-19 12:05:04,168 INFO    mock_api:128 | POST /Customer/v3/Ordering/orderRequest responded: {'status': 'SUCCESS', 'http_status': 200, 'transaction_id': 'LUMEN-NAAS-39268', 'message': 'Network provisioned', 'quote_id': 'Q-4D383D44', 'provisioned_at': '2026-11-19T06:35:04+00:00'}

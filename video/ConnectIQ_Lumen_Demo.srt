@@ -1,0 +1,203 @@
+1
+00:00:00,250 --> 00:00:02,839
+Lumen's Zero-Touch Broker.
+
+2
+00:00:02,789 --> 00:00:06,434
+Converting network delay into recurring revenue.
+
+3
+00:00:08,250 --> 00:00:15,589
+Lumen's on-net buildings already connect to Internet On-Demand, Cloud Connect, and software-defined networking.
+
+4
+00:00:15,542 --> 00:00:19,850
+Eligible, pre-wired capacity can activate without new construction.
+
+5
+00:00:20,250 --> 00:00:27,509
+Buying that capacity still means discovery, solution design, quoting, order entry, and provisioning.
+
+6
+00:00:27,460 --> 00:00:29,850
+A relay race of human hand-offs.
+
+7
+00:00:30,250 --> 00:00:35,562
+Manual hand-offs, API friction, and re-keying lose prospects.
+
+8
+00:00:35,512 --> 00:00:39,457
+Weeks of quoting leave ready infrastructure unbilled.
+
+9
+00:00:40,250 --> 00:00:45,451
+Our objective: natural language in; a provisioned, billable network out.
+
+10
+00:00:45,404 --> 00:00:48,978
+Existing customers move from chat to approval.
+
+11
+00:00:48,978 --> 00:00:52,850
+New prospects move from an office description to a priced plan.
+
+12
+00:00:53,250 --> 00:00:58,756
+Rules check inventory, compare clouds, and calculate exact prices.
+
+13
+00:00:58,706 --> 00:01:01,850
+AI interprets intent, never pricing.
+
+14
+00:01:02,250 --> 00:01:06,205
+Then, explicit approval unlocks a validated order.
+
+15
+00:01:06,156 --> 00:01:09,850
+The system checks it against the quote before the provisioning call.
+
+16
+00:01:10,250 --> 00:01:16,850
+The official Lumen Developer Portal defines Multi-Cloud Gateway, Ordering, Quote, and Service Details.
+
+17
+00:01:17,250 --> 00:01:23,850
+The order-request endpoint requires this customer-number header: Lumen's business organization identifier.
+
+18
+00:01:24,250 --> 00:01:30,698
+External ID, billing account, channel, and quote form an explicit request contract.
+
+19
+00:01:31,250 --> 00:01:36,661
+Our local mocks cover ordering, serviceability, quoting, and accounts.
+
+20
+00:01:36,611 --> 00:01:39,850
+No production circuits or real billing are touched.
+
+21
+00:01:40,250 --> 00:01:45,006
+Five gigabits, with cloud connectivity and DDoS protection.
+
+22
+00:01:44,956 --> 00:01:49,188
+One clarification: Dallas, and Google Cloud.
+
+23
+00:01:50,250 --> 00:01:57,750
+The quote: six dollars fifteen per hour, four thousand four hundred ninety-three monthly, and zero CapEx.
+
+24
+00:01:57,701 --> 00:02:00,850
+Six idle ten-gig ports are ready in Dallas.
+
+25
+00:02:01,250 --> 00:02:05,308
+Port, interconnect, egress, and protection.
+
+26
+00:02:05,258 --> 00:02:06,850
+All itemized.
+
+27
+00:02:07,250 --> 00:02:09,533
+Three clouds compared.
+
+28
+00:02:09,483 --> 00:02:11,850
+Google Cloud is selected.
+
+29
+00:02:12,250 --> 00:02:16,850
+Follow Dallas, DDoS protection, Lumen's fabric, then Google Cloud.
+
+30
+00:02:17,250 --> 00:02:20,826
+Nothing executes until the customer approves.
+
+31
+00:02:21,250 --> 00:02:24,807
+Site, speed, and price stay aligned.
+
+32
+00:02:25,250 --> 00:02:27,164
+Mock success.
+
+33
+00:02:27,117 --> 00:02:29,850
+The demo starts hourly billing immediately.
+
+34
+00:02:30,250 --> 00:02:38,850
+A new prospect describes Apple's Chicago office: five floors, one hundred square feet each, AWS, and DDoS protection.
+
+35
+00:02:39,250 --> 00:02:45,264
+One click fills company, city, floors, area, cloud, and protection.
+
+36
+00:02:45,214 --> 00:02:47,850
+All fields remain editable.
+
+37
+00:02:48,250 --> 00:02:50,586
+Chicago is on-net.
+
+38
+00:02:50,536 --> 00:02:55,080
+Four users, thirty-two megabits, five floor switches.
+
+39
+00:02:56,250 --> 00:03:02,138
+AWS wins: a dollar eight hourly, saving twenty-four sixty monthly.
+
+40
+00:03:02,088 --> 00:03:03,850
+Zero CapEx.
+
+41
+00:03:04,250 --> 00:03:08,850
+The full quote and Chicago-to-AWS topology, upfront.
+
+42
+00:03:09,250 --> 00:03:13,521
+One click creates an account and provisions through our mocks.
+
+43
+00:03:15,250 --> 00:03:24,267
+At the Dallas demo rate, one to three idle weeks represent roughly one to three thousand dollars in delayed gross billings, per connection.
+
+44
+00:03:26,250 --> 00:03:34,850
+Automation lowers acquisition effort, increases network utilization, reduces re-keying fallout, and captures more leads before they leave.
+
+45
+00:03:35,250 --> 00:03:39,335
+Next: live Lumen APIs and contract pricing.
+
+46
+00:03:39,285 --> 00:03:42,850
+Then enterprise sign-on and account-linked ordering.
+
+47
+00:03:43,250 --> 00:03:49,837
+Then autonomous scaling, diagnostics, ticketing, and security, with production assurance.
+
+48
+00:03:50,250 --> 00:03:52,518
+Natural language in.
+
+49
+00:03:52,468 --> 00:03:55,658
+A provisioned, billable network out.
+
+50
+00:03:55,659 --> 00:03:57,885
+Team ConnectIQ.
+
+51
+00:03:57,885 --> 00:03:59,487
+Thank you.

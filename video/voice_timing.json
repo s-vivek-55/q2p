@@ -1,0 +1,182 @@
+[
+  {
+    "scene": "title",
+    "slot": 8,
+    "speech": 5.499,
+    "tempo": 1.0
+  },
+  {
+    "scene": "foundation",
+    "slot": 12,
+    "speech": 12.022,
+    "tempo": 1.05
+  },
+  {
+    "scene": "relay",
+    "slot": 10,
+    "speech": 9.672,
+    "tempo": 1.0235
+  },
+  {
+    "scene": "friction",
+    "slot": 10,
+    "speech": 8.487,
+    "tempo": 1.0
+  },
+  {
+    "scene": "scope",
+    "slot": 13,
+    "speech": 13.06,
+    "tempo": 1.049
+  },
+  {
+    "scene": "plan",
+    "slot": 9,
+    "speech": 8.363,
+    "tempo": 1.0
+  },
+  {
+    "scene": "gate",
+    "slot": 8,
+    "speech": 7.672,
+    "tempo": 1.0298
+  },
+  {
+    "scene": "portal",
+    "slot": 7,
+    "speech": 6.47,
+    "tempo": 1.0031
+  },
+  {
+    "scene": "endpoint",
+    "slot": 7,
+    "speech": 6.417,
+    "tempo": 1.0
+  },
+  {
+    "scene": "contract",
+    "slot": 7,
+    "speech": 5.701,
+    "tempo": 1.0
+  },
+  {
+    "scene": "mock",
+    "slot": 9,
+    "speech": 8.377,
+    "tempo": 1.0
+  },
+  {
+    "scene": "chat",
+    "slot": 10,
+    "speech": 8.215,
+    "tempo": 1.0
+  },
+  {
+    "scene": "quote",
+    "slot": 11,
+    "speech": 10.796,
+    "tempo": 1.0331
+  },
+  {
+    "scene": "bom",
+    "slot": 6,
+    "speech": 5.335,
+    "tempo": 1.0
+  },
+  {
+    "scene": "compare",
+    "slot": 5,
+    "speech": 4.026,
+    "tempo": 1.0
+  },
+  {
+    "scene": "topology",
+    "slot": 5,
+    "speech": 4.627,
+    "tempo": 1.0397
+  },
+  {
+    "scene": "approve",
+    "slot": 4,
+    "speech": 2.843,
+    "tempo": 1.0
+  },
+  {
+    "scene": "validated",
+    "slot": 4,
+    "speech": 2.787,
+    "tempo": 1.0
+  },
+  {
+    "scene": "success",
+    "slot": 5,
+    "speech": 4.664,
+    "tempo": 1.0482
+  },
+  {
+    "scene": "intake",
+    "slot": 9,
+    "speech": 8.808,
+    "tempo": 1.0423
+  },
+  {
+    "scene": "survey",
+    "slot": 9,
+    "speech": 7.938,
+    "tempo": 1.0
+  },
+  {
+    "scene": "sizing",
+    "slot": 8,
+    "speech": 6.143,
+    "tempo": 1.0
+  },
+  {
+    "scene": "plans",
+    "slot": 8,
+    "speech": 7.326,
+    "tempo": 1.0
+  },
+  {
+    "scene": "new_quote",
+    "slot": 5,
+    "speech": 4.022,
+    "tempo": 1.0
+  },
+  {
+    "scene": "onboard",
+    "slot": 6,
+    "speech": 3.53,
+    "tempo": 1.0
+  },
+  {
+    "scene": "revenue",
+    "slot": 11,
+    "speech": 8.268,
+    "tempo": 1.0
+  },
+  {
+    "scene": "drivers",
+    "slot": 9,
+    "speech": 8.943,
+    "tempo": 1.0583
+  },
+  {
+    "scene": "roadmap_one",
+    "slot": 8,
+    "speech": 7.033,
+    "tempo": 1.0
+  },
+  {
+    "scene": "roadmap_two",
+    "slot": 7,
+    "speech": 5.846,
+    "tempo": 1.0
+  },
+  {
+    "scene": "close",
+    "slot": 9.8,
+    "speech": 8.545,
+    "tempo": 1.0
+  }
+]

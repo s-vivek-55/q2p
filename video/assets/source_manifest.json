@@ -1,0 +1,489 @@
+{
+  "source": "C:\\Users\\AD41989\\OneDrive - Lumen\\Desktop\\ConnectIQ_Lumen_NaaS_Broker 1.pptx",
+  "slides": [
+    {
+      "slide": "slide1",
+      "text": [
+        "Lumen Zero-Touch NaaS Broker",
+        "AI-native Quote-to-Provision Assistant",
+        "Team ConnectIQ",
+        "Natural language in, billable and provisioned network out."
+      ],
+      "pictures": []
+    },
+    {
+      "slide": "slide2",
+      "text": [
+        "From a sentence to a provisioned, billable network",
+        "ConnectIQ  |  Hackathon final",
+        "TODAY: A RELAY RACE OF HAND-OFFS",
+        "1  Discovery",
+        "Emails and calls: days to qualify",
+        "2  Solution design",
+        "Manual picks: cheapest cloud often missed",
+        "3  Quoting",
+        "Spreadsheets: 1-3 week quotes (typical, illustrative)",
+        "4  Order entry",
+        "Re-keying: wrong site, speed or rate",
+        "5  Provisioning",
+        "Tickets: more delay, no single status",
+        "PLAN: understand, price, design",
+        "PROVISION: only after approval",
+        "User",
+        "Plain English",
+        "Streamlit chat UI",
+        "Chat, forms, topology",
+        "LLM intent extraction",
+        "gpt-5-mini / gpt-5.6-luna",
+        "JSON mode",
+        "Deterministic Python engine",
+        "Inventory, pricing, optimizer, sizing",
+        "Quote + BOM + topology",
+        "Mermaid diagram",
+        "User clicks Approve",
+        "Explicit gate",
+        "Payload LLM",
+        "gpt-5.3-codex",
+        "Responses API",
+        "Validation gate",
+        "Pydantic + quote reconciliation, 2 self-heal retries",
+        "Mock Lumen Provisioning API",
+        "SUCCESS + transaction ID",
+        "The LLM understands and writes JSON. ",
+        "It NEVER calculates prices - pricing is deterministic code, so nothing can be hallucinated."
+      ],
+      "pictures": []
+    },
+    {
+      "slide": "slide3",
+      "text": [
+        "1. Problem Statement",
+        "1",
+        "Manual Translation Bottleneck:",
+        " Enterprise customers describe network needs in plain English, requiring human sales engineers to manually translate them into technical specs and API payloads.",
+        "2",
+        "Slow Quote-to-Provision Cycles:",
+        " Traditional telecom quoting and provisioning take days or weeks, delaying network activation and revenue recognition.",
+        "3",
+        "High API Adoption Friction:",
+        " While Lumen Connect offers powerful NaaS APIs, customers must write and maintain custom code or navigate complex portals to use them.",
+        "4",
+        "Order Entry Errors:",
+        " Manual mapping of Bills of Materials (BOM) to strict JSON schemas leads to mismatched Port IDs, typos, and failed service orders.",
+        "5",
+        "New Customer Onboarding Drop-off:",
+        " Prospective buyers face slow discovery calls and manual form-filling just to get an accurate location-based price estimate.",
+        "2. Project Objectives",
+        "1",
+        "Natural Language to Network:",
+        " Enable users to request complex connectivity (e.g., ",
+        "\"10Gbps from Seattle to AWS with DDoS\"",
+        ") via a simple conversational interface.",
+        "2",
+        "Dual-Customer Support:",
+        " Deliver a unified platform that serves both ",
+        "existing customers",
+        " (instant quote + provisioning) and ",
+        "new customers",
+        " (auto-filled onboarding form + location-based pricing).",
+        "3",
+        "Automated Cost & Cloud Optimization:",
+        " Dynamically fetch Lumen pricing data and recommend the most cost-effective cloud egress path (AWS, Azure, or GCP).",
+        "4",
+        "Zero-Touch Payload Generation:",
+        " Use specialized LLMs to convert approved quotes directly into strictly validated JSON payloads ready for Lumen Connect APIs.",
+        "5",
+        "Dynamic Data Integration:",
+        " Connect the LLM seamlessly to external APIs or databases to pull real-time Lumen location availability, port inventory, and pricing."
+      ],
+      "pictures": []
+    },
+    {
+      "slide": "slide4",
+      "text": [
+        "Scope",
+        "ConnectIQ  |  Hackathon final",
+        "TWO CUSTOMER FLOWS",
+        "PLATFORM CAPABILITIES",
+        "Existing Customer Flow",
+        "Parses natural language requirements, verifies on-net port availability ($0 CapEx), generates a detailed BOM with hourly/monthly costs, and outputs the validated JSON payload to hit Lumen Connect APIs.",
+        "New Customer Flow",
+        "Extracts user details from the prompt to auto-fill the onboarding/requirement form, calculates location-based pricing, and generates the ready-to-use JSON order payload.",
+        "AI-Powered Data Retrieval",
+        "Uses LLM orchestration to dynamically query underlying Lumen data sources (mock APIs, databases, or local context files) for up-to-date service catalogs.",
+        "Visual Network Topology",
+        "Automatically generates a clear architecture diagram (Customer Site \u2192 Lumen Fabric \u2192 Cloud On-Ramp) alongside every quote.",
+        "Strict Schema Validation",
+        "Enforces Pydantic-based validation on all LLM-generated JSON payloads to guarantee 100% API compatibility before execution."
+      ],
+      "pictures": [
+        "image8.png",
+        "image9.png",
+        "image10.png",
+        "image11.png",
+        "image12.png"
+      ]
+    },
+    {
+      "slide": "slide5",
+      "text": [
+        "Lumen Developer Portal"
+      ],
+      "pictures": [
+        "image13.png"
+      ]
+    },
+    {
+      "slide": "slide6",
+      "text": [
+        "Existing customer: from one chat to a live network",
+        "ConnectIQ  |  Hackathon final",
+        "1",
+        "Natural-language input",
+        "e.g. \"5 Gbps with AWS or GCP and DDoS\" (then \"Dallas and GCP\")",
+        "2",
+        "Intent + inventory check",
+        "Asks only what is missing; finds idle on-net ports ($0 CapEx)",
+        "3",
+        "Quote + visual topology",
+        "Itemised hourly BOM; optimizer picks the cheapest cloud",
+        "4",
+        "One-click approval",
+        "Approve Quote button, or type QUOTE_APPROVED",
+        "5",
+        "Automated payload",
+        "Validated orderRequest JSON, reconciled to the quote, provisioned",
+        "Customer: ",
+        "zero coding or portal navigation; network live in minutes instead of days.",
+        "Lumen: ",
+        "immediate time-to-revenue, higher NaaS API adoption, zero manual order-entry errors."
+      ],
+      "pictures": [
+        "image14.png",
+        "image15.png",
+        "image16.png"
+      ]
+    },
+    {
+      "slide": "slide7",
+      "text": [
+        "Existing customer: from one chat to a live network",
+        "ConnectIQ  |  Hackathon final"
+      ],
+      "pictures": [
+        "image17.png",
+        "image18.png",
+        "image19.png"
+      ]
+    },
+    {
+      "slide": "slide8",
+      "text": [
+        "New customer: a description becomes a priced, provisioned site",
+        "ConnectIQ  |  Hackathon final",
+        "1",
+        "Natural-language input",
+        "Describe the office in plain English",
+        "2",
+        "Automated form-filling",
+        "AI pre-fills company, city, floors, cloud and DDoS (editable)",
+        "3",
+        "Serviceability + site sizing",
+        "On-net check, services sold there; users and switches sized from floors and area",
+        "4",
+        "Transparent price plans",
+        "AWS vs GCP vs Azure; best plan highlighted; $0 CapEx",
+        "5",
+        "Account + provisioning",
+        "Accounts API creates the account, then the same validated order path as Flow 1",
+        "Customer: ",
+        "no tedious forms, no waiting days for discovery calls; instant, location-specific pricing.",
+        "Lumen: ",
+        "faster lead-to-customer conversion, lower acquisition cost, pre-validated specs for sales."
+      ],
+      "pictures": [
+        "image14.png",
+        "image15.png",
+        "image20.png"
+      ]
+    },
+    {
+      "slide": "slide9",
+      "text": [
+        "New customer: a description becomes a priced, provisioned site",
+        "ConnectIQ  |  Hackathon final"
+      ],
+      "pictures": [
+        "image21.png",
+        "image22.png"
+      ]
+    },
+    {
+      "slide": "slide10",
+      "text": [
+        "Trusted by design: the LLM never touches the price",
+        "ConnectIQ  |  Hackathon final",
+        "TECH STACK",
+        "WHY YOU CAN TRUST IT",
+        "Frontend",
+        "Streamlit",
+        "Chat, BOM tables, auto-filled forms, sandboxed Mermaid topology",
+        "Backend",
+        "Python",
+        "Orchestration and routing; Pydantic strict JSON schema validation",
+        "AI / LLM",
+        "LiteLLM gateway",
+        "gpt-5-mini / gpt-5.6-luna: understanding and form fill. gpt-5.3-codex: JSON payload. Dev/prod profiles",
+        "Data + integration",
+        "Mock Lumen Connect APIs",
+        "Ordering, Serviceability, Accounts; swap-ready for live Lumen APIs",
+        "Deterministic pricing and inventory",
+        "No hallucinated prices",
+        "Validated payloads",
+        "Pydantic schema + reconciliation to the approved quote (within $0.005); errors self-heal, max 2 retries",
+        "Approval first",
+        "The payload model runs only after explicit approval",
+        "Cost control",
+        "Per-session budget guard, low reasoning effort, token caps, live spend meter",
+        "Safe observability",
+        "Rotating logs, API-key redaction, no PII logged, friendly errors"
+      ],
+      "pictures": [
+        "image15.png",
+        "image15.png",
+        "image15.png",
+        "image15.png",
+        "image15.png"
+      ]
+    },
+    {
+      "slide": "slide11",
+      "text": [
+        "4. Business Gain & Revenue Impact for Lumen",
+        "1",
+        "Accelerated Time-to-Revenue",
+        "Compresses the quote-to-provision cycle from days to minutes, allowing Lumen to start hourly/monthly NaaS billing immediately.",
+        "2",
+        "Lower Customer Acquisition Cost (CAC)",
+        "Automates pre-sales engineering and form-filling, allowing Lumen to profitably capture and onboard new customers without heavy sales intervention.",
+        "3",
+        "Higher NaaS & API Utilization",
+        "Removes the technical barrier to using Lumen Connect APIs, encouraging customers to spin up high-margin, on-demand bandwidth bursts more frequently.",
+        "4",
+        "Zero Order Fallout",
+        "Eliminates human data-entry mistakes in JSON payloads, reducing failed service orders and lowering Network Operations Center (NOC) support costs.",
+        "5",
+        "Higher Conversion Rates for New Leads",
+        "Instant, transparent location-based pricing and automated form-filling eliminate friction during the discovery phase, converting more prospects into paying accounts."
+      ],
+      "pictures": []
+    },
+    {
+      "slide": "slide12",
+      "text": [
+        "Scale the Innovation",
+        "1",
+        "Live Database & API Integration",
+        "Replacing Mock Data",
+        "Swap the local context file for live connections to Lumen\u2019s enterprise databases and ",
+        "Lumen Connect APIs",
+        " (Locations, Service Inventory, and Quoting) via RAG or tool-calling, enabling real-time port availability and contract-specific pricing at scale.",
+        "2",
+        "True Zero-Touch Execution",
+        "Removing Human Intervention",
+        "Integrate enterprise SSO/OAuth2 authentication so the backend automatically injects Customer IDs and fires the validated JSON payload directly to the live ",
+        "Lumen Ordering API",
+        "\u2014completely eliminating manual sales engineering and order-entry teams.",
+        "3",
+        "Autonomous Bandwidth & Cost Optimization",
+        "Closed-Loop Scaling",
+        "Connect the agent to real-time network telemetry so it can proactively scale bandwidth up during peak workloads (e.g., AI training or data migrations) and scale it back down off-peak, optimizing spend automatically without human tickets.",
+        "4",
+        "Full Lifecycle Expansion",
+        "Day-2 Operations & SecOps",
+        "Extend the same agentic framework to Lumen\u2019s ",
+        "Service Diagnostics, Ticketing, and DDoS Mitigation / Defender Plus APIs",
+        ", transforming the tool from a quoting bot into an all-in-one assistant that provisions, monitors, troubleshoots, and secures the network."
+      ],
+      "pictures": []
+    },
+    {
+      "slide": "slide13",
+      "text": [
+        "Lumen Zero-Touch NaaS Broker",
+        "Thank you",
+        "AI-native Quote-to-Provision Assistant",
+        "Natural language in, billable and provisioned network out.",
+        "Team ConnectIQ"
+      ],
+      "pictures": []
+    }
+  ],
+  "images": [
+    {
+      "file": "image1.png",
+      "width": 491,
+      "height": 130,
+      "slides": []
+    },
+    {
+      "file": "image10.png",
+      "width": 512,
+      "height": 512,
+      "slides": [
+        "slide4"
+      ]
+    },
+    {
+      "file": "image11.png",
+      "width": 512,
+      "height": 512,
+      "slides": [
+        "slide4"
+      ]
+    },
+    {
+      "file": "image12.png",
+      "width": 512,
+      "height": 512,
+      "slides": [
+        "slide4"
+      ]
+    },
+    {
+      "file": "image13.png",
+      "width": 1444,
+      "height": 1068,
+      "slides": [
+        "slide5"
+      ]
+    },
+    {
+      "file": "image14.png",
+      "width": 256,
+      "height": 256,
+      "slides": [
+        "slide6",
+        "slide8"
+      ]
+    },
+    {
+      "file": "image15.png",
+      "width": 256,
+      "height": 256,
+      "slides": [
+        "slide6",
+        "slide8",
+        "slide10"
+      ]
+    },
+    {
+      "file": "image16.png",
+      "width": 1905,
+      "height": 981,
+      "slides": [
+        "slide6"
+      ]
+    },
+    {
+      "file": "image17.png",
+      "width": 712,
+      "height": 204,
+      "slides": [
+        "slide7"
+      ]
+    },
+    {
+      "file": "image18.png",
+      "width": 666,
+      "height": 839,
+      "slides": [
+        "slide7"
+      ]
+    },
+    {
+      "file": "image19.png",
+      "width": 705,
+      "height": 369,
+      "slides": [
+        "slide7"
+      ]
+    },
+    {
+      "file": "image2.jpeg",
+      "width": 3999,
+      "height": 2250,
+      "slides": []
+    },
+    {
+      "file": "image20.png",
+      "width": 1498,
+      "height": 904,
+      "slides": [
+        "slide8"
+      ]
+    },
+    {
+      "file": "image21.png",
+      "width": 1903,
+      "height": 932,
+      "slides": [
+        "slide9"
+      ]
+    },
+    {
+      "file": "image22.png",
+      "width": 1888,
+      "height": 857,
+      "slides": [
+        "slide9"
+      ]
+    },
+    {
+      "file": "image3.png",
+      "width": 492,
+      "height": 131,
+      "slides": []
+    },
+    {
+      "file": "image4.jpeg",
+      "width": 1920,
+      "height": 1074,
+      "slides": []
+    },
+    {
+      "file": "image5.jpeg",
+      "width": 3999,
+      "height": 2250,
+      "slides": []
+    },
+    {
+      "file": "image6.jpeg",
+      "width": 3999,
+      "height": 2250,
+      "slides": []
+    },
+    {
+      "file": "image7.png",
+      "width": 4004,
+      "height": 52,
+      "slides": []
+    },
+    {
+      "file": "image8.png",
+      "width": 512,
+      "height": 512,
+      "slides": [
+        "slide4"
+      ]
+    },
+    {
+      "file": "image9.png",
+      "width": 512,
+      "height": 512,
+      "slides": [
+        "slide4"
+      ]
+    }
+  ]
+}

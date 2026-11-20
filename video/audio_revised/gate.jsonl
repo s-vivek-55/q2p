@@ -1,0 +1,2 @@
+{"type": "SentenceBoundary", "offset": 1000000, "duration": 31545453, "text": "The customer reviews the quote and clicks approve."}
+{"type": "SentenceBoundary", "offset": 32045453, "duration": 55568180, "text": "The broker checks the order details, sends the API request, and returns the result."}

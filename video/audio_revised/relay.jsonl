@@ -1,0 +1,2 @@
+{"type": "SentenceBoundary", "offset": 1000000, "duration": 48363635, "text": "The customer emails an agent, who reads the message to work out what is needed."}
+{"type": "SentenceBoundary", "offset": 48863635, "duration": 71136362, "text": "The agent checks local services and prices using Lumen's APIs, chooses a cloud provider, and prepares a quote."}

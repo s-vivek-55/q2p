@@ -1,0 +1,192 @@
+{
+  "title": "Lumen Zero-Touch NaaS Broker",
+  "duration": 239.8,
+  "fps": 30,
+  "voice": "en-US-AriaNeural",
+  "voice_rate": "+10%",
+  "voice_pitch": "-2Hz",
+  "output_stem": "ConnectIQ_Lumen_NaaS_Demo_Revised",
+  "music_gain": 0.11,
+  "scenes": [
+    {
+      "id": "title", "act": 1, "start": 0, "duration": 4,
+      "title": "Lumen Zero-Touch\nNaaS Broker",
+      "eyebrow": "LESS WAITING. EARLIER REVENUE.",
+      "narration": "Lumen's network is ready. Let's remove the wait."
+    },
+    {
+      "id": "foundation", "act": 1, "start": 4, "duration": 17,
+      "title": "The fiber is already in the building.",
+      "eyebrow": "LUMEN'S NETWORK IS READY",
+      "narration": "Lumen provides Internet-on-Demand on a network controlled by software. In buildings already connected to Lumen, the fiber is in place. An API call is simply an instruction between systems. One call can activate eligible services, with no new construction cost."
+    },
+    {
+      "id": "relay", "act": 1, "start": 21, "duration": 13,
+      "title": "Customers still wait for manual work.",
+      "eyebrow": "HOW A CONNECTION IS ORDERED TODAY",
+      "narration": "The customer emails an agent, who reads the message to work out what is needed. The agent checks local services and prices using Lumen's APIs, chooses a cloud provider, and prepares a quote."
+    },
+    {
+      "id": "friction", "act": 1, "start": 34, "duration": 12,
+      "title": "Manual orders delay Lumen's revenue.",
+      "eyebrow": "WHY THE WAIT MATTERS",
+      "narration": "The agent then retypes the details into JSON, the order message Lumen needs. This can introduce errors. Quotes can take one to three weeks, delaying revenue."
+    },
+    {
+      "id": "scope", "act": 2, "start": 46, "duration": 11,
+      "title": "Our goal: remove the wait.",
+      "eyebrow": "WHAT OUR PROJECT DOES",
+      "narration": "Our goal is to remove that delay. Customers describe their needs in everyday language. The broker handles checks and orders for existing and new customers."
+    },
+    {
+      "id": "plan", "act": 2, "start": 57, "duration": 13,
+      "title": "Check availability. Compare prices.",
+      "eyebrow": "STEP 1 / BUILD AN ACCURATE QUOTE",
+      "narration": "First, the AI reads the customer's request. The broker checks the site and its available capacity. It compares cloud options and calculates costs from fixed rates, so the AI never invents a price."
+    },
+    {
+      "id": "gate", "act": 2, "start": 70, "duration": 9,
+      "title": "The customer approves. The broker orders.",
+      "eyebrow": "STEP 2 / CHECK AND SEND THE ORDER",
+      "narration": "The customer reviews the quote and clicks approve. The broker checks the order details, sends the API request, and returns the result."
+    },
+    {
+      "id": "portal", "act": 3, "start": 79, "duration": 7,
+      "title": "Lumen's portal shows how the APIs work.",
+      "eyebrow": "OUR REFERENCE / LUMEN DEVELOPER PORTAL",
+      "narration": "We used Lumen's Developer Portal to model how service checks, quotes, and cloud orders should work."
+    },
+    {
+      "id": "endpoint", "act": 3, "start": 86, "duration": 5,
+      "title": "Send the order for the right customer.",
+      "eyebrow": "LUMEN ORDERING API",
+      "narration": "This Ordering API sends the approved order with the customer's Lumen identifier."
+    },
+    {
+      "id": "contract", "act": 3, "start": 91, "duration": 6,
+      "title": "JSON is the order message Lumen reads.",
+      "eyebrow": "A STANDARD FORMAT FOR ORDER DETAILS",
+      "narration": "Customers do not write JSON. The broker fills this order message with their billing account and quote."
+    },
+    {
+      "id": "mock", "act": 3, "start": 97, "duration": 7,
+      "title": "Mock APIs let us test safely.",
+      "eyebrow": "THIS DEMO DOES NOT CHANGE LIVE SERVICES",
+      "narration": "Our mock APIs simulate these steps safely. No live connections or real bills are created."
+    },
+    {
+      "id": "chat", "act": 4, "start": 104, "duration": 8,
+      "title": "The customer describes what they need.",
+      "eyebrow": "EXISTING CUSTOMER / START WITH A MESSAGE",
+      "narration": "An existing customer requests five gigabits with attack protection. After one question, they confirm Dallas and Google Cloud."
+    },
+    {
+      "id": "quote", "act": 4, "start": 112, "duration": 9,
+      "title": "An immediate price, with no construction cost.",
+      "eyebrow": "DALLAS QUOTE / Q-989666A8",
+      "narration": "The price is six dollars fifteen per hour, with no construction cost. Six unused network ports are already available in Dallas."
+    },
+    {
+      "id": "bom", "act": 4, "start": 121, "duration": 5,
+      "title": "The customer can see every charge.",
+      "eyebrow": "A CLEAR BREAKDOWN OF THE PRICE",
+      "narration": "The quote lists every charge, including the connection and attack protection."
+    },
+    {
+      "id": "compare", "act": 4, "start": 126, "duration": 4,
+      "title": "Compare cloud costs before choosing.",
+      "eyebrow": "AWS / GOOGLE CLOUD / AZURE",
+      "narration": "This table explains the cost of each cloud option."
+    },
+    {
+      "id": "topology", "act": 4, "start": 130, "duration": 5,
+      "title": "See how the connection will work.",
+      "eyebrow": "THE NETWORK ROUTE / DALLAS TO GOOGLE CLOUD",
+      "narration": "The diagram shows how Dallas connects through Lumen's protected network to Google Cloud."
+    },
+    {
+      "id": "approve", "act": 4, "start": 135, "duration": 4,
+      "title": "Nothing is ordered without approval.",
+      "eyebrow": "THE CUSTOMER IS IN CONTROL",
+      "narration": "The customer approves the quote before anything is ordered."
+    },
+    {
+      "id": "validated", "act": 4, "start": 139, "duration": 4,
+      "title": "The order must match the approved quote.",
+      "eyebrow": "AUTOMATIC CHECKS / NO MANUAL RE-TYPING",
+      "narration": "The broker checks that the order matches the approved quote."
+    },
+    {
+      "id": "success", "act": 4, "start": 143, "duration": 7,
+      "title": "A successful order brings billing closer.",
+      "eyebrow": "MOCK LUMEN API / 200 SUCCESS",
+      "narration": "The test order succeeds. In production, billing could start as soon as the connection is active."
+    },
+    {
+      "id": "intake", "act": 5, "start": 150, "duration": 8,
+      "title": "New customers start with a simple description.",
+      "eyebrow": "NEW CUSTOMER / DESCRIBE THE OFFICE",
+      "narration": "A new customer describes Apple's Chicago office with five floors. They want AWS and protection from online attacks."
+    },
+    {
+      "id": "survey", "act": 5, "start": 158, "duration": 8,
+      "title": "The form fills itself, ready for review.",
+      "eyebrow": "LESS FORM-FILLING / NO DISCOVERY CALL",
+      "narration": "That description fills the form automatically. The customer can check and edit every detail without waiting for a discovery call."
+    },
+    {
+      "id": "sizing", "act": 5, "start": 166, "duration": 7,
+      "title": "Choose a connection that fits the office.",
+      "eyebrow": "CHECK AVAILABLE SERVICES AND CAPACITY",
+      "narration": "After checking available services, it recommends thirty-two megabits and five floor switches for this office."
+    },
+    {
+      "id": "plans", "act": 5, "start": 173, "duration": 8,
+      "title": "The lowest-priced plan is easy to spot.",
+      "eyebrow": "COMPARE PLANS / SEE THE SAVING",
+      "narration": "At about one dollar eight per hour, AWS is the lowest-priced option, with no new construction cost."
+    },
+    {
+      "id": "new_quote", "act": 5, "start": 181, "duration": 5,
+      "title": "Know the full price before committing.",
+      "eyebrow": "CHICAGO QUOTE / Q-4D383D44",
+      "narration": "The final quote shows all charges, so the customer knows the full price before committing."
+    },
+    {
+      "id": "onboard", "act": 5, "start": 186, "duration": 6,
+      "title": "Open an account and order in one visit.",
+      "eyebrow": "ONE CLICK / ACCOUNT AND CONNECTION",
+      "narration": "One click creates the account and places the order, without retyping any details."
+    },
+    {
+      "id": "revenue", "act": 6, "start": 192, "duration": 9,
+      "title": "Lumen earns sooner from fiber it already owns.",
+      "eyebrow": "THE MAIN BENEFIT / EARLIER REVENUE",
+      "narration": "Lumen can start earning sooner. At this example rate, removing three weeks of delay brings forward about three thousand dollars per connection."
+    },
+    {
+      "id": "drivers", "act": 6, "start": 201, "duration": 24,
+      "title": "Five clear benefits for Lumen.",
+      "eyebrow": "MORE REVENUE / LOWER COSTS / MORE CUSTOMERS",
+      "narration": "First, Lumen earns revenue sooner. Second, staff spend less time preparing routine quotes, which lowers sales costs. Third, customers can buy extra capacity more easily, so existing fiber earns more. Fourth, checked orders mean fewer mistakes and less support work. Finally, instant prices help more new customers buy before they lose interest."
+    },
+    {
+      "id": "roadmap_one", "act": 6, "start": 225, "duration": 6,
+      "title": "Next: connect to Lumen's live services.",
+      "eyebrow": "FUTURE PLANS / LIVE DATA AND SECURE SIGN-IN",
+      "narration": "Next, we plan to connect live Lumen services, pricing, and secure customer accounts."
+    },
+    {
+      "id": "roadmap_two", "act": 6, "start": 231, "duration": 6,
+      "title": "Then: adjust and support the network automatically.",
+      "eyebrow": "FUTURE PLANS / CAPACITY, SUPPORT AND SECURITY",
+      "narration": "Later, it could adjust capacity automatically and help find, fix, and prevent network problems."
+    },
+    {
+      "id": "close", "act": 6, "start": 237, "duration": 2.8,
+      "title": "Thank you.",
+      "eyebrow": "THANK YOU",
+      "narration": "Thank you."
+    }
+  ]
+}

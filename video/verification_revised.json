@@ -1,0 +1,170 @@
+{
+  "file": "ConnectIQ_Lumen_NaaS_Demo_Revised.mp4",
+  "duration_seconds": 239.8,
+  "video_frames": 7194,
+  "resolution": "1920x1080",
+  "frames_per_second": 30,
+  "video_codec": "H.264 High Profile",
+  "audio_codec": "AAC stereo / 48000 Hz / 192 kbps",
+  "audio_peak_dbfs": -1.4,
+  "audio_rms_dbfs": -20.2,
+  "voice": "en-US-AriaNeural",
+  "voice_rate": "+10%",
+  "closing_narration": "Thank you.",
+  "ambient_gain": 0.11,
+  "size_mb": 26.65,
+  "all_frames_decoded": true,
+  "all_audio_decoded": true,
+  "scene_checks": [
+    {
+      "scene": "title",
+      "time": 2.467,
+      "mean_pixel_error": 1.023
+    },
+    {
+      "scene": "foundation",
+      "time": 14.533,
+      "mean_pixel_error": 1.094
+    },
+    {
+      "scene": "relay",
+      "time": 29.067,
+      "mean_pixel_error": 1.142
+    },
+    {
+      "scene": "friction",
+      "time": 41.433,
+      "mean_pixel_error": 1.093
+    },
+    {
+      "scene": "scope",
+      "time": 52.833,
+      "mean_pixel_error": 1.285
+    },
+    {
+      "scene": "plan",
+      "time": 65.067,
+      "mean_pixel_error": 1.247
+    },
+    {
+      "scene": "gate",
+      "time": 75.567,
+      "mean_pixel_error": 1.164
+    },
+    {
+      "scene": "portal",
+      "time": 83.333,
+      "mean_pixel_error": 0.972
+    },
+    {
+      "scene": "endpoint",
+      "time": 89.1,
+      "mean_pixel_error": 1.229
+    },
+    {
+      "scene": "contract",
+      "time": 94.733,
+      "mean_pixel_error": 1.144
+    },
+    {
+      "scene": "mock",
+      "time": 101.333,
+      "mean_pixel_error": 1.155
+    },
+    {
+      "scene": "chat",
+      "time": 108.967,
+      "mean_pixel_error": 1.345
+    },
+    {
+      "scene": "quote",
+      "time": 117.567,
+      "mean_pixel_error": 1.337
+    },
+    {
+      "scene": "bom",
+      "time": 124.1,
+      "mean_pixel_error": 1.312
+    },
+    {
+      "scene": "compare",
+      "time": 128.467,
+      "mean_pixel_error": 1.219
+    },
+    {
+      "scene": "topology",
+      "time": 133.1,
+      "mean_pixel_error": 1.219
+    },
+    {
+      "scene": "approve",
+      "time": 137.467,
+      "mean_pixel_error": 1.059
+    },
+    {
+      "scene": "validated",
+      "time": 141.467,
+      "mean_pixel_error": 1.121
+    },
+    {
+      "scene": "success",
+      "time": 147.333,
+      "mean_pixel_error": 1.168
+    },
+    {
+      "scene": "intake",
+      "time": 154.967,
+      "mean_pixel_error": 1.259
+    },
+    {
+      "scene": "survey",
+      "time": 162.967,
+      "mean_pixel_error": 1.219
+    },
+    {
+      "scene": "sizing",
+      "time": 170.333,
+      "mean_pixel_error": 1.307
+    },
+    {
+      "scene": "plans",
+      "time": 177.967,
+      "mean_pixel_error": 1.207
+    },
+    {
+      "scene": "new_quote",
+      "time": 184.1,
+      "mean_pixel_error": 1.317
+    },
+    {
+      "scene": "onboard",
+      "time": 189.733,
+      "mean_pixel_error": 1.242
+    },
+    {
+      "scene": "revenue",
+      "time": 197.567,
+      "mean_pixel_error": 1.111
+    },
+    {
+      "scene": "drivers",
+      "time": 215.867,
+      "mean_pixel_error": 1.142
+    },
+    {
+      "scene": "roadmap_one",
+      "time": 228.733,
+      "mean_pixel_error": 1.04
+    },
+    {
+      "scene": "roadmap_two",
+      "time": 234.733,
+      "mean_pixel_error": 1.048
+    },
+    {
+      "scene": "close",
+      "time": 238.733,
+      "mean_pixel_error": 1.027
+    }
+  ]
+}
